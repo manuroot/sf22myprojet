@@ -1,6 +1,14 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+     # Sonata Bundles
+    - { resource: sonata/sonata_admin.yml }
+    - { resource: sonata/sonata_doctrine.yml }
+    - { resource: sonata/sonata_user.yml }
+    - { resource: sonata/sonata_media.yml }
+    - { resource: sonata/sonata_formatter.yml }
+   # - { resource: sonata/sonata_news.yml }
+  #  - { resource: sonata/sonata_page.yml }
 
 framework:
     #esi:             ~
@@ -24,6 +32,9 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    form:
+       resources:
+            - "BraincraftedBootstrapBundle:Form:form_div_layout.html.twig"
 
 # Assetic Configuration
 assetic:
@@ -38,7 +49,10 @@ assetic:
         #yui_css:
         #    jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
 
-# Doctrine Configuration
+
+#==================================================
+#  DOCTRINE
+#==================================================
 doctrine:
     dbal:
         driver:   %database_driver%
@@ -51,11 +65,23 @@ doctrine:
         # if using pdo_sqlite as your database driver, add the path in parameters.yml
         # e.g. database_path: %kernel.root_dir%/data/data.db3
         # path:     %database_path%
-
+        #mapping_types:
+        #     enum: string
+        types:
+           json: Sonata\Doctrine\Types\JsonType
     orm:
+      #  entity_managers:
+       #     default:
+       #         mappings:
+       #             SonataMediaBundle: ~
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
-
+        #dql:
+        #    string_functions:
+         #               GroupConcat: DoctrineExtensions\Query\Mysql\GroupConcat
+         
+         
+         
 # Swiftmailer Configuration
 swiftmailer:
     transport: %mailer_transport%
@@ -63,3 +89,71 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+
+#==================================================
+#  FOSUSER
+# pour les commandes fos:user:create
+#==================================================
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Application\Sonata\UserBundle\Entity\User 
+    group:
+      group_class: Application\Sonata\UserBundle\Entity\Group 
+    profile:  # Authentication Form
+        form:
+            type:               fos_user_profile
+            name:               fos_user_profile_form
+            validation_groups:  [Authentication] # Please note : this is not the default value
+            
+            # On utilise twig_swift pour pouvoir envoyer un email en HTML
+    service:
+        mailer: fos_user.mailer.twig_swift
+    # Permet de renseigner le nouveau formulaire d'inscription
+    registration:
+        form:
+          # default form
+            type: fos_user_registration
+        # Permet la validation automatique du compte par envoi d'un email
+        confirmation:
+            enabled:    true
+            from_email:
+                # Adresse de l'expediteur
+                address:        noreply@monsiteweb.com
+                # Nom de l'expediteur
+                sender_name:    Admin de monsiteweb.com
+        # Permet de définir le template de l'email à envoyer (en html)
+        #email:
+        #    template: MyAppMonBundle:User:registration.email.twig
+ 
+   # registration:
+   #   form:
+   #     type: myapp_user_registration
+
+
+
+#==================================================
+#  KNP_PAGINATOR ET SORT
+#==================================================
+    
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: false                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+             pagination: BraincraftedBootstrapBundle:Pagination:pagination.html.twig
+   # template:
+      # sliding pagination controls template
+      #pagination: ApplicationCertificatsBundle:pagination:twitter_bootstrap_pagination.html.twig
+       # sliding pagination controls template
+      #sortable: ApplicationCertificatsBundle:pagination:sortable_link.html.twig 
+      # sort link template
+      
+      
+knp_menu:
+       twig:
+            template: "BraincraftedBootstrapBundle:Menu:menu.html.twig"

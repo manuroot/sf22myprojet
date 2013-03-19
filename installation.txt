@@ -1,0 +1,12 @@
+
+projet recup
+composer.json: 1h30
+appkernerl: 2h
+
+surcharge de sonata (extends)
+              admin+media+user  1h
+
+configuration fosuser+sonataadmin+sonatauser
+
+creation comptes de test
+
