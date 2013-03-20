@@ -11,21 +11,28 @@
                               
 
     
-                              <div class="btn-group pull-right"> 
-                                
+                           <div class="btn-group pull-right"> 
+                                 {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="{{ path('fos_user_registration_register') }}">{{ 'Register'|trans }}
                                       
-    {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-       <li><a href="{{ path('fos_user_registration_register') }}">{{ 'Register'|trans }}</a></li>
-  {#% if is_granted("ROLE_USER") or is_granted("ROLE_USER") %#}
-                                       {% else %}
-         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> <i class="icon-user"></i>
+                                      
+                                   
+                                      
+                                      <i class="icon-user"></i>
+                                      
+                                    {% else %}
+                                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> <i class="icon-user"></i>
+                                            {% endif %}
+                                      
+                                        {% if is_granted("ROLE_USER") or is_granted("ROLE_USER") %}
                                         {{ app.user.username }} 
-                                  
-                                 
+                                     {% else %}
+                                        Username
                                     {% endif %}
                                        <span class="caret"></span> 
                                   </a>
                                       
+                                          
                                
                                <ul class="dropdown-menu">
                                   <!--  <li class="divider"></li>-->
