@@ -12,26 +12,23 @@
 
     
                            <div class="btn-group pull-right"> 
-                                 {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="{{ path('fos_user_registration_register') }}">{{ 'Register'|trans }}
-                                      
-                                      
-                                   
+                               {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                  <a class="brand" href="{{ path('fos_user_registration_register') }}">{{ 'Register'|trans }}</a>
                                       
                                       <i class="icon-user"></i>
                                       
                                     {% else %}
                                         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> <i class="icon-user"></i>
-                                            {% endif %}
+                              
                                       
                                         {% if is_granted("ROLE_USER") or is_granted("ROLE_USER") %}
                                         {{ app.user.username }} 
-                                     {% else %}
-                                        Username
-                                    {% endif %}
-                                       <span class="caret"></span> 
+                                        {% else %}
+                                          Username
+                                         {% endif %}
+                                  <span class="caret"></span> 
                                   </a>
-                                      
+                                {% endif %}
                                           
                                
                                <ul class="dropdown-menu">
