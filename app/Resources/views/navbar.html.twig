@@ -13,9 +13,12 @@
     
                            <div class="btn-group pull-right"> 
                                {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                  <a class="brand" href="{{ path('fos_user_registration_register') }}">{{ 'Register'|trans }}</a>
-                                      
-                                      <i class="icon-user"></i>
+                                 
+                                    <a class="brand" href="{{ path('fos_user_registration_register') }}">{{ 'Register'|trans }}
+                                       <i class="icon-user"></i>
+                                    </a>
+                                    
+                                    
                                       
                                     {% else %}
                                         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> <i class="icon-user"></i>
