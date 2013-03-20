@@ -8,8 +8,8 @@
                 <span class="icon-bar"></span> 
             </a>
             <a class="brand" href="#">{% block toto %}PROJET(v1.0){% endblock %}</a>
-             
-            <div class="btn-group pull-right"> 
+            <a class="brand" href="{{ path('sonata_news_home') }}"> <i class="icon-book"></i> {{ 'Blog'|trans }}</a>
+             <div class="btn-group pull-right"> 
             {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                      <a class="brand" href="{{ path('fos_user_registration_register') }}"> <i class="icon-user"></i> {{ 'Register'|trans }}</a>
                     
@@ -51,7 +51,7 @@
                     </ul>
                 </div>
             
-            
+       
                 <div class="nav-collapse">
                     <ul class="nav">
 

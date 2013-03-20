@@ -37,4 +37,8 @@ class Category extends BaseCategory
     {
         return $this->id;
     }
+     public function __toString()
+     {
+        return (string) $this->getName();
+     } 
 }

@@ -36,7 +36,7 @@ class AppKernel extends Kernel {
             new Sonata\MediaBundle\SonataMediaBundle(),
             new Sonata\FormatterBundle\SonataFormatterBundle(),
             new Sonata\NewsBundle\SonataNewsBundle(),
-      
+   
             // DEPENDANCES NECESSAIRES   
             // MENUS
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
@@ -48,7 +48,7 @@ class AppKernel extends Kernel {
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
             new Application\Sonata\NewsBundle\ApplicationSonataNewsBundle(),
-                // new Sonata\NewsBundle\SonataNewsBundle(),
+            
             
               //MOPA
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),

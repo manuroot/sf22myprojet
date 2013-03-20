@@ -4,14 +4,13 @@ sonata_news:
     description:  Cool bundles on top of Symfony2
     salt:         'secureToken'
     permalink_generator: sonata.news.permalink.date # sonata.news.permalink.category
-    permalink:
-        date:     %%1$04d/%%2$02d/%%3$02d/%%4$s => 2012/02/01/slug
+
     comment:
         notification:
-            emails:   [email@example.org, email2@example.org]
+            emails:   [mroot72000@yahoo.fr]
             from:     no-reply@sonata-project.org
             template: 'SonataNewsBundle:Mail:comment_notification.txt.twig'
-
+# classes persos (surcharge)
     class:
         post:       Application\Sonata\NewsBundle\Entity\Post
         tag:        Application\Sonata\NewsBundle\Entity\Tag
@@ -23,6 +22,7 @@ sonata_news:
     admin:
         post:
             class:       Sonata\NewsBundle\Admin\PostAdmin
+         #   class:       Application\Sonata\NewsBundle\Admin\PostAdmin
             controller:  SonataAdminBundle:CRUD
             translation: SonataNewsBundle
         comment:
@@ -30,6 +30,7 @@ sonata_news:
             controller:  SonataAdminBundle:CRUD
             translation: SonataNewsBundle
         category:
+            #class:       Application\Sonata\NewsBundle\Admin\CategoryAdmin
             class:       Sonata\NewsBundle\Admin\CategoryAdmin
             controller:  SonataAdminBundle:CRUD
             translation: SonataNewsBundle
@@ -38,4 +39,13 @@ sonata_news:
             controller:  SonataAdminBundle:CRUD
             translation: SonataNewsBundle
 
-
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                #metadata_cache_driver: apc
+                #query_cache_driver: apc
+                #result_cache_driver: apc
+                mappings:
+                    ApplicationSonataNewsBundle: ~
+                    SonataNewsBundle: ~

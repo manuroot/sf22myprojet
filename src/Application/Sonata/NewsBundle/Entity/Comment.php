@@ -37,4 +37,11 @@ class Comment extends BaseComment
     {
         return $this->id;
     }
+    
+    public function __toString()
+     {
+
+         return (string) $this->getName(); 
+     }
+  
 }

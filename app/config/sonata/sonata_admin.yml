@@ -2,16 +2,36 @@
 #  SONATA ADMIN
 #==================================================
 
+#==================================================
+#  SONATA ADMIN
+#==================================================
+
             #
 # more information can be found here http://sonata-project.org/bundles/admin
 #
 sonata_admin:
+    # default value, change it to sonata.admin.security.handler.acl to use ACL
+    security:
+        handler: sonata.admin.security.handler.role
+ # role security information
+        information:
+            EDIT: EDIT
+            LIST: LIST
+            CREATE: CREATE
+            VIEW: VIEW
+            DELETE: DELETE
+            EXPORT: EXPORT
+            OPERATOR: OPERATOR
+            MASTER: MASTER
+    title:      Administration de l'Application
+    title_logo: /bundles/sonataadmin/logo_title.png
+    #title_logo: /bundles/applicationmynotes/images/detail.png
     templates:
         # default global templates
         layout:  SonataAdminBundle::standard_layout.html.twig
         ajax:    SonataAdminBundle::ajax_layout.html.twig
 
-        # default values of actions templates, they should extend global templates
+        # default value if done set, actions templates, should extends a global templates
         list:    SonataAdminBundle:CRUD:list.html.twig
         show:    SonataAdminBundle:CRUD:show.html.twig
         edit:    SonataAdminBundle:CRUD:edit.html.twig
@@ -19,8 +39,24 @@ sonata_admin:
         preview: SonataAdminBundle:CRUD:preview.html.twig
         delete:  SonataAdminBundle:CRUD:delete.html.twig
 
-        # default values of helper templates
-        short_object_description: SonataAdminBundle:Helper:short-object-description.html.twig
+    dashboard:
+        blocks:
+            - { position: left, type: sonata.admin.block.admin_list }
+         #   - { position: right, type: sonata.admin_doctrine_orm.block.audit}
+           # - { position: right, type: sonata.block.service.text, settings: { content: "<h2>Welcome to the Sonata Admin</h2> <p>This is a <code>sonata.block.service.text</code> from the Block Bundle, you can create and add new block in these area by configuring the <code>sonata_admin</code> section.<br /> <br /> For instance, here a RSS feed parser (<code>sonata.block.service.rss</code>):</p>"} }
+        #    - { position: right, type: sonata.block.service.rss, settings: { title: Sonata Project's Feeds, url: http://sonata-project.org/blog/archive.rss }}
 
-        # default values of block templates, they should extend the base_block template
-        list_block: SonataAdminBundle:Block:block_admin_list.html.twig
+
+
+#sonata_block:
+#    default_contexts: [cms]
+#    blocks:
+#        sonata.admin.block.admin_list:
+#            contexts:   [admin]
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+
