@@ -19,11 +19,10 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\FormatterBundle\Formatter\Pool as FormatterPool;
 use Sonata\NewsBundle\Model\CommentManagerInterface;
-
 use Knp\Menu\ItemInterface as MenuItemInterface;
 
-class PostAdmin extends Admin
-{
+class PostAdmin extends Admin {
+
     /**
      * @var UserManagerInterface
      */
@@ -33,33 +32,43 @@ class PostAdmin extends Admin
      * @var Pool
      */
     protected $formatterPool;
-
     protected $commentManager;
+
+    public function getTemplate($name) {
+
+        switch ($name) {
+
+           /* case 'edit':
+                return 'MyAppBundle::my-custom-edit.html.twig';
+                break;*/
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
+    }
 
     /**
      * {@inheritdoc}
      */
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
+    protected function configureShowFields(ShowMapper $showMapper) {
         $showMapper
-            ->add('author')
-            ->add('enabled')
-            ->add('title')
-            ->add('abstract')
-            ->add('content', null, array('safe' => true))
-            ->add('tags')
+                ->add('author')
+                ->add('enabled')
+                ->add('title')
+                ->add('abstract')
+                ->add('content', null, array('safe' => true))
+                ->add('tags')
         ;
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function configureFormFields(FormMapper $formMapper)
-    {
+    protected function configureFormFields(FormMapper $formMapper) {
         $commentClass = $this->commentManager->getClass();
 
         $formMapper
-            ->with('General')
+                ->with('General')
                 ->add('enabled', null, array('required' => false))
                 ->add('author', 'sonata_type_model')
                 ->add('category', 'sonata_type_model_list', array('required' => false))
@@ -70,87 +79,84 @@ class PostAdmin extends Admin
                     'target' => 'content'
                 ))
                 ->add('rawContent', null, array('attr' => array('class' => 'span10', 'rows' => 20)))
-            ->end()
-            ->with('Tags')
+                ->end()
+                ->with('Tags')
                 ->add('tags', 'sonata_type_model', array(
                     'required' => false,
                     'expanded' => true,
                     'multiple' => true,
                 ))
-            ->end()
-            ->with('Options')
+                ->end()
+                ->with('Options')
                 ->add('publicationDateStart')
                 ->add('commentsCloseAt')
                 ->add('commentsEnabled', null, array('required' => false))
                 ->add('commentsDefaultStatus', 'choice', array('choices' => $commentClass::getStatusList(), 'expanded' => true))
-            ->end()
+                ->end()
         ;
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function configureListFields(ListMapper $listMapper)
-    {
+    protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-            ->addIdentifier('title')
-            ->add('author')
-            ->add('category')
-            ->add('enabled', null, array('editable' => true))
-            ->add('tags')
-            ->add('commentsEnabled', null, array('editable' => true))
-            ->add('commentsCount')
-            ->add('publicationDateStart')
+                ->addIdentifier('title')
+                ->add('author')
+                ->add('category')
+                ->add('enabled', null, array('editable' => true))
+                ->add('tags')
+                ->add('commentsEnabled', null, array('editable' => true))
+                ->add('commentsCount')
+                ->add('publicationDateStart')
         ;
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper) {
         $datagridMapper
-            ->add('title')
-            ->add('enabled')
-            ->add('tags', null, array('field_options' => array('expanded' => true, 'multiple' => true)))
-            ->add('author')
-            ->add('with_open_comments', 'doctrine_orm_callback', array(
+                ->add('title')
+                ->add('enabled')
+                ->add('tags', null, array('field_options' => array('expanded' => true, 'multiple' => true)))
+                ->add('author')
+                ->add('with_open_comments', 'doctrine_orm_callback', array(
 //                'callback'   => array($this, 'getWithOpenCommentFilter'),
-                'callback' => function ($queryBuilder, $alias, $field, $data) {
-                    if (!is_array($data) || !$data['value']) {
-                        return;
-                    }
+                    'callback' => function ($queryBuilder, $alias, $field, $data) {
+                        if (!is_array($data) || !$data['value']) {
+                            return;
+                        }
 
-                    $commentClass = $this->commentManager->getClass();
+                        $commentClass = $this->commentManager->getClass();
 
-                    $queryBuilder->leftJoin(sprintf('%s.comments', $alias), 'c');
-                    $queryBuilder->andWhere('c.status = :status');
-                    $queryBuilder->setParameter('status', $commentClass::STATUS_MODERATE);
-                },
-                'field_type' => 'checkbox'
-            ))
+                        $queryBuilder->leftJoin(sprintf('%s.comments', $alias), 'c');
+                        $queryBuilder->andWhere('c.status = :status');
+                        $queryBuilder->setParameter('status', $commentClass::STATUS_MODERATE);
+                    },
+                    'field_type' => 'checkbox'
+                ))
         ;
     }
 
     /**
      * {@inheritdoc}
      *
-    public function getWithOpenCommentFilter($queryBuilder, $alias, $field, $value)
-    {
-        if (!is_array($data) || !$data['value']) {
-            return;
-        }
+      public function getWithOpenCommentFilter($queryBuilder, $alias, $field, $value)
+      {
+      if (!is_array($data) || !$data['value']) {
+      return;
+      }
 
-        $queryBuilder->leftJoin(sprintf('%s.comments', $alias), 'c');
-        $queryBuilder->andWhere('c.status = :status');
-        $queryBuilder->setParameter('status', Comment::STATUS_MODERATE);
-    }*/
+      $queryBuilder->leftJoin(sprintf('%s.comments', $alias), 'c');
+      $queryBuilder->andWhere('c.status = :status');
+      $queryBuilder->setParameter('status', Comment::STATUS_MODERATE);
+      } */
 
     /**
      * {@inheritdoc}
      */
-    protected function configureSideMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null)
-    {
+    protected function configureSideMenu(MenuItemInterface $menu, $action, AdminInterface $childAdmin = null) {
         if (!$childAdmin && !in_array($action, array('edit'))) {
             return;
         }
@@ -160,29 +166,25 @@ class PostAdmin extends Admin
         $id = $admin->getRequest()->get('id');
 
         $menu->addChild(
-            $this->trans('sidemenu.link_view_post'),
-            array('uri' => $admin->generateUrl('edit', array('id' => $id)))
+                $this->trans('sidemenu.link_view_post'), array('uri' => $admin->generateUrl('edit', array('id' => $id)))
         );
 
         $menu->addChild(
-            $this->trans('sidemenu.link_view_comments'),
-            array('uri' => $admin->generateUrl('sonata.news.admin.comment.list', array('id' => $id)))
+                $this->trans('sidemenu.link_view_comments'), array('uri' => $admin->generateUrl('sonata.news.admin.comment.list', array('id' => $id)))
         );
     }
 
     /**
      * @param UserManagerInterface $userManager
      */
-    public function setUserManager($userManager)
-    {
+    public function setUserManager($userManager) {
         $this->userManager = $userManager;
     }
 
     /**
      * @return UserManagerInterface
      */
-    public function getUserManager()
-    {
+    public function getUserManager() {
         return $this->userManager;
     }
 
@@ -191,32 +193,28 @@ class PostAdmin extends Admin
      *
      * @return void
      */
-    public function setPoolFormatter(FormatterPool $formatterPool)
-    {
+    public function setPoolFormatter(FormatterPool $formatterPool) {
         $this->formatterPool = $formatterPool;
     }
 
     /**
      * @return \Sonata\FormatterBundle\Formatter\Pool
      */
-    public function getPoolFormatter()
-    {
+    public function getPoolFormatter() {
         return $this->formatterPool;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function prePersist($post)
-    {
+    public function prePersist($post) {
         $post->setContent($this->getPoolFormatter()->transform($post->getContentFormatter(), $post->getRawContent()));
     }
 
     /**
      * {@inheritdoc}
      */
-    public function preUpdate($post)
-    {
+    public function preUpdate($post) {
         $post->setContent($this->getPoolFormatter()->transform($post->getContentFormatter(), $post->getRawContent()));
     }
 
@@ -225,8 +223,8 @@ class PostAdmin extends Admin
      *
      * @return void
      */
-    public function setCommentManager(CommentManagerInterface $commentManager)
-    {
+    public function setCommentManager(CommentManagerInterface $commentManager) {
         $this->commentManager = $commentManager;
     }
+
 }
