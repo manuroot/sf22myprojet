@@ -1,5 +1,5 @@
 {
-    "hash": "f3b4834b1aa35af367422704c7332460",
+    "hash": "866ed99d0b556256ae79d20aa4867ab5",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -2090,12 +2090,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCacheBundle.git",
-                "reference": "73cb9abb7624f3bfd20b959fc59b6170dc735351"
+                "reference": "2.1.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCacheBundle/zipball/73cb9abb7624f3bfd20b959fc59b6170dc735351",
-                "reference": "73cb9abb7624f3bfd20b959fc59b6170dc735351",
+                "url": "https://api.github.com/repos/sonata-project/SonataCacheBundle/zipball/2.1.1",
+                "reference": "2.1.1",
                 "shasum": ""
             },
             "require": {
@@ -2147,7 +2147,7 @@
             "keywords": [
                 "cache block"
             ],
-            "time": "2013-03-20 17:42:55"
+            "time": "2013-03-20 18:10:46"
         },
         {
             "name": "sonata-project/doctrine-extensions",
@@ -2316,16 +2316,16 @@
         },
         {
             "name": "sonata-project/exporter",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/exporter.git",
-                "reference": "1.2.0"
+                "reference": "1.2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/exporter/zipball/1.2.0",
-                "reference": "1.2.0",
+                "url": "https://api.github.com/repos/sonata-project/exporter/zipball/1.2.1",
+                "reference": "1.2.1",
                 "shasum": ""
             },
             "require": {
@@ -2365,7 +2365,7 @@
                 "export",
                 "xls"
             ],
-            "time": "2013-02-22 11:58:00"
+            "time": "2013-03-04 14:20:46"
         },
         {
             "name": "sonata-project/formatter-bundle",
@@ -2936,6 +2936,64 @@
             "time": "2013-03-06 11:40:39"
         },
         {
+            "name": "stfalcon/tinymce-bundle",
+            "version": "dev-master",
+            "target-dir": "Stfalcon/Bundle/TinymceBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stfalcon/TinymceBundle.git",
+                "reference": "f7422a4dc860641d57805a99705f5f32c4fb10d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stfalcon/TinymceBundle/zipball/f7422a4dc860641d57805a99705f5f32c4fb10d5",
+                "reference": "f7422a4dc860641d57805a99705f5f32c4fb10d5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/symfony": ">=2.1"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Stfalcon\\Bundle\\TinymceBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stepan Tanasiychuk",
+                    "email": "ceo@stfalcon.com",
+                    "homepage": "http://blog.stfalcon.com"
+                },
+                {
+                    "name": "Igor Negrutsa",
+                    "email": "progi2007@gmail.com",
+                    "homepage": "http://igor-negrutsa.info"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://github.com/stfalcon/TinymceBundle/contributors"
+                }
+            ],
+            "description": "This Bundle integrates TinyMCE WYSIWYG editor into a Symfony2 project.",
+            "keywords": [
+                "editor",
+                "tinymce",
+                "wysiwyg"
+            ],
+            "time": "2013-02-21 12:21:06"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "v4.3.0",
             "source": {
@@ -3473,7 +3531,8 @@
         "mopa/composer-bridge": 20,
         "mopa/bootstrap-bundle": 20,
         "twitter/bootstrap": 20,
-        "braincrafted/bootstrap-bundle": 20
+        "braincrafted/bootstrap-bundle": 20,
+        "stfalcon/tinymce-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

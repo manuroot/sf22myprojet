@@ -55,7 +55,8 @@
         "mopa/composer-bridge": "dev-master",
         "mopa/bootstrap-bundle": "dev-master",
         "twitter/bootstrap": "dev-master",
-        "braincrafted/bootstrap-bundle": "dev-master"
+        "braincrafted/bootstrap-bundle": "dev-master",
+          "stfalcon/tinymce-bundle": "dev-master"
       
      
         

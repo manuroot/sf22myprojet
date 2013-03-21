@@ -48,7 +48,10 @@ class AppKernel extends Kernel {
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
             new Application\Sonata\NewsBundle\ApplicationSonataNewsBundle(),
-            
+           // AUTRES EDPENDANCES
+            // new Craue\FormFlowBundle\CraueFormFlowBundle(),
+             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
+         
             
               //MOPA
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
