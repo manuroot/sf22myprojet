@@ -43,7 +43,7 @@
             <div class="sonata-blog-post-information">
 
                 <div class="sonata-blog-post-tag-container">
-                    <div class="sonata-blog-post-tag-title">gjhgjg
+                    <div class="sonata-blog-post-tag-title">
                            {{ 'published_under'|transchoice(post.tags|length, {}, 'SonataNewsBundle') }}
 
               
@@ -62,7 +62,7 @@
                        
                         <div class="sonata-blog-post-tag-list">
                             {% if  post.category is defined and  post.category is not empty%}
-                        Catégorie: 
+                       
                          <span class="label">
                         <a href="{{ url('sonata_news_category', {'category': post.category.slug} ) }}">{{ post.category }}</a>
                         </span>

@@ -1,9 +1,25 @@
 {% extends "::layout.html.twig" %}
 
 {% block title %}
- {{ parent() }} - ghgh
+ {{ parent() }}  
 {% endblock %}
  
+{% block stylesheets %}
+{{ parent() }}
+<style>
+     
+        
+         .myhr {
+            border: 1px solid #D4E0EE;
+            background-color: #f1f1f1;
+            width:auto;
+
+        }
+       
+       
+    </style> 
+{% endblock %}
+    
 {% block body %}
   
    
