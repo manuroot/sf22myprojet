@@ -230,5 +230,14 @@ stfalcon_tinymce:
                 convert_fonts_to_spans: false
   
 #==================================================
-#  TINYMCE
+#  PAYPAL
 #==================================================
+jms_payment_core:
+    secret: 0123
+    
+jms_payment_paypal:
+    username: username 
+    password: password 
+    signature: signature
+    debug: true
+    #/false # when true, connect to PayPal sandbox; uses kernel debug value when not specified

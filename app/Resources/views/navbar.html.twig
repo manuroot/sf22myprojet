@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span> 
                 <span class="icon-bar"></span> 
             </a>
-            <a class="brand" href="#">{% block toto %}PROJET(v1.0){% endblock %}</a>
+            <a class="brand" href="#">{% block toto %}PROJET v1.0a{% endblock %}</a>
             <a class="brand" href="{{ path('sonata_news_home') }}"> <i class="icon-book"></i> {{ 'Blog'|trans }}</a>
              <div class="btn-group pull-right"> 
             {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -36,13 +36,12 @@
                         <li><a href="{{ path('sonata_admin_dashboard') }}">{{ 'Admin Dashboard' }}</a>
 
                                        {% endif %}   
-
-                        <li><a href="{{ path('sonata_user_profile_edit_authentication') }}">{{ 'Edit Profile' }}</a>
-                        </li>
-
-                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+    <!--<li><a href="{#{ path('sonata_user_profile_edit_authentication') }}">{{ 'Edit Profile' }#}</a></li>-->
+                        <li><a href="{{ path('sonata_user_profile_edit_authentication') }}">Edition Profil</a></li>
+                           <li><a href="{{ path('sonata_user_profile_edit') }}">Infos du Profil</a></li>
+                                      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <li><a href="{{ path('fos_user_change_password') }}">{{ 'Changer password' }}</a></li>
+                        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                                     {% else %}
                         <li>  <a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
                                     {% endif %}   

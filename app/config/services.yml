@@ -1,0 +1,13 @@
+   sonata.news.form.type.comment:
+      class: Application\Sonata\NewsBundle\Form\Type\CommentType
+      tags:
+       - { name: form.type, alias: sonata_post_comment }
+     
+        
+ #  sonata.news.admin.post:
+ #     class: Application\Sonata\NewsBundle\Admin\PostAdmin
+ #     tags:
+ #       - { name: sonata.admin, manager_type: orm, group: Projets, label: Liste des Posts }
+ #     arguments: [null, Application\Sonata\NewsBundle\Entity\Post, ApplicationSonataNewsBundle:Mpost]  
+    
+# arguments: entity et controleur

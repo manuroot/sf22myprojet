@@ -23,11 +23,12 @@
                </div>
             <div id="content">
                        
-  
-                <h1>{{ block('title') }}</h1>
+  <br><br>
+              <!--  <h1>{#{ block('title') }#}</h1>-->
                 {% block content %}
-                
+              
                     {{ block ('fos_user_content') }}
+                    
                 {% endblock %}
             </div>
             <div id="footer">

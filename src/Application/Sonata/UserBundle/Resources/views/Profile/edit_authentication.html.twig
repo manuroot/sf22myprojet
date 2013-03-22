@@ -15,7 +15,8 @@ file that was distributed with this source code.
 {% block fos_user_content %}
 
 <div class="sonata-user-edit-authentication">
-    <h2>{{ "title_user_account" | trans({}, 'SonataUserBundle')}} - {{ "title_user_edit_authentication" | trans({}, 'SonataUserBundle')}}</h2>
+  <!--  
+  <h2>{#{ "title_user_account" | trans({}, 'SonataUserBundle')}#} - {#{ "title_user_edit_authentication" | trans({}, 'SonataUserBundle')}#}</h2>-->
 
     <form action="{{ path('sonata_user_profile_edit_authentication') }}" method="POST">
         {{ form_rest(form) }}

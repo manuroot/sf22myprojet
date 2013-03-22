@@ -36,7 +36,6 @@ class AppKernel extends Kernel {
             new Sonata\MediaBundle\SonataMediaBundle(),
             new Sonata\FormatterBundle\SonataFormatterBundle(),
             new Sonata\NewsBundle\SonataNewsBundle(),
-   
             // DEPENDANCES NECESSAIRES   
             // MENUS
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
@@ -48,20 +47,22 @@ class AppKernel extends Kernel {
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
             new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
             new Application\Sonata\NewsBundle\ApplicationSonataNewsBundle(),
-           // AUTRES EDPENDANCES
+            // AUTRES EDPENDANCES
             // new Craue\FormFlowBundle\CraueFormFlowBundle(),
-             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
-         
-            
-              //MOPA
+            new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
+            //MOPA
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
-            new Braincrafted\BootstrapBundle\BraincraftedBootstrapBundle()
-,
+            new Braincrafted\BootstrapBundle\BraincraftedBootstrapBundle(),
             new Application\TestBundle\ApplicationTestBundle(),
+            //====================================================
+            // PAYPAL
+            //====================================================
+            new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
+            new JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-        //    $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
+            //    $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
