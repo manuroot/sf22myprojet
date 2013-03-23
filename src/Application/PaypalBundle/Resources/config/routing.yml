@@ -1,0 +1,12 @@
+application_paypal_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ApplicationPaypalBundle:Default:index }
+
+acme_paypal_express_checkout:
+    resource: "@ApplicationPaypalBundle/Controller/"
+    type: annotation
+    prefix: /express-checkout
+
+application_paypal_prepare:
+    pattern:  /prepare
+    defaults: { _controller: ApplicationPaypalBundle:Payment:preparePaypalPayment }

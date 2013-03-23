@@ -1,0 +1,19 @@
+application_payment_homepage:
+    pattern:  /payment
+    defaults: { _controller: ApplicationPaymentBundle:Default:index }
+
+application_payment_prepare_simple_purchase_authorize_net:
+    pattern:  /payment/simple_purchase/authorize_net/prepare
+    defaults: { _controller: ApplicationPaymentBundle:SimplePurchaseAuthorizeNetAim:prepare }
+    
+application_payment_prepare_simple_purchase_be2bill:
+    pattern:  /payment/simple_purchase/be2bill/prepare
+    defaults: { _controller: ApplicationPaymentBundle:SimplePurchaseBe2Bill:prepare }
+    
+application_payment_prepare_simple_purchase_paypal_express_via_omnipay:
+    pattern:  /payment/simple_purchase/paypal_express_via_omnipay/prepare
+    defaults: { _controller: ApplicationPaymentBundle:SimplePurchasePaypalExpressViaOmnipay:prepare }
+    
+application_payment_capture_simple:
+    pattern:  /payment/simple_purchase/{contextName}/capture/{model}
+    defaults: { _controller: ApplicationPaymentBundle:Capture:simpleCapture }

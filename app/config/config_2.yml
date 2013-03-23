@@ -8,7 +8,6 @@ imports:
     - { resource: sonata/sonata_media.yml }
     - { resource: sonata/sonata_formatter.yml }
     - { resource: sonata/sonata_news.yml }
-    #- { resource: paypal/paypal.yml }
   #  - { resource: sonata/sonata_page.yml }
 
 framework:
@@ -29,9 +28,6 @@ framework:
     session:         ~
     fragments:       ~
 
-#==================================================
-#  TWIG
-#==================================================
 # Twig Configuration
 twig:
     debug:            %kernel.debug%
@@ -40,9 +36,6 @@ twig:
     #   resources:
      #       - "BraincraftedBootstrapBundle:Form:form_div_layout.html.twig"
 
-#==================================================
-#  ASSETIC
-#==================================================
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%
@@ -77,22 +70,23 @@ doctrine:
         types:
            json: Sonata\Doctrine\Types\JsonType
     orm:
+      #  entity_managers:
+       #     default:
+       #         mappings:
+       #             SonataMediaBundle: ~
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
-        
-  #      mappings:
-   ##         payum_paypal_express_checkout_nvp:
-     #           is_bundle: false
-      #          type: xml 
-       #         dir: %kernel.root_dir%/../vendor/payum/paypal-express-checkout-nvp/src/Payum/Paypal/ExpressCheckout/Nvp/Bridge/Doctrine/Resources/mapping
-        #        prefix: Payum\Paypal\ExpressCheckout\Nvp\Bridge\Doctrine\Entity
-                #dql:
+        mappings:
+            payum_paypal_express_checkout_nvp:
+                is_bundle: false
+                type: xml
+                dir: %kernel.root_dir%/../vendor/payum/paypal-express-checkout-nvp/src/Payum/Paypal/ExpressCheckout/Nvp/Bridge/Doctrine/Resources/mapping
+                prefix: Payum\Paypal\ExpressCheckout\Nvp\Bridge\Doctrine\Entity
+        #dql:
         #    string_functions:
          #               GroupConcat: DoctrineExtensions\Query\Mysql\GroupConcat
          
-#==================================================
-#  SWIFT
-#==================================================         
+         
          
 # Swiftmailer Configuration
 swiftmailer:
@@ -165,9 +159,7 @@ knp_paginator:
       #sortable: ApplicationCertificatsBundle:pagination:sortable_link.html.twig 
       # sort link template
       
-#==================================================
-#  KNP MENU
-#==================================================      
+      
 knp_menu:
        twig:
             template: "BraincraftedBootstrapBundle:Menu:menu.html.twig"
@@ -243,3 +235,181 @@ stfalcon_tinymce:
                 inline_styles: false
                 convert_fonts_to_spans: false
   
+#==================================================
+#  PAYPAL
+#==================================================
+jms_payment_core:
+    secret: someMR157ROghsw0rd
+    
+jms_payment_paypal:
+    username: test_1357225775_per@gmail.com 
+    password: testtest 
+    signature: signature
+    debug: true
+    #/false # when true, connect to PayPal sandbox; uses kernel debug value when not specified
+
+sensio_framework_extra:
+    view:
+        annotations: false
+
+ 
+#swiftmailer:
+#    disable_delivery:  false
+
+jms_di_extra:
+    locations:
+        all_bundles: false
+        bundles: [ApplicationPaypalBundle]
+        directories: ["%kernel.root_dir%/../src"]
+    automatic_controller_injections:
+        properties:
+            request: "@request"
+            router: "@router"
+        method_calls:
+            setRouter: ["@router"]
+            
+            
+          
+  
+payum:
+    contexts:
+        simple_purchase_paypal_express_checkout:
+            paypal_express_checkout_nvp_payment:
+                api:
+                    options:
+                        username:  %paypal.express_checkout.username%
+                        password:  %paypal.express_checkout.password%
+                        signature: %paypal.express_checkout.signature%
+                        sandbox: true
+
+            filesystem_storage:
+                model_class: Application/PaypalBundle\Model\PaymentDetails
+                storage_dir: %kernel.root_dir%/Resources/payments
+                id_property: id
+                
+        simple_purchase_paypal_express_checkout_doctrine:
+            paypal_express_checkout_nvp_payment:
+                api:
+                    options:
+                        username:  %paypal.express_checkout.username%
+                        password:  %paypal.express_checkout.password%
+                        signature: %paypal.express_checkout.signature%
+                        sandbox: true
+
+            doctrine_storage:
+                driver: orm
+                model_class: Application/PaypalBundle\Entity\PaymentDetails
+                
+        simple_purchase_authorize_net:
+            authorize_net_aim_payment:
+                api:
+                    options:
+                        login_id: %authorize_net.login_id%
+                        transaction_key: %authorize_net.transaction_key%
+                        sandbox: true
+
+            filesystem_storage:
+                model_class: Application/PaypalBundle\Model\AuthorizeNetInstruction
+                storage_dir: %kernel.root_dir%/Resources/payments
+                id_property: id
+
+        simple_purchase_be2bill:
+            be2bill_payment:
+                api:
+                    options:
+                        identifier: %be2bill.identifier%
+                        password: %be2bill.password%
+                        sandbox: true
+
+            filesystem_storage:
+                model_class: Application/PaypalBundle\Model\Be2BillInstruction
+                storage_dir: %kernel.root_dir%/Resources/payments
+                id_property: id
+                
+        simple_purchase_paypal_express_via_ominpay:
+            omnipay_payment:
+                type: PayPal_Express
+                options:
+                    username:  %paypal.express_checkout.username%
+                    password:  %paypal.express_checkout.password%
+                    signature: %paypal.express_checkout.signature%
+                    testMode: true
+                    
+            filesystem_storage:
+                model_class: Application/PaypalBundle\Model\OmnipayInstruction
+                storage_dir: %kernel.root_dir%/Resources/payments
+       
+                
+                id_property: id
+                
+                
+                     
+    
+payum:
+    contexts:
+        simple_purchase_paypal_express_checkout:
+            paypal_express_checkout_nvp_payment:
+                api:
+                    options:
+                        username:  %paypal.express_checkout.username%
+                        password:  %paypal.express_checkout.password%
+                        signature: %paypal.express_checkout.signature%
+                        sandbox: true
+
+            filesystem_storage:
+                model_class: Application\PaypalExpressCheckoutBundle\Model\PaymentDetails
+                storage_dir: %kernel.root_dir%/Resources/payments
+                id_property: id
+                
+        simple_purchase_paypal_express_checkout_doctrine:
+            paypal_express_checkout_nvp_payment:
+                api:
+                    options:
+                        username:  %paypal.express_checkout.username%
+                        password:  %paypal.express_checkout.password%
+                        signature: %paypal.express_checkout.signature%
+                        sandbox: true
+
+            doctrine_storage:
+                driver: orm
+                model_class: Application\PaypalExpressCheckoutBundle\Entity\PaymentDetails
+                
+        simple_purchase_authorize_net:
+            authorize_net_aim_payment:
+                api:
+                    options:
+                        login_id: %authorize_net.login_id%
+                        transaction_key: %authorize_net.transaction_key%
+                        sandbox: true
+
+            filesystem_storage:
+                model_class: Application\PaymentBundle\Model\AuthorizeNetInstruction
+                storage_dir: %kernel.root_dir%/Resources/payments
+                id_property: id
+
+        simple_purchase_be2bill:
+            be2bill_payment:
+                api:
+                    options:
+                        identifier: %be2bill.identifier%
+                        password: %be2bill.password%
+                        sandbox: true
+
+            filesystem_storage:
+                model_class: Application\PaymentBundle\Model\Be2BillInstruction
+                storage_dir: %kernel.root_dir%/Resources/payments
+                id_property: id
+                
+        simple_purchase_paypal_express_via_ominpay:
+            omnipay_payment:
+                type: PayPal_Express
+                options:
+                    username:  %paypal.express_checkout.username%
+                    password:  %paypal.express_checkout.password%
+                    signature: %paypal.express_checkout.signature%
+                    testMode: true
+                    
+            filesystem_storage:
+                model_class: Application\PaymentBundle\Model\OmnipayInstruction
+                storage_dir: %kernel.root_dir%/Resources/payments
+                id_property: id

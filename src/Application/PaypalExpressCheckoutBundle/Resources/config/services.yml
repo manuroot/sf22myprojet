@@ -1,0 +1,7 @@
+parameters:
+#    application_paypal_express_checkout.example.class: Application\PaypalExpressCheckoutBundle\Example
+
+services:
+#    application_paypal_express_checkout.example:
+#        class: %application_paypal_express_checkout.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,34 @@
+#==================================================
+#  PAYPAL
+#==================================================
+jms_payment_core:
+    secret: someMR157ROghsw0rd
+    
+jms_payment_paypal:
+    username: test_1357225775_per@gmail.com 
+    password: testtest 
+    signature: signature
+    debug: true
+    #/false # when true, connect to PayPal sandbox; uses kernel debug value when not specified
+
+#sensio_framework_extra:
+#    view:
+#        annotations: false
+
+ 
+#swiftmailer:
+#    disable_delivery:  false
+
+jms_di_extra:
+    locations:
+        all_bundles: false
+        bundles: [ApplicationPaypalBundle]
+        directories: ["%kernel.root_dir%/../src"]
+    automatic_controller_injections:
+        properties:
+            request: "@request"
+            router: "@router"
+        method_calls:
+            setRouter: ["@router"]
+            
+   

@@ -1,3 +1,12 @@
+#application_paypal_express_checkout:
+#    resource: "@ApplicationPaypalExpressCheckoutBundle/Resources/config/routing.yml"
+#    prefix:   /payum
+
+#application_payment:
+#    resource: "@ApplicationPaymentBundle/Controller/"
+#    type:     annotation
+#    prefix:   /
+
 application_test:
     resource: "@ApplicationTestBundle/Resources/config/routing.yml"
     prefix:   /
@@ -47,3 +56,5 @@ gallery:
 gallery:
     resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
     prefix: /media
+    
+  

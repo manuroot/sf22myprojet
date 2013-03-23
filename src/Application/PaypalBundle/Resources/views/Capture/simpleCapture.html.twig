@@ -1,0 +1,49 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+ {% endblock %}
+
+{% block content_header '' %}
+
+{% block title %}
+    BUNDLE DE TESTS
+{% endblock %}
+    
+    
+{% block content %}
+
+{% for type, flashMessages in app.session.flashbag.all() %}
+    {% for flashMessage in flashMessages %}
+<div class="alert alert-{{ type }}">
+            {{ flashMessage|trans }}
+    </div>
+    {% endfor %}
+{% endfor %}
+    
+    <div class="block">
+    Payment status:
+    {% if status.success %}
+        Successfully finished!
+    {% elseif status.canceled %}
+        Canceled!
+    {% elseif status.failed %}
+        Failed!
+    {% elseif status.inProgress %}
+        In progress!
+    {% elseif status.inProgress %}
+        Status unknown!
+    {% endif %}
+</div>
+
+<div class="block">
+    <ul>
+        {% for key, value in status.model %}
+            <li>{{ key }}: {{ value }}</li>
+        {% endfor %}
+    </ul>
+</div>
+  
+
+{% endblock %}
+

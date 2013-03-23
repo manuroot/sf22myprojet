@@ -57,8 +57,13 @@ class AppKernel extends Kernel {
             //====================================================
             // PAYPAL
             //====================================================
-            new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
-            new JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle(),
+           // new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
+           // new JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle(),
+           // new Application\PaypalBundle\ApplicationPaypalBundle(),
+            
+           new Payum\Bundle\PayumBundle\PayumBundle(),
+          //  new Application\PaymentBundle\ApplicationPaymentBundle(),
+         //   new Application\PaypalExpressCheckoutBundle\ApplicationPaypalExpressCheckoutBundle(),*/
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
