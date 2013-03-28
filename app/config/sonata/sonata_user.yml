@@ -25,6 +25,9 @@ sonata_user:
             class:          Sonata\UserBundle\Admin\Entity\GroupAdmin
             controller:     SonataAdminBundle:CRUD
             translation:    SonataUserBundle
+    impersonating:
+        route:                sonata_news_home
+        parameters:           { path: / }
 
 sonata_block:
     default_contexts: [cms]

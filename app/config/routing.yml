@@ -11,7 +11,7 @@ news:
     resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
     prefix: /news
     
-    
+   
 application_test:
     resource: "@ApplicationTestBundle/Resources/config/routing.yml"
     prefix:   /

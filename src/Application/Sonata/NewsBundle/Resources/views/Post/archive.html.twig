@@ -33,6 +33,7 @@
         <div class="sonata-blog-post-container">
             <div class="sonata-blog-post-date-container">
                 {{ post.publicationDateStart | format_date }}
+              
             </div>
             <h2 class="sonata-blog-post-title">
                 <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{{ post.title }}</a>
@@ -69,6 +70,9 @@
                         {% endif %}
                        
                     </div>
+           {% if post.commentsCloseAt  is not null %}
+                 <span class="label label-important">Fermeture des commentaires: {{ post.commentsCloseAt | format_date }}</span>
+                    {% endif %}
             <div class="sonata-blog-post-abtract">
               Extrait:  {{ post.abstract }}
             </div>
