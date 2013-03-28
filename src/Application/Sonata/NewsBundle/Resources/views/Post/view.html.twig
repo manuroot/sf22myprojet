@@ -65,7 +65,9 @@
   
 
     {#% render 'SonataNewsBundle:Post:comments' with {'postId': post.id} %#}
-
+ {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        Pour poster un commentaire, vous devez être enregistré et connecté.
+        {% else %}
     {% if post.iscommentable %}
          {{ render(controller('SonataNewsBundle:Post:addCommentForm', { 'postId': post.id,
             'form': form  })) }}
@@ -80,5 +82,6 @@
             {{ 'message_comments_are_closed'|trans({}, 'SonataNewsBundle') }}
         </div>
     {% endif %}
+        {% endif %}
 </div>
 {% endblock %}

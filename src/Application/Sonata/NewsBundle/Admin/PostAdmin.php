@@ -93,6 +93,8 @@ public function getTemplate($name)
            
 // simple, advanced, bbcode
         )))
+             //   ->add('image', 'sonata_type_model_list', array(), array('link_parameters' => array('context' => 'news')))
+            //   ->add('image', 'sonata_type_model_list', array(), array('link_parameters' => array('context' => 'news')))
            //     ->add('rawContent', null, array('attr' => array('class' => 'span10', 'rows' => 20)))
             ->end()
             ->with('Tags')
