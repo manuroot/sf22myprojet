@@ -37,4 +37,17 @@ class User extends BaseUser
     {
         return $this->id;
     }
+    
+     protected $city;
+     
+     public function getCity()
+    {
+        return $this->city;
+    }
+     public function setCity($city)
+    {
+        $this->city = $city;
+    
+        return $this;
+    }
 }

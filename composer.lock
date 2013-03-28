@@ -2159,20 +2159,23 @@
         },
         {
             "name": "kriswallsmith/buzz",
-            "version": "v0.7",
+            "version": "v0.9",
             "source": {
                 "type": "git",
-                "url": "http://github.com/kriswallsmith/Buzz.git",
-                "reference": "v0.7"
+                "url": "https://github.com/kriswallsmith/Buzz.git",
+                "reference": "v0.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/kriswallsmith/Buzz/zipball/v0.7",
-                "reference": "v0.7",
+                "url": "https://api.github.com/repos/kriswallsmith/Buzz/zipball/v0.9",
+                "reference": "v0.9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
             },
             "suggest": {
                 "ext-curl": "*"
@@ -2200,7 +2203,7 @@
                 "curl",
                 "http client"
             ],
-            "time": "2012-06-25 12:01:38"
+            "time": "2013-02-19 00:26:38"
         },
         {
             "name": "monolog/monolog",
@@ -2604,16 +2607,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/PaypalExpressCheckoutNvp.git",
-                "reference": "12ff8e2560331b724739606957c9cb6735a3b640"
+                "reference": "5c503d63771574a5269953db1c6b155feff57424"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/PaypalExpressCheckoutNvp/zipball/12ff8e2560331b724739606957c9cb6735a3b640",
-                "reference": "12ff8e2560331b724739606957c9cb6735a3b640",
+                "url": "https://api.github.com/repos/Payum/PaypalExpressCheckoutNvp/zipball/5c503d63771574a5269953db1c6b155feff57424",
+                "reference": "5c503d63771574a5269953db1c6b155feff57424",
                 "shasum": ""
             },
             "require": {
-                "kriswallsmith/buzz": "0.7.*",
+                "kriswallsmith/buzz": "*",
                 "payum/payum": "0.4.x-dev",
                 "php": ">=5.3.2"
             },
@@ -2653,7 +2656,7 @@
                 "paypal",
                 "recurring payment"
             ],
-            "time": "2013-03-26 14:57:46"
+            "time": "2013-03-28 10:05:51"
         },
         {
             "name": "payum/payum",
@@ -2661,16 +2664,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/Payum.git",
-                "reference": "e21bdbb8a2e4dc1c399f32a73880d0f568d04ac4"
+                "reference": "f04d2fec94f23ad5d6045cceebb5fc11ccb7ab5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/Payum/zipball/e21bdbb8a2e4dc1c399f32a73880d0f568d04ac4",
-                "reference": "e21bdbb8a2e4dc1c399f32a73880d0f568d04ac4",
+                "url": "https://api.github.com/repos/Payum/Payum/zipball/f04d2fec94f23ad5d6045cceebb5fc11ccb7ab5f",
+                "reference": "f04d2fec94f23ad5d6045cceebb5fc11ccb7ab5f",
                 "shasum": ""
             },
             "require": {
-                "kriswallsmith/buzz": "0.7.*",
+                "kriswallsmith/buzz": "*",
                 "php": ">=5.3.2"
             },
             "require-dev": {
@@ -2708,7 +2711,7 @@
             "keywords": [
                 "payment"
             ],
-            "time": "2013-03-26 14:56:16"
+            "time": "2013-03-28 09:54:32"
         },
         {
             "name": "payum/payum-bundle",
@@ -2717,12 +2720,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/PayumBundle.git",
-                "reference": "71ad624ada68151a7a720eeb6c554ba3c3ba78de"
+                "reference": "31f0f75ef3c5dc81cd9119d734f8575c4c4aa205"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/PayumBundle/zipball/71ad624ada68151a7a720eeb6c554ba3c3ba78de",
-                "reference": "71ad624ada68151a7a720eeb6c554ba3c3ba78de",
+                "url": "https://api.github.com/repos/Payum/PayumBundle/zipball/31f0f75ef3c5dc81cd9119d734f8575c4c4aa205",
+                "reference": "31f0f75ef3c5dc81cd9119d734f8575c4c4aa205",
                 "shasum": ""
             },
             "require": {
@@ -2779,9 +2782,12 @@
                 "be2bill",
                 "omnipay",
                 "payment",
-                "paypal"
+                "paypal",
+                "paypal express checkout",
+                "paypal pro checkout",
+                "paypal recurring payment"
             ],
-            "time": "2013-03-25 14:05:56"
+            "time": "2013-03-28 12:46:17"
         },
         {
             "name": "phpoption/phpoption",
@@ -3724,12 +3730,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataMediaBundle.git",
-                "reference": "d4257197e2e8f6e5ce981d50be88efd2a1be583a"
+                "reference": "1bcee87c29469a4220e5180fa47cbff69e941c92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/d4257197e2e8f6e5ce981d50be88efd2a1be583a",
-                "reference": "d4257197e2e8f6e5ce981d50be88efd2a1be583a",
+                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/1bcee87c29469a4220e5180fa47cbff69e941c92",
+                "reference": "1bcee87c29469a4220e5180fa47cbff69e941c92",
                 "shasum": ""
             },
             "require": {
@@ -3793,7 +3799,7 @@
                 "vimeo",
                 "youtube"
             ],
-            "time": "2013-03-27 17:31:31"
+            "time": "2013-03-28 09:25:16"
         },
         {
             "name": "sonata-project/news-bundle",

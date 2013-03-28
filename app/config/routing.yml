@@ -7,6 +7,11 @@
 #    type:     annotation
 #    prefix:   /
 
+news:
+    resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
+    prefix: /news
+    
+    
 application_test:
     resource: "@ApplicationTestBundle/Resources/config/routing.yml"
     prefix:   /
@@ -45,9 +50,7 @@ soanata_user:
     prefix: /admin
     
     
-news:
-    resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
-    prefix: /news
+
     
 gallery:
     resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'

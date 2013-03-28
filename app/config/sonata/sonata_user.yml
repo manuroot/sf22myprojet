@@ -15,11 +15,13 @@ sonata_user:
             validation_groups:  [Profile]   
     admin:                  # Admin Classes
         user:
+          #  class:          Application\Sonata\UserBundle\Entity\User
             class:          Sonata\UserBundle\Admin\Entity\UserAdmin
             controller:     SonataAdminBundle:CRUD
             translation:    SonataUserBundle
 
         group:
+            #class:          Application\Sonata\UserBundle\Entity\Group
             class:          Sonata\UserBundle\Admin\Entity\GroupAdmin
             controller:     SonataAdminBundle:CRUD
             translation:    SonataUserBundle
@@ -43,3 +45,5 @@ sonata_block:
         #sonata.media.block.feature_media:
         
    
+parameters:
+    sonata.user.admin.user.class: Application\Sonata\UserBundle\Admin\UserAdmin

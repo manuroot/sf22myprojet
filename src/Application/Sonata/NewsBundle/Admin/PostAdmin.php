@@ -97,6 +97,9 @@ public function getTemplate($name)
             //   ->add('image', 'sonata_type_model_list', array(), array('link_parameters' => array('context' => 'news')))
            //     ->add('rawContent', null, array('attr' => array('class' => 'span10', 'rows' => 20)))
             ->end()
+            /*    ->with('podcast')
+                ->add('podcast','sonata_type_model', array('required' => false))
+            ->end()*/
             ->with('Tags')
                 ->add('tags', 'sonata_type_model', array(
                     'required' => false,

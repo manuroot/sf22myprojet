@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="title_user_account">
                 <source>title_user_account</source>
-                <target>User Profile</target>
+                <target>Edition du Profil</target>
             </trans-unit>
             <trans-unit id="title_user_edit_profile">
                 <source>title_user_edit_profile</source>
@@ -69,6 +69,11 @@
             <trans-unit id="form.label_email">
                 <source>form.label_email</source>
                 <target>Email</target>
+            </trans-unit>
+
+ <trans-unit id="form.label_city">
+                <source>form.label_city</source>
+                <target>Ville</target>
             </trans-unit>
             <trans-unit id="form.label_plain_password">
                 <source>form.label_plain_password</source>
@@ -142,6 +147,13 @@
                 <source>filter.label_last_login</source>
                 <target>Dernière connexion</target>
             </trans-unit>
+            <trans-unit id="filter.label_city">
+                <source>filter.label_city</source>
+                <target>Ville</target>
+            </trans-unit>
+            
+            
+            
             <trans-unit id="filter.label_firstname">
                 <source>filter.label_firstname</source>
                 <target>Prénom</target>
@@ -149,6 +161,10 @@
             <trans-unit id="filter.label_lastname">
                 <source>filter.label_lastname</source>
                 <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="list.label_city">
+                <source>list.label_city</source>
+                <target>Ville</target>
             </trans-unit>
             <trans-unit id="list.label_username">
                 <source>list.label_username</source>
@@ -314,6 +330,13 @@
                 <source>show.label_username</source>
                 <target>Nom d'utilisateur</target>
             </trans-unit>
+            <trans-unit id="show.label_city">
+                <source>show.label_city</source>
+                <target>Ville</target>
+            </trans-unit>
+            
+            
+            
             <trans-unit id="show.label_email">
                 <source>show.label_email</source>
                 <target>Email</target>
