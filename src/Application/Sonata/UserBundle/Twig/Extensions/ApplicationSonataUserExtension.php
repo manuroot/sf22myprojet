@@ -1,9 +1,9 @@
 <?php
 // src/Blogger/BlogBundle/Twig/Extensions/BloggerBlogExtension.php
 
-namespace Application\Sonata\NewsBundle\Twig\Extensions;
+namespace Application\Sonata\UsersBundle\Twig\Extensions;
 
-class ApplicationSonataNewsExtension extends \Twig_Extension
+class ApplicationSonataUserExtension extends \Twig_Extension
 {
     public function getFilters()
     {
@@ -49,6 +49,6 @@ class ApplicationSonataNewsExtension extends \Twig_Extension
 
     public function getName()
     {
-        return 'blogger_blog_extension';
+        return 'application_sonata_user_extension';
     }
 }

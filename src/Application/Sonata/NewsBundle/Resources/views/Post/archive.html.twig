@@ -26,13 +26,14 @@
 #}
 
 <h1>{{ 'title_archive'|trans({}, 'SonataNewsBundle') }}</h1>
-
+{{ test }}
 <div class="sonata-blog-post-list">
     {% for post in pager.getResults() %}
-        <hr>
+        <hr class="myhr">
         <div class="sonata-blog-post-container">
             <div class="sonata-blog-post-date-container">
                 {{ post.publicationDateStart | format_date }}
+                 - ({{ post.publicationDateStart | created_ago  }})
               
             </div>
             <h2 class="sonata-blog-post-title">
@@ -63,6 +64,7 @@
                             {% if  post.category is defined and  post.category is not empty%}
                        
                          <span class="label">
+                             <!--Catégorie: -->
                         <a href="{{ url('sonata_news_category', {'category': post.category.slug} ) }}">{{ post.category }}</a>
                         </span>
                         {% else %}

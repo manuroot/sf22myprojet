@@ -326,6 +326,12 @@ Liens de modération rapide :
                 <source>batch.comment_disable</source>
                 <target>Invalider</target>
             </trans-unit>
+             <trans-unit id="list.label_content_formatter">
+                <source>list.label_content_formatter</source>
+                <target>Format</target>
+            </trans-unit>  
+        
+            
         </body>
     </file>
 </xliff>

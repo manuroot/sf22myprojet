@@ -1,0 +1,8 @@
+services:
+    application_sonata_user.profile.form.type:
+        class: Application\Sonata\UserBundle\Form\Type\ProfileType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: application_sonata_user_profile }
+
+            

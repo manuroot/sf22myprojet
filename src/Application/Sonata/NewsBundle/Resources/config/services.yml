@@ -1,0 +1,5 @@
+services:
+    application_sonata_news.twig.extension:
+        class: Application\Sonata\NewsBundle\Twig\Extensions\ApplicationSonataNewsExtension
+        tags:
+            - { name: twig.extension }
