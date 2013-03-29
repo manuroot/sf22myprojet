@@ -1,0 +1,8 @@
+{% extends "::layout.html.twig" %}
+{% block body %}
+<div class="container">
+<form action="{{ path('paiement' , {'id': id } ) }}" method="post">
+        {{ form_widget(form) }}
+        <input type="submit" />
+    </form>
+{% endblock %}

@@ -1,6 +1,6 @@
 <?php
 
-namespace Acme\PaymentBundle\Tests\Controller;
+namespace Application\JMSPaymentBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

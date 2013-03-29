@@ -1,0 +1,7 @@
+parameters:
+#    application_jms_payment.example.class: Application\JMSPaymentBundle\Example
+
+services:
+#    application_jms_payment.example:
+#        class: %application_jms_payment.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

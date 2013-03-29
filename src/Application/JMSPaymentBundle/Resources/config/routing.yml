@@ -1,0 +1,3 @@
+application_jms_payment_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ApplicationJMSPaymentBundle:Default:index }

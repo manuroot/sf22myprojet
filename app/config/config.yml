@@ -8,7 +8,7 @@ imports:
     - { resource: sonata/sonata_media.yml }
     - { resource: sonata/sonata_formatter.yml }
     - { resource: sonata/sonata_news.yml }
-   # - { resource: paypal/paypal.yml }
+    - { resource: paypal/paypal.yml }
     - { resource: paypal/jmspaypal.yml }
   #  - { resource: sonata/sonata_page.yml }
 

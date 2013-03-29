@@ -2,20 +2,20 @@
 #  PAYPAL
 #==================================================
 jms_payment_core:
-    secret: someMR157ROghsw0rd
+    secret: %jmspaypal.secret% someMR157ROghsw0rd
     
 jms_payment_paypal:
-    username: test_1357225775_per@gmail.com 
-    password: testtest 
-    signature: signature
+    username: %jmspaypal.username% 
+    password: %jmspaypal.password% 
+    signature: %jmspaypal.signature% 
     debug: true
     #/false # when true, connect to PayPal sandbox; uses kernel debug value when not specified
-
+ 
 #sensio_framework_extra:
 #    view:
 #        annotations: false
 
- 
+                   
 #swiftmailer:
 #    disable_delivery:  false
 

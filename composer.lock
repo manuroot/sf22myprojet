@@ -1,5 +1,5 @@
 {
-    "hash": "2f5aef7b736c8166717037b1f5775af8",
+    "hash": "e46e3f69ab4e000ba971bc16a29177bb",
     "packages": [
         {
             "name": "ajbdev/authorizenet-php-api",
@@ -2459,12 +2459,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/AuthorizeNetAim.git",
-                "reference": "0.3.1"
+                "reference": "70bafa76c7437c704ee0f3681fc1aff191379c22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/AuthorizeNetAim/zipball/0.3.1",
-                "reference": "0.3.1",
+                "url": "https://api.github.com/repos/Payum/AuthorizeNetAim/zipball/70bafa76c7437c704ee0f3681fc1aff191379c22",
+                "reference": "70bafa76c7437c704ee0f3681fc1aff191379c22",
                 "shasum": ""
             },
             "require": {
@@ -2502,7 +2502,7 @@
                 "authorizenet",
                 "payment"
             ],
-            "time": "2013-03-22 17:31:16"
+            "time": "2013-03-29 08:04:52"
         },
         {
             "name": "payum/be2bill",
@@ -2510,12 +2510,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/Be2Bill.git",
-                "reference": "a92fa096963fcb6550250c48bd3c524785f75a8a"
+                "reference": "18a5ff21ae37c8347b519c7bc3d38122e11c1385"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/Be2Bill/zipball/a92fa096963fcb6550250c48bd3c524785f75a8a",
-                "reference": "a92fa096963fcb6550250c48bd3c524785f75a8a",
+                "url": "https://api.github.com/repos/Payum/Be2Bill/zipball/18a5ff21ae37c8347b519c7bc3d38122e11c1385",
+                "reference": "18a5ff21ae37c8347b519c7bc3d38122e11c1385",
                 "shasum": ""
             },
             "require": {
@@ -2548,7 +2548,7 @@
                 "be2bill",
                 "payment"
             ],
-            "time": "2013-03-19 20:34:02"
+            "time": "2013-03-29 08:05:23"
         },
         {
             "name": "payum/omnipay-bridge",
@@ -2556,12 +2556,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/OmnipayBridge.git",
-                "reference": "c171507e5e10f01b9c52ea120b7e3128a5c7b183"
+                "reference": "258d21873ee8389ed36bd4b9d29761b5c8627b4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/OmnipayBridge/zipball/c171507e5e10f01b9c52ea120b7e3128a5c7b183",
-                "reference": "c171507e5e10f01b9c52ea120b7e3128a5c7b183",
+                "url": "https://api.github.com/repos/Payum/OmnipayBridge/zipball/258d21873ee8389ed36bd4b9d29761b5c8627b4c",
+                "reference": "258d21873ee8389ed36bd4b9d29761b5c8627b4c",
                 "shasum": ""
             },
             "require": {
@@ -2599,7 +2599,7 @@
                 "omnipay",
                 "payment"
             ],
-            "time": "2013-03-19 20:06:59"
+            "time": "2013-03-29 08:06:36"
         },
         {
             "name": "payum/paypal-express-checkout-nvp",
@@ -2607,12 +2607,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/PaypalExpressCheckoutNvp.git",
-                "reference": "442dde078841f750bf9b0ed26aa0069828bbe7d1"
+                "reference": "9822671242efd15b43d075a3a512aebb1d6968fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/PaypalExpressCheckoutNvp/zipball/442dde078841f750bf9b0ed26aa0069828bbe7d1",
-                "reference": "442dde078841f750bf9b0ed26aa0069828bbe7d1",
+                "url": "https://api.github.com/repos/Payum/PaypalExpressCheckoutNvp/zipball/9822671242efd15b43d075a3a512aebb1d6968fe",
+                "reference": "9822671242efd15b43d075a3a512aebb1d6968fe",
                 "shasum": ""
             },
             "require": {
@@ -2656,7 +2656,7 @@
                 "paypal",
                 "recurring payment"
             ],
-            "time": "2013-03-28 20:48:12"
+            "time": "2013-03-29 08:05:49"
         },
         {
             "name": "payum/payum",
@@ -2664,12 +2664,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/Payum.git",
-                "reference": "69d6ad284234967d380e3145e0a335d17d3165aa"
+                "reference": "23ad8c5faabda56047cf7066a0700e8594b7b8ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/Payum/zipball/69d6ad284234967d380e3145e0a335d17d3165aa",
-                "reference": "69d6ad284234967d380e3145e0a335d17d3165aa",
+                "url": "https://api.github.com/repos/Payum/Payum/zipball/23ad8c5faabda56047cf7066a0700e8594b7b8ca",
+                "reference": "23ad8c5faabda56047cf7066a0700e8594b7b8ca",
                 "shasum": ""
             },
             "require": {
@@ -2711,7 +2711,7 @@
             "keywords": [
                 "payment"
             ],
-            "time": "2013-03-28 20:35:57"
+            "time": "2013-03-29 08:04:06"
         },
         {
             "name": "payum/payum-bundle",
@@ -2720,12 +2720,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/PayumBundle.git",
-                "reference": "2dc2da84e286a13b50bff7dce88c154c73f1d767"
+                "reference": "8f904c4c8acc74f2f45fa88f0b911cfc53b694f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/PayumBundle/zipball/2dc2da84e286a13b50bff7dce88c154c73f1d767",
-                "reference": "2dc2da84e286a13b50bff7dce88c154c73f1d767",
+                "url": "https://api.github.com/repos/Payum/PayumBundle/zipball/8f904c4c8acc74f2f45fa88f0b911cfc53b694f1",
+                "reference": "8f904c4c8acc74f2f45fa88f0b911cfc53b694f1",
                 "shasum": ""
             },
             "require": {
@@ -2787,7 +2787,7 @@
                 "paypal pro checkout",
                 "paypal recurring payment"
             ],
-            "time": "2013-03-28 20:52:52"
+            "time": "2013-03-29 08:07:49"
         },
         {
             "name": "phpoption/phpoption",
@@ -4608,11 +4608,11 @@
         "jms/payment-core-bundle": 20,
         "jms/payment-paypal-bundle": 20,
         "payum/payum": 20,
+        "payum/payum-bundle": 20,
         "payum/paypal-express-checkout-nvp": 20,
         "payum/authorize-net-aim": 20,
         "payum/be2bill": 20,
-        "payum/omnipay-bridge": 20,
-        "payum/payum-bundle": 20
+        "payum/omnipay-bridge": 20
     },
     "platform": {
         "php": ">=5.3.3"

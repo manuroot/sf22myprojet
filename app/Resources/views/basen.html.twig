@@ -13,7 +13,8 @@
 #footer { border-top: 1px solid #ccc; clear: both; text-align: center; padding: 10px; color: #aaa; }
     </style> 
  {% endblock %}
-        
+       
+    
     </head>
     <body>
         
@@ -33,7 +34,23 @@
     </div>
           <div class="span2">
     <!--Sidebar content-->
-   sidebar: todo
+ <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<input type='hidden' value="Montant_Achat" name="amount" />
+<input name="currency_code" type="hidden" value="EUR" />
+<input name="shipping" type="hidden" value="0.00" />
+<input name="tax" type="hidden" value="0.00" />
+<input name="return" type="hidden" value="http://votredomaine/paiementValide.php" />
+<input name="cancel_return" type="hidden" value="http://votredomaine/paiementAnnule.php" />
+<input name="notify_url" type="hidden" value="http://votredomaine/validationPaiement.php" />
+<input name="cmd" type="hidden" value="_xclick" />
+<input name="business" type="hidden" value="votre_emailtest_biz@domaine" />
+<input name="item_name" type="hidden" value="Nom de votre produit" />
+<input name="no_note" type="hidden" value="1" />
+<input name="lc" type="hidden" value="FR" />
+<input name="bn" type="hidden" value="PP-BuyNowBF" />
+<input name="custom" type="hidden" value="ID_ACHETEUR" />
+<input alt="Effectuez vos paiements via PayPal : une solution rapide, gratuite et sécurisée" name="submit" src="https://www.paypal.com/fr_FR/FR/i/btn/btn_buynow_LG.gif" type="image" /><img src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" border="0" alt="" width="1" height="1" />
+</form>  sidebar: todo
     <br>last comments
     <br>tag clouds 
     </div>
@@ -51,7 +68,13 @@
                 <script type="text/javascript" src="{{ asset('jquery/jquery-ui-1.9.2.custom.min.js') }}"></script>
                 <script type="text/javascript" src="{{ asset('jquery/jquery.ui.datepicker.js') }}"></script>
                 <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
-     {% endblock %}
+                   <script type="text/javascript" src="{{ asset('js/paypal-button.min.js?merchant=YOUR_MERCHANT_ID"
+    data-button="buynow"
+    data-name="My product"
+    data-amount="1.00"') }}">
+                  
+   </script>
+  {% endblock %}
      {#{ tinymce_init() }#}
           
         </body>

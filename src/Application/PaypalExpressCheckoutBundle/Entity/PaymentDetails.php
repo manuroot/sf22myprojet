@@ -16,4 +16,44 @@ class PaymentDetails extends BasePaymentDetails
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     protected $id;
+
+     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="added_date", type="date", nullable=false)
+     */
+    private $addedDate;
+
+   
+     /**
+     * Set addedDate
+     *
+     * @param \DateTime $addedDate
+     * @return CertificatsCenter
+     */
+    public function setAddedDate($addedDate)
+    {
+        // $this->addedDate = new \DateTime('now');
+        $this->addedDate = $addedDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get addedDate
+     *
+     * @return \DateTime 
+     */
+    public function getAddedDate()
+    {
+        return $this->addedDate;
+    }
+    
+     public function __construct()
+  {
+   // parent::__construct();
+    $this->addedDate = new \DateTime('now');
+    
+  }
+  
 }
