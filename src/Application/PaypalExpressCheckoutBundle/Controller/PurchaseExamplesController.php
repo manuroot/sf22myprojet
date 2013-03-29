@@ -69,14 +69,19 @@ class PurchaseExamplesController extends Controller {
             $form->bind($request);
             if ($form->isValid()) {
                 $data = $form->getData();
-               /* print_r($data);
-               exit(1);*/
+                //   print_r($data);
+                //   exit(1);
                 $paymentContext = $this->getPayum()->getContext('simple_purchase_paypal_express_checkout_doctrine');
 
                 /** @var $paymentDetails PaymentDetails */
                 $paymentDetails = $paymentContext->getStorage()->createModel();
                 $paymentDetails->setPaymentrequestCurrencycode(0, $data['currency']);
                 $paymentDetails->setPaymentrequestAmt(0, $data['amount']);
+
+                $paymentDetails->setLPaymentrequestName(0, 0, 'Participation MROOT BLOG');
+                $paymentDetails->setLPaymentrequestDesc(0, 0, 'Une aide au developpement');
+                $paymentDetails->setLPaymentrequestAmt(0, 0, $data['amount']);
+                $paymentDetails->setLPaymentrequestQty(0, 0, 1);
 
                 $paymentContext->getStorage()->updateModel($paymentDetails);
                 $paymentDetails->setInvnum($paymentDetails->getId());
@@ -166,21 +171,27 @@ class PurchaseExamplesController extends Controller {
 
 
         return $this->createFormBuilder()
-                         ->add('amount', 'choice', array(
-                          'choices' => array(
-                              1 => 1,
-                              2=>2,
-                              10 => 10, 20 => 20),
-                          'preferred_choices' => array(1),
-                          )) 
+                        ->add('amount', 'choice', array(
+                            'label' => 'Montant',
+                            'choices' => array(
+                                1 => 1,
+                                2 => 2,
+                                10 => 10, 20 => 20),
+                            'preferred_choices' => array(1),
+                        ))
                         /* ->add('amount', 'choice', 
                           array(
                           'data' => array('1' => '1', '10' => '10'),)) */
-                      /*  ->add('amount', null, array(
-                            'data' => 1,
-                            'constraints' => array(new Range(array('max' => 100)))
-                        ))*/
+                        /*  ->add('amount', null, array(
+                          'data' => 1,
+                          'constraints' => array(new Range(array('max' => 100)))
+                          )) */
                         ->add('currency', null, array('data' => 'EUR', 'label' => 'Devise'))
+                        //<input type="hidden" name="item_name" value="Your Description Here"> 
+                        ->add('item_name', 'hidden', array(
+                            'data' => 'Participation Au Blog MROOT',
+                        ))
+
                         // ->add('currency', null, array('data' => 'EUR'))
                         ->getForm()
         ;

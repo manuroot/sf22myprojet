@@ -2,7 +2,7 @@
 #  PAYPAL
 #==================================================
 jms_payment_core:
-    secret: %jmspaypal.secret% someMR157ROghsw0rd
+    secret: %jmspaypal.secret% 
     
 jms_payment_paypal:
     username: %jmspaypal.username% 

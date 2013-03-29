@@ -20,7 +20,7 @@ class PaymentDetails extends BasePaymentDetails
      /**
      * @var \DateTime
      *
-     * @ORM\Column(name="added_date", type="date", nullable=false)
+     * @ORM\Column(name="added_date", type="datetime", nullable=false)
      */
     private $addedDate;
 

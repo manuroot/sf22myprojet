@@ -1,12 +1,13 @@
 {% extends "ApplicationPaymentBundle::layout.html.twig" %}
 
-{% block title "Payment demo - Simple purchase with Paypal Express Checkout - Prepare" %}
+{% block title "Paiment BLOG MROOT demo" %}
 
 {% block content %}
     <form method="POST">
         {{ form_widget(form) }}
+             {{ form_rest(form) }}
 
-        <input type="submit" value="Valider" />
+ <input type="image" src="{{ asset('images/x-click-but04.gif') }}" name="submit" alt="Effectuez vos paiements via PayPal : une solution rapide, gratuite et sécurisée"></input>
     </form>
 {% endblock %}
 
