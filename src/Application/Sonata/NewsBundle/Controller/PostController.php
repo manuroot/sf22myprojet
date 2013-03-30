@@ -37,6 +37,7 @@ class PostController extends Controller
      */
     public function renderArchive(array $criteria = array(), array $parameters = array())
     {
+        $form = $this->createPurchaseForm();
         $pager = $this->getPostManager()->getPager(
             $criteria,
             $this->getRequest()->get('page', 1)
@@ -47,6 +48,7 @@ class PostController extends Controller
             'blog'  => $this->get('sonata.news.blog'),
             'tag'   => false,
             'test'=>$test,
+            'form' => $form->createView(),
         ), $parameters);
 
         $response = $this->render(sprintf('SonataNewsBundle:Post:archive.%s.twig', $this->getRequest()->getRequestFormat()), $parameters);
@@ -338,4 +340,27 @@ class PostController extends Controller
             'permalink'  => $this->getBlog()->getPermalinkGenerator()->generate($comment->getPost())
         )));
     }
+
+    
+    protected function createPurchaseForm() {
+
+        return $this->createFormBuilder()
+                        ->add('amount', 'choice', array(
+                            'label' => 'Montant en euros',
+                            'choices' => array(
+                                1 => 1,
+                                2 => 2,
+                                10 => 10, 20 => 20,50=>50,100=>100,200=>200),
+                            'preferred_choices' => array(10),
+                        ))
+                         //->add('currency', null, array('data' => 'EUR', 'label' => 'Devise'))
+                   
+                        ->add('item_name', 'hidden', array(
+                            'data' => 'Participation Au Blog MROOT',
+                        ))
+                        ->getForm()
+        ;
+    }
+    
+    
 }

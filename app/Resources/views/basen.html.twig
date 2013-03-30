@@ -33,8 +33,11 @@
                 {% endblock %}
     </div>
           <div class="span2">
+              
+               {% block sidebar %}
+                
     <!--Sidebar content-->
- <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+ <!--<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 <input type='hidden' value="Montant_Achat" name="amount" />
 <input name="currency_code" type="hidden" value="EUR" />
 <input name="shipping" type="hidden" value="0.00" />
@@ -50,9 +53,11 @@
 <input name="bn" type="hidden" value="PP-BuyNowBF" />
 <input name="custom" type="hidden" value="ID_ACHETEUR" />
 <input alt="Effectuez vos paiements via PayPal : une solution rapide, gratuite et sécurisée" name="submit" src="https://www.paypal.com/fr_FR/FR/i/btn/btn_buynow_LG.gif" type="image" /><img src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" border="0" alt="" width="1" height="1" />
-</form>  sidebar: todo
+</form>-->
+ sidebar: todo
     <br>last comments
     <br>tag clouds 
+    {% endblock %}
     </div>
     </div>
     </div>

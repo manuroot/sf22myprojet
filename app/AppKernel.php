@@ -57,22 +57,20 @@ class AppKernel extends Kernel {
             //====================================================
             // PAYPAL: JMSPAYMENT
             //====================================================
-           new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
-           new JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle(),
-             new Application\JMSPaymentBundle\ApplicationJMSPaymentBundle(),
-            
-           //new Application\PaypalBundle\ApplicationPaypalBundle(),
+            new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
+            new JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle(),
+            new Application\JMSPaymentBundle\ApplicationJMSPaymentBundle(),
+            //new Application\PaypalBundle\ApplicationPaypalBundle(),
             //====================================================
             // PAYPAL: PAYUM
             //====================================================
-               new Payum\Bundle\PayumBundle\PayumBundle(),
+            new Payum\Bundle\PayumBundle\PayumBundle(),
             new Application\PaymentBundle\ApplicationPaymentBundle(),
             new Application\PaypalExpressCheckoutBundle\ApplicationPaypalExpressCheckoutBundle(),
-      
-          /* new Payum\Bundle\PayumBundle\PayumBundle(),
-          //  new Application\PaymentBundle\ApplicationPaymentBundle(),
-            new Application\PaypalExpressCheckoutBundle\ApplicationPaypalExpressCheckoutBundle(),
-            new Application\PaymentBundle\ApplicationPaymentBundle(),*/
+                /* new Payum\Bundle\PayumBundle\PayumBundle(),
+                  //  new Application\PaymentBundle\ApplicationPaymentBundle(),
+                  new Application\PaypalExpressCheckoutBundle\ApplicationPaypalExpressCheckoutBundle(),
+                  new Application\PaymentBundle\ApplicationPaymentBundle(), */
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -26,6 +26,8 @@ class PurchaseExamplesController extends Controller {
             $form->bind($request);
             if ($form->isValid()) {
                 $data = $form->getData();
+                if (!isset($data['currency']))
+                    $data['currency'] = "EUR";
 
                 $paymentContext = $this->getPayum()->getContext('simple_purchase_paypal_express_checkout');
 
@@ -71,6 +73,8 @@ class PurchaseExamplesController extends Controller {
                 $data = $form->getData();
                 //   print_r($data);
                 //   exit(1);
+                if (!isset($data['currency']))
+                    $data['currency'] = "EUR";
                 $paymentContext = $this->getPayum()->getContext('simple_purchase_paypal_express_checkout_doctrine');
 
                 /** @var $paymentDetails PaymentDetails */
@@ -176,8 +180,8 @@ class PurchaseExamplesController extends Controller {
                             'choices' => array(
                                 1 => 1,
                                 2 => 2,
-                                10 => 10, 20 => 20),
-                            'preferred_choices' => array(1),
+                                10 => 10, 20 => 20, 50 => 50, 100 => 100, 200 => 200),
+                            'preferred_choices' => array(10),
                         ))
                         /* ->add('amount', 'choice', 
                           array(
