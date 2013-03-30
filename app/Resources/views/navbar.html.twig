@@ -7,16 +7,16 @@
                 <span class="icon-bar"></span> 
                 <span class="icon-bar"></span> 
             </a>
-            <a class="brand" href="#">{% block toto %}PROJET v1.0a{% endblock %}</a>
-            <a class="brand" href="{{ path('sonata_news_home') }}"> <i class="icon-book"></i> {{ 'Blog'|trans }}</a>
+            <a class="brand" href="#"><i class="icon-white icon-home"></i>{% block toto %}PROJET v1.0a{% endblock %}</a>
+            <a class="brand" href="{{ path('sonata_news_home') }}"> <i class="icon-white icon-book"></i> {{ 'Blog'|trans }}</a>
              <div class="btn-group pull-right"> 
             {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                     <a class="brand" href="{{ path('fos_user_registration_register') }}"> <i class="icon-user"></i> {{ 'Register'|trans }}</a>
+                     <a class="brand" href="{{ path('fos_user_registration_register') }}"> <i class="icon-white icon-pencil"></i> {{ 'Register'|trans }}</a>
                     
-                    <a class="brand" href="{{ path('fos_user_security_login') }}"><i class="icon-user"></i> {{ 'Login'|trans }}</a>
+                    <a class="brand" href="{{ path('fos_user_security_login') }}"><i class="icon-white icon-user"></i> {{ 'Login'|trans }}</a>
 
                    {% else %}
-                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> <i class="icon-user"></i>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> <i class="icon-white icon-user"></i>
 
 
                                         {% if is_granted("ROLE_USER") or is_granted("ROLE_USER") %}
@@ -54,12 +54,12 @@
                 <div class="nav-collapse">
                     <ul class="nav">
 
-                        <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white  icon-user"></i>
-                                Section-1<b class="caret"></b> </a>
+                        <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white  icon-gift"></i>
+                                Donation<b class="caret"></b> </a>
                             <ul class="dropdown-menu">
                                 
-                                <li><a href="{{ path('application_paypal_express_checkout_prepare_simple_purchase_and_doctrine') }}"><i class="icon-camera"></i> Paypal</a></li>
-                                <li><a href=""><i class="icon-camera"></i> subsection-2</a></li>
+                                <li><a href="{{ path('application_paypal_express_checkout_prepare_simple_purchase_and_doctrine') }}"><i class="icon-gift"></i> Via Paypal</a></li>
+                                <li><a href=""><i class="icon-gift"></i> Pourquoi?</a></li>
 
                             </ul>
 
@@ -68,10 +68,10 @@
 
                         </li>
                         <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white  icon-user"></i>
-                                Section-2<b class="caret"></b> </a>
+                                Team<b class="caret"></b> </a>
                             <ul class="dropdown-menu">
-                                <li><a href=""><i class="icon-camera"></i> subsection-1</a></li>
-                                <li><a href=""><i class="icon-camera"></i> subsection-2</a></li>
+                                <li><a href=""><i class=" icon-hand-right"></i> Developpeurs</a></li>
+                                <li><a href=""><i class=" icon-hand-right"></i> Team Projet</a></li>
 
                             </ul>
 

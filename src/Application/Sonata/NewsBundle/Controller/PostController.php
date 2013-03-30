@@ -37,18 +37,18 @@ class PostController extends Controller
      */
     public function renderArchive(array $criteria = array(), array $parameters = array())
     {
-        $form = $this->createPurchaseForm();
+        $form_paypal  = $this->createPurchaseForm();
         $pager = $this->getPostManager()->getPager(
             $criteria,
             $this->getRequest()->get('page', 1)
         );
-        $test="(surcharge du controleur)";
+        $test="(surcharge du controleur: phase de développement)";
         $parameters = array_merge(array(
             'pager' => $pager,
             'blog'  => $this->get('sonata.news.blog'),
             'tag'   => false,
             'test'=>$test,
-            'form' => $form->createView(),
+            'form_paypal' => $form_paypal->createView(),
         ), $parameters);
 
         $response = $this->render(sprintf('SonataNewsBundle:Post:archive.%s.twig', $this->getRequest()->getRequestFormat()), $parameters);
@@ -148,6 +148,7 @@ class PostController extends Controller
      */
     public function viewAction($permalink)
     {
+        $form_paypal = $this->createPurchaseForm();
         $post = $this->getPostManager()->findOneByPermalink($permalink, $this->container->get('sonata.news.blog'));
 
         if (!$post || !$post->isPublic()) {
@@ -170,7 +171,8 @@ class PostController extends Controller
         return $this->render('SonataNewsBundle:Post:view.html.twig', array(
             'post' => $post,
             'form' => false,
-            'blog' => $this->get('sonata.news.blog')
+            'blog' => $this->get('sonata.news.blog'),
+            'form_paypal' => $form_paypal->createView(),
         ));
     }
 

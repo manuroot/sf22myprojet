@@ -53,7 +53,7 @@ class PurchaseExamplesController extends Controller {
         }
 
         return array(
-            'form' => $form->createView()
+            'form_paypal' => $form->createView()
         );
     }
 
