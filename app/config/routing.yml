@@ -20,14 +20,11 @@ application_payment:
 #    type:     annotation
 #    prefix:   /
 
-news:
-    resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
-    prefix: /news
-    
+   
    
 application_test:
     resource: "@ApplicationTestBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /test
     
     
 fos_user_security:
@@ -63,8 +60,6 @@ soanata_user:
     prefix: /admin
     
     
-
-    
 gallery:
     resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
     prefix: /media/gallery
@@ -73,4 +68,7 @@ gallery:
     resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
     prefix: /media
     
-  
+    
+news:
+    resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
+    prefix: /  

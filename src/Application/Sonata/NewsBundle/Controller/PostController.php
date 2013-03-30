@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Sonata package.
  *
@@ -11,23 +12,39 @@
 namespace Application\Sonata\NewsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Sonata\NewsBundle\Model\CommentInterface;
 use Sonata\NewsBundle\Model\PostInterface;
 
-class PostController extends Controller
-{
+class PostController extends Controller {
+
     /**
      * @return RedirectResponse
      */
-    public function homeAction()
-    {
+    public function homeAction() {
         return $this->redirect($this->generateUrl('sonata_news_archive'));
+    }
+
+    private function sidebar_tags() {
+
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $alltags = $em->getRepository('ApplicationSonataNewsBundle:Tag')->findByEnabled(1);
+             //   ->findAll();
+      return ($alltags);
+        
+         
+
+      
+    }
+
+    private function sidebar_categories() {
+        $em = $this->container->get('doctrine')->getEntityManager();
+        $allcategories = $em->getRepository('ApplicationSonataNewsBundle:Category')->findByEnabled(1);
+            //    ->findAll();
+       return ($allcategories);
     }
 
     /**
@@ -35,22 +52,26 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function renderArchive(array $criteria = array(), array $parameters = array())
-    {
-        $form_paypal  = $this->createPurchaseForm();
+    public function renderArchive(array $criteria = array(), array $parameters = array()) {
+        $form_paypal = $this->createPurchaseForm();
         $pager = $this->getPostManager()->getPager(
-            $criteria,
-            $this->getRequest()->get('page', 1)
+                $criteria, $this->getRequest()->get('page', 1)
         );
-        $test="(surcharge du controleur: phase de développement)";
-        $parameters = array_merge(array(
-            'pager' => $pager,
-            'blog'  => $this->get('sonata.news.blog'),
-            'tag'   => false,
-            'test'=>$test,
-            'form_paypal' => $form_paypal->createView(),
-        ), $parameters);
-
+        $test = "(surcharge du controleur: phase de développement)";
+        /*   $em = $this->container->get('doctrine')->getEntityManager();
+          $allcategories = $em->getRepository('ApplicationSonataNewsBundle:Category')->findAll(); */
+        $alltags = $this->sidebar_tags();
+          $allcategories = $this->sidebar_categories();
+        // $alltags=$em->getRepository('ApplicationSonataNewsBundle:Tag')->findAll();
+         $parameters = array_merge(array(
+          'pager' => $pager,
+          'blog'  => $this->get('sonata.news.blog'),
+          'tag'   => false,
+          'test'=> $test,
+          'form_paypal' => $form_paypal->createView(),
+          'categories' => $allcategories,
+          'tags' => $alltags,
+          ), $parameters); 
         $response = $this->render(sprintf('SonataNewsBundle:Post:archive.%s.twig', $this->getRequest()->getRequestFormat()), $parameters);
 
         if ('rss' === $this->getRequest()->getRequestFormat()) {
@@ -63,8 +84,7 @@ class PostController extends Controller
     /**
      * @return Response
      */
-    public function archiveAction()
-    {
+    public function archiveAction() {
         return $this->renderArchive();
     }
 
@@ -73,12 +93,11 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function tagAction($tag)
-    {
+    public function tagAction($tag) {
         $tag = $this->get('sonata.news.manager.tag')->findOneBy(array(
             'slug' => $tag,
             'enabled' => true
-        ));
+                ));
 
         if (!$tag) {
             throw new NotFoundHttpException('Unable to find the tag');
@@ -96,12 +115,16 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function categoryAction($category)
-    {
+    public function categoryAction($category) {
+
+
+        $em = $this->getDoctrine()->getManager();
+
+
         $category = $this->get('sonata.news.manager.category')->findOneBy(array(
             'slug' => $category,
             'enabled' => true
-        ));
+                ));
 
         if (!$category) {
             throw new NotFoundHttpException('Unable to find the category');
@@ -120,11 +143,10 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function archiveMonthlyAction($year, $month)
-    {
+    public function archiveMonthlyAction($year, $month) {
         return $this->renderArchive(array(
-            'date' => $this->getPostManager()->getPublicationDateQueryParts(sprintf('%d-%d-%d', $year, $month, 1), 'month')
-        ));
+                    'date' => $this->getPostManager()->getPublicationDateQueryParts(sprintf('%d-%d-%d', $year, $month, 1), 'month')
+                ));
     }
 
     /**
@@ -132,11 +154,10 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function archiveYearlyAction($year)
-    {
+    public function archiveYearlyAction($year) {
         return $this->renderArchive(array(
-            'date' => $this->getPostManager()->getPublicationDateQueryParts(sprintf('%d-%d-%d', $year, 1, 1), 'year')
-        ));
+                    'date' => $this->getPostManager()->getPublicationDateQueryParts(sprintf('%d-%d-%d', $year, 1, 1), 'year')
+                ));
     }
 
     /**
@@ -146,8 +167,7 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function viewAction($permalink)
-    {
+    public function viewAction($permalink) {
         $form_paypal = $this->createPurchaseForm();
         $post = $this->getPostManager()->findOneByPermalink($permalink, $this->container->get('sonata.news.blog'));
 
@@ -157,30 +177,29 @@ class PostController extends Controller
 
         if ($seoPage = $this->getSeoPage()) {
             $seoPage
-                ->setTitle($post->getTitle())
-                ->addMeta('name', 'description', $post->getAbstract())
-                ->addMeta('property', 'og:title', $post->getTitle())
-                ->addMeta('property', 'og:type', 'blog')
-                ->addMeta('property', 'og:url',  $this->generateUrl('sonata_news_view', array(
-                    'permalink'  => $this->getBlog()->getPermalinkGenerator()->generate($post, true)
-                ), true))
-                ->addMeta('property', 'og:description', $post->getAbstract())
+                    ->setTitle($post->getTitle())
+                    ->addMeta('name', 'description', $post->getAbstract())
+                    ->addMeta('property', 'og:title', $post->getTitle())
+                    ->addMeta('property', 'og:type', 'blog')
+                    ->addMeta('property', 'og:url', $this->generateUrl('sonata_news_view', array(
+                                'permalink' => $this->getBlog()->getPermalinkGenerator()->generate($post, true)
+                                    ), true))
+                    ->addMeta('property', 'og:description', $post->getAbstract())
             ;
         }
 
         return $this->render('SonataNewsBundle:Post:view.html.twig', array(
-            'post' => $post,
-            'form' => false,
-            'blog' => $this->get('sonata.news.blog'),
-            'form_paypal' => $form_paypal->createView(),
-        ));
+                    'post' => $post,
+                    'form' => false,
+                    'blog' => $this->get('sonata.news.blog'),
+                    'form_paypal' => $form_paypal->createView(),
+                ));
     }
 
     /**
      * @return \Sonata\SeoBundle\Seo\SeoPageInterface
      */
-    public function getSeoPage()
-    {
+    public function getSeoPage() {
         if ($this->has('sonata.seo.page')) {
             return $this->get('sonata.seo.page');
         }
@@ -193,17 +212,16 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function commentsAction($postId)
-    {
+    public function commentsAction($postId) {
         $pager = $this->getCommentManager()
-            ->getPager(array(
-                'postId' => $postId,
-                'status'  => CommentInterface::STATUS_VALID
-            ), 1, 500); //no limit
+                ->getPager(array(
+            'postId' => $postId,
+            'status' => CommentInterface::STATUS_VALID
+                ), 1, 500); //no limit
 
         return $this->render('SonataNewsBundle:Post:comments.html.twig', array(
-            'pager'  => $pager,
-        ));
+                    'pager' => $pager,
+                ));
     }
 
     /**
@@ -212,20 +230,19 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function addCommentFormAction($postId, $form = false)
-    {
+    public function addCommentFormAction($postId, $form = false) {
         if (!$form) {
             $post = $this->getPostManager()->findOneBy(array(
                 'id' => $postId
-            ));
+                    ));
 
             $form = $this->getCommentForm($post);
         }
 
         return $this->render('SonataNewsBundle:Post:comment_form.html.twig', array(
-            'form'      => $form->createView(),
-            'post_id'   => $postId
-        ));
+                    'form' => $form->createView(),
+                    'post_id' => $postId
+                ));
     }
 
     /**
@@ -233,8 +250,7 @@ class PostController extends Controller
      *
      * @return \Symfony\Component\Form\FormInterface
      */
-    public function getCommentForm(PostInterface $post)
-    {
+    public function getCommentForm(PostInterface $post) {
         $comment = $this->getCommentManager()->create();
         $comment->setPost($post);
         $comment->setStatus($post->getCommentsDefaultStatus());
@@ -249,11 +265,10 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function addCommentAction($id)
-    {
+    public function addCommentAction($id) {
         $post = $this->getPostManager()->findOneBy(array(
             'id' => $id
-        ));
+                ));
 
         if (!$post) {
             throw new NotFoundHttpException(sprintf('Post (%d) not found', $id));
@@ -262,8 +277,8 @@ class PostController extends Controller
         if (!$post->isCommentable()) {
             // todo add notice
             return new RedirectResponse($this->generateUrl('sonata_news_view', array(
-                'permalink'  => $this->getBlog()->getPermalinkGenerator()->generate($post)
-            )));
+                                'permalink' => $this->getBlog()->getPermalinkGenerator()->generate($post)
+                            )));
         }
 
         $form = $this->getCommentForm($post);
@@ -277,37 +292,34 @@ class PostController extends Controller
 
             // todo : add notice
             return new RedirectResponse($this->generateUrl('sonata_news_view', array(
-                'permalink'  => $this->getBlog()->getPermalinkGenerator()->generate($post)
-            )));
+                                'permalink' => $this->getBlog()->getPermalinkGenerator()->generate($post)
+                            )));
         }
 
         return $this->render('SonataNewsBundle:Post:view.html.twig', array(
-            'post' => $post,
-            'form' => $form
-        ));
+                    'post' => $post,
+                    'form' => $form
+                ));
     }
 
     /**
      * @return \Sonata\NewsBundle\Model\PostManagerInterface
      */
-    protected function getPostManager()
-    {
+    protected function getPostManager() {
         return $this->get('sonata.news.manager.post');
     }
 
     /**
      * @return \Sonata\NewsBundle\Model\CommentManagerInterface
      */
-    protected function getCommentManager()
-    {
+    protected function getCommentManager() {
         return $this->get('sonata.news.manager.comment');
     }
 
     /**
      * @return \Sonata\NewsBundle\Model\BlogInterface
      */
-    protected function getBlog()
-    {
+    protected function getBlog() {
         return $this->container->get('sonata.news.blog');
     }
 
@@ -320,8 +332,7 @@ class PostController extends Controller
      *
      * @throws \Symfony\Component\Security\Core\Exception\AccessDeniedException
      */
-    public function commentModerationAction($commentId, $hash, $status)
-    {
+    public function commentModerationAction($commentId, $hash, $status) {
         $comment = $this->getCommentManager()->findOneBy(array('id' => $commentId));
 
         if (!$comment) {
@@ -339,11 +350,10 @@ class PostController extends Controller
         $this->getCommentManager()->save($comment);
 
         return new RedirectResponse($this->generateUrl('sonata_news_view', array(
-            'permalink'  => $this->getBlog()->getPermalinkGenerator()->generate($comment->getPost())
-        )));
+                            'permalink' => $this->getBlog()->getPermalinkGenerator()->generate($comment->getPost())
+                        )));
     }
 
-    
     protected function createPurchaseForm() {
 
         return $this->createFormBuilder()
@@ -352,17 +362,15 @@ class PostController extends Controller
                             'choices' => array(
                                 1 => 1,
                                 2 => 2,
-                                10 => 10, 20 => 20,50=>50,100=>100,200=>200),
+                                10 => 10, 20 => 20, 50 => 50, 100 => 100, 200 => 200),
                             'preferred_choices' => array(10),
                         ))
-                         //->add('currency', null, array('data' => 'EUR', 'label' => 'Devise'))
-                   
+                        //->add('currency', null, array('data' => 'EUR', 'label' => 'Devise'))
                         ->add('item_name', 'hidden', array(
                             'data' => 'Participation Au Blog MROOT',
                         ))
                         ->getForm()
         ;
     }
-    
-    
+
 }

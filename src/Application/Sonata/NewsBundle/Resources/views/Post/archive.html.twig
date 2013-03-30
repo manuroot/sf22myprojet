@@ -99,3 +99,29 @@
 </div>
 {% endblock %}
 
+   {% block categories %}
+    {{ parent() }}
+        {% for category in categories %}
+       <span class="label">
+                             <!--Catégorie: -->
+                        <a href="{{ url('sonata_news_category', {'category': category.slug} ) }}">{{ category.name }}</a>
+                        </span>
+    
+    
+                 {% endfor %}
+   {% endblock %}
+
+    
+    
+      {% block Tags %}
+    {{ parent() }}
+        {% for tag in tags %}
+       <span class="badge badge-warning">
+                             <!--Catégorie: -->
+                        <a href="{{ url('sonata_news_tag', {'tag': tag.slug} ) }}">{{ tag.name }}</a>
+                        </span>
+    
+    
+                 {% endfor %}
+   {% endblock %}
+

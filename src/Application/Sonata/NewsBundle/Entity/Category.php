@@ -21,6 +21,9 @@ use Sonata\NewsBundle\Entity\BaseCategory as BaseCategory;
  *
  * @author <yourname> <youremail>
  */
+
+
+
 class Category extends BaseCategory
 {
     /**
@@ -41,4 +44,12 @@ class Category extends BaseCategory
      {
         return (string) $this->getName();
      } 
+     
+      /**
+     * {@inheritDoc}
+     */
+    public function MfindOneBy(array $criteria)
+    {
+        return $this->em->getRepository($this->class)->findOneBy($criteria);
+    }
 }

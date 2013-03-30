@@ -66,10 +66,22 @@
 
                         <div class="span2">
                        {% block sidebar %}
-                                <h3 class="widget-title">Categories</h3>
-                                <h3 class="widget-title">Tags</h3>
-                                <h3 class="widget-title">Archives</h3>
+                        
                         {% endblock %}
+                                
+                                   {% block Archives %}
+                                <h3 class="widget-title">Archives</h3>
+                                
+                                 {% endblock %}
+                                   {% block Tags %}
+                                <h3 class="widget-title">Tags</h3>
+                                
+                                 {% endblock %}
+                                  {% block categories %}
+                                <h3 class="widget-title">Categories</h3>
+                                
+                                 {% endblock %}
+                                
                             </div>
                         </div>
                     </div>
