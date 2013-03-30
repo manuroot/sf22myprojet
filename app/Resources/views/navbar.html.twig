@@ -7,16 +7,18 @@
                 <span class="icon-bar"></span> 
                 <span class="icon-bar"></span> 
             </a>
-            <a class="brand" href="#"><i class="icon-white icon-home"></i>{% block toto %}PROJET v1.0a{% endblock %}</a>
+            <a class="brand" href="#"><i class="icon-white icon-home"></i>{% block toto %} PROJET v1.0a{% endblock %}</a>
             <a class="brand" href="{{ path('sonata_news_home') }}"> <i class="icon-white icon-book"></i> {{ 'Blog'|trans }}</a>
              <div class="btn-group pull-right"> 
+                     <a class="brand" href="{{ path('sonata_news_archive',{'_format': 'rss'}) }}"> <i class="icon-white icon-briefcase"></i> News RSS</a>
+ 
             {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                      <a class="brand" href="{{ path('fos_user_registration_register') }}"> <i class="icon-white icon-pencil"></i> {{ 'Register'|trans }}</a>
                     
                     <a class="brand" href="{{ path('fos_user_security_login') }}"><i class="icon-white icon-user"></i> {{ 'Login'|trans }}</a>
 
                    {% else %}
-                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> <i class="icon-white icon-user"></i>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> <i class="icon-user"></i>
 
 
                                         {% if is_granted("ROLE_USER") or is_granted("ROLE_USER") %}
@@ -33,15 +35,18 @@
                         <!--  <li class="divider"></li>-->
 
                                        {% if is_granted("ROLE_ADMIN") %}
-                        <li><a href="{{ path('sonata_admin_dashboard') }}">{{ 'Admin Dashboard' }}</a>
-
+                        <li><a href="{{ path('sonata_admin_dashboard') }}"><i class="icon-wrench"></i> {{ 'Admin Dashboard' }}</a>
+ <li class="divider"></li>
                                        {% endif %}   
     <!--<li><a href="{#{ path('sonata_user_profile_edit_authentication') }}">{{ 'Edit Profile' }#}</a></li>-->
-                        <li><a href="{{ path('sonata_user_profile_edit_authentication') }}">Edition Profil</a></li>
-                           <li><a href="{{ path('sonata_user_profile_edit') }}">Infos du Profil</a></li>
+                        <li><a href="{{ path('sonata_user_profile_edit_authentication') }}"><i class="icon-user"></i> Edition Profil</a></li>
+                           <li><a href="{{ path('sonata_user_profile_edit') }}"><i class="icon-zoom-in"></i> Infos du Profil</a></li>
                                       {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <li><a href="{{ path('fos_user_change_password') }}">{{ 'Changer password' }}</a></li>
-                        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                         <li class="divider"></li>
+                         <li><a href="{{ path('fos_user_change_password') }}"><i class="icon-resize-small"></i> {{ 'Changer password' }}</a></li>
+                        <li class="divider"></li>
+                         <li><a href="{{ path('fos_user_security_logout') }}"><i class="icon-eye-close"></i> Déconnexion</a></li>
+                        
                                     {% else %}
                         <li>  <a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
                                     {% endif %}   
@@ -71,6 +76,7 @@
                                 Team<b class="caret"></b> </a>
                             <ul class="dropdown-menu">
                                 <li><a href=""><i class=" icon-hand-right"></i> Developpeurs</a></li>
+                                 <li class="divider"></li>
                                 <li><a href=""><i class=" icon-hand-right"></i> Team Projet</a></li>
 
                             </ul>

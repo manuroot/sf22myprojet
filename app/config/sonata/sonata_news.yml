@@ -1,6 +1,6 @@
 sonata_news:
-    title:        Sonata Project
-    link:         http://sonata-project.org
+    title:        BLOG MROOT 
+    link:         http://symvideo:92/news/archive
     description:  Cool bundles on top of Symfony2
     salt:         'secureToken'
     permalink_generator: sonata.news.permalink.date # sonata.news.permalink.category
