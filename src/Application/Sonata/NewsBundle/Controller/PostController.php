@@ -69,8 +69,8 @@ class PostController extends Controller {
           'tag'   => false,
           'test'=> $test,
           'form_paypal' => $form_paypal->createView(),
-          'categories' => $allcategories,
-          'tags' => $alltags,
+          'allcategories' => $allcategories,
+          'alltags' => $alltags,
           ), $parameters); 
         $response = $this->render(sprintf('SonataNewsBundle:Post:archive.%s.twig', $this->getRequest()->getRequestFormat()), $parameters);
 

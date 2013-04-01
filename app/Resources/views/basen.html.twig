@@ -33,6 +33,36 @@
                     color: rgb(34, 34, 34);
                     font-weight: bold;
                 }
+                
+                .entry-title {
+    font-family: Georgia,"Bitstream Charter",serif;
+    font-variant: small-caps;
+    color: rgb(255, 255, 255);
+    height: 22px;
+    line-height: 22px;
+    padding-top: 5px;
+    margin-bottom: 3px;
+    text-align: left;
+    clear: none;
+}
+
+ .entry-content, #content .entry-summary, #content .entry-utility, #respond {
+    background: url("images/block_bg.png") repeat-y scroll left top transparent;
+    padding: 0px 10px;
+        padding-top: 0px;
+        padding-right-value: 10px;
+        padding-bottom: 0px;
+        padding-left-value: 10px;
+        padding-left-ltr-source: physical;
+        padding-left-rtl-source: physical;
+        padding-right-ltr-source: physical;
+        padding-right-rtl-source: physical;
+    text-align: justify;
+    clear: both;
+    overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: hidden;
+}
             </style> 
  {% endblock %}
 
@@ -56,7 +86,7 @@
                                       CONTENT
                      ================================================-->
 
-                    <div class="span10">
+                    <div class="span9">
                         {% block content %}
                         {% endblock %}
                         </div>
@@ -69,11 +99,11 @@
                         
                         {% endblock %}
                                 
-                                   {% block Archives %}
+                                   {% block archives %}
                                 <h3 class="widget-title">Archives</h3>
                                 
                                  {% endblock %}
-                                   {% block Tags %}
+                                   {% block tags %}
                                 <h3 class="widget-title">Tags</h3>
                                 
                                  {% endblock %}

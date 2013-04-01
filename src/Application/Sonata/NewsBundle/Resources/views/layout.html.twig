@@ -20,9 +20,23 @@
     </style> 
 {% endblock %}
   
+   {% block javascripts %}
+{{ parent() }}
+    <script>
+$(function() {
+$( "#datepicker" ).datepicker();
+});
+</script>
+{% endblock %}
     
                        
 {% block sidebar %}
+    
+<div style="font-size:80%">
+
+ <div id="datepicker"></div>
+ </div>
+ <hr class="myhr">
 Faire une donation
 <form action="{{ path('application_paypal_express_checkout_prepare_simple_purchase_and_doctrine')}}" method="post" {{ form_enctype(form_paypal) }}>
    

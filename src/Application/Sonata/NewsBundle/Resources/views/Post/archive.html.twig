@@ -38,15 +38,19 @@
 
 <h1>{{ 'title_archive'|trans({}, 'SonataNewsBundle') }}</h1>
 {{ test }}
+      
 <div class="sonata-blog-post-list">
     {% for post in pager.getResults() %}
+         
         <hr class="myhr">
-        <div class="sonata-blog-post-container">
+    
+           
             <div class="sonata-blog-post-date-container">
                 {{ post.publicationDateStart | format_date }}
                  - ({{ post.publicationDateStart | created_ago  }})
               
             </div>
+             <!--   <h2 class="entry-title">-->
             <h2 class="sonata-blog-post-title">
                 <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{{ post.title }}</a>
                 <span class="sonata-blog-post-author">{{ 'archive_author'|trans({'%author%': post.author }, 'SonataNewsBundle') }}</span>
@@ -69,7 +73,7 @@
                     </div>
                 </div>
             </div>
- </div>
+
                        
                         <div class="sonata-blog-post-tag-list">
                             {% if  post.category is defined and  post.category is not empty%}
@@ -86,6 +90,8 @@
            {% if post.commentsCloseAt  is not null %}
                  <span class="label label-important">Fermeture des commentaires: {{ post.commentsCloseAt | format_date }}</span>
                     {% endif %}
+                 
+           
             <div class="sonata-blog-post-abtract">
               Extrait:  {{ post.abstract }}
             </div>
@@ -97,11 +103,20 @@
 
     {% endfor %}
 </div>
+
 {% endblock %}
 
-   {% block categories %}
+
+ {% block archives %}
+ <hr class="myhr">
     {{ parent() }}
-        {% for category in categories %}
+ {% endblock %}
+ 
+ 
+   {% block categories %}
+ <hr class="myhr">
+    {{ parent() }}
+        {% for category in allcategories %}
        <span class="label">
                              <!--Catégorie: -->
                         <a href="{{ url('sonata_news_category', {'category': category.slug} ) }}">{{ category.name }}</a>
@@ -113,9 +128,10 @@
 
     
     
-      {% block Tags %}
+      {% block tags %}
+  <hr class="myhr">
     {{ parent() }}
-        {% for tag in tags %}
+        {% for tag in alltags %}
        <span class="badge badge-warning">
                              <!--Catégorie: -->
                         <a href="{{ url('sonata_news_tag', {'tag': tag.slug} ) }}">{{ tag.name }}</a>
