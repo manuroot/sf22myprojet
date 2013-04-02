@@ -57,7 +57,7 @@ class PostController extends Controller {
        //  $this->setMaxPerPage(2);
         $form_paypal = $this->createPurchaseForm();
         $pager = $this->getPostManager()->getPager(
-                $criteria, $this->getRequest()->get('page', 1),2
+                $criteria, $this->getRequest()->get('page', 1),20
         );
         /*
           $paginator = $this->get('knp_paginator');
