@@ -2207,16 +2207,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Seldaek/monolog",
-                "reference": "1.4.0"
+                "url": "https://github.com/Seldaek/monolog.git",
+                "reference": "1.4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1.4.0",
-                "reference": "1.4.0",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1.4.1",
+                "reference": "1.4.1",
                 "shasum": ""
             },
             "require": {
@@ -2265,7 +2265,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-02-13 18:06:51"
+            "time": "2013-04-01 10:04:58"
         },
         {
             "name": "mopa/bootstrap-bundle",
@@ -2274,17 +2274,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phiamo/MopaBootstrapBundle.git",
-                "reference": "52f0be720c1757052d6c2aab8746f390538a7eb6"
+                "reference": "5043b6e6102bb380379c0f0ce27e38f7c41eb12d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/52f0be720c1757052d6c2aab8746f390538a7eb6",
-                "reference": "52f0be720c1757052d6c2aab8746f390538a7eb6",
+                "url": "https://api.github.com/repos/phiamo/MopaBootstrapBundle/zipball/5043b6e6102bb380379c0f0ce27e38f7c41eb12d",
+                "reference": "5043b6e6102bb380379c0f0ce27e38f7c41eb12d",
                 "shasum": ""
             },
             "require": {
                 "mopa/composer-bridge": "1.*",
-                "symfony/symfony": ">=2.1,<2.3-dev"
+                "symfony/symfony": ">=2.1,<2.4-dev"
             },
             "suggest": {
                 "craue/formflow-bundle": "dev-master",
@@ -2327,7 +2327,7 @@
                 "form",
                 "template"
             ],
-            "time": "2013-03-26 19:58:37"
+            "time": "2013-04-02 12:28:03"
         },
         {
             "name": "mopa/composer-bridge",
@@ -2459,12 +2459,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/AuthorizeNetAim.git",
-                "reference": "70bafa76c7437c704ee0f3681fc1aff191379c22"
+                "reference": "7174b53b488b1c387c3211231d0fe63cd36226c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/AuthorizeNetAim/zipball/70bafa76c7437c704ee0f3681fc1aff191379c22",
-                "reference": "70bafa76c7437c704ee0f3681fc1aff191379c22",
+                "url": "https://api.github.com/repos/Payum/AuthorizeNetAim/zipball/7174b53b488b1c387c3211231d0fe63cd36226c8",
+                "reference": "7174b53b488b1c387c3211231d0fe63cd36226c8",
                 "shasum": ""
             },
             "require": {
@@ -2502,7 +2502,7 @@
                 "authorizenet",
                 "payment"
             ],
-            "time": "2013-03-29 08:04:52"
+            "time": "2013-04-01 20:20:55"
         },
         {
             "name": "payum/be2bill",
@@ -2510,12 +2510,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/Be2Bill.git",
-                "reference": "18a5ff21ae37c8347b519c7bc3d38122e11c1385"
+                "reference": "2d0d47337fb64dfedd4467c79a323620a77e1d06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/Be2Bill/zipball/18a5ff21ae37c8347b519c7bc3d38122e11c1385",
-                "reference": "18a5ff21ae37c8347b519c7bc3d38122e11c1385",
+                "url": "https://api.github.com/repos/Payum/Be2Bill/zipball/2d0d47337fb64dfedd4467c79a323620a77e1d06",
+                "reference": "2d0d47337fb64dfedd4467c79a323620a77e1d06",
                 "shasum": ""
             },
             "require": {
@@ -2548,7 +2548,7 @@
                 "be2bill",
                 "payment"
             ],
-            "time": "2013-03-29 08:05:23"
+            "time": "2013-04-01 20:22:14"
         },
         {
             "name": "payum/omnipay-bridge",
@@ -2556,12 +2556,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/OmnipayBridge.git",
-                "reference": "258d21873ee8389ed36bd4b9d29761b5c8627b4c"
+                "reference": "a63e060c84cc47946428c356f71e7f4b43a6431e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/OmnipayBridge/zipball/258d21873ee8389ed36bd4b9d29761b5c8627b4c",
-                "reference": "258d21873ee8389ed36bd4b9d29761b5c8627b4c",
+                "url": "https://api.github.com/repos/Payum/OmnipayBridge/zipball/a63e060c84cc47946428c356f71e7f4b43a6431e",
+                "reference": "a63e060c84cc47946428c356f71e7f4b43a6431e",
                 "shasum": ""
             },
             "require": {
@@ -2599,7 +2599,7 @@
                 "omnipay",
                 "payment"
             ],
-            "time": "2013-03-29 08:06:36"
+            "time": "2013-04-01 20:22:45"
         },
         {
             "name": "payum/paypal-express-checkout-nvp",
@@ -2607,12 +2607,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/PaypalExpressCheckoutNvp.git",
-                "reference": "9822671242efd15b43d075a3a512aebb1d6968fe"
+                "reference": "b9164830b9a6c5d31bada49994283b45ae5aa3aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/PaypalExpressCheckoutNvp/zipball/9822671242efd15b43d075a3a512aebb1d6968fe",
-                "reference": "9822671242efd15b43d075a3a512aebb1d6968fe",
+                "url": "https://api.github.com/repos/Payum/PaypalExpressCheckoutNvp/zipball/b9164830b9a6c5d31bada49994283b45ae5aa3aa",
+                "reference": "b9164830b9a6c5d31bada49994283b45ae5aa3aa",
                 "shasum": ""
             },
             "require": {
@@ -2656,7 +2656,7 @@
                 "paypal",
                 "recurring payment"
             ],
-            "time": "2013-03-29 08:05:49"
+            "time": "2013-04-02 07:34:03"
         },
         {
             "name": "payum/payum",
@@ -2664,12 +2664,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/Payum.git",
-                "reference": "23ad8c5faabda56047cf7066a0700e8594b7b8ca"
+                "reference": "7e58a173641dce7c143fca0c5a570c596e9f7caf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/Payum/zipball/23ad8c5faabda56047cf7066a0700e8594b7b8ca",
-                "reference": "23ad8c5faabda56047cf7066a0700e8594b7b8ca",
+                "url": "https://api.github.com/repos/Payum/Payum/zipball/7e58a173641dce7c143fca0c5a570c596e9f7caf",
+                "reference": "7e58a173641dce7c143fca0c5a570c596e9f7caf",
                 "shasum": ""
             },
             "require": {
@@ -2711,7 +2711,7 @@
             "keywords": [
                 "payment"
             ],
-            "time": "2013-03-29 08:04:06"
+            "time": "2013-04-01 20:21:53"
         },
         {
             "name": "payum/payum-bundle",
@@ -3024,12 +3024,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "325508ca99e45428db20828985857a5f6eb8f911"
+                "reference": "d271b25c9c7c6448967553da80f81d324c3c7fa9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/325508ca99e45428db20828985857a5f6eb8f911",
-                "reference": "325508ca99e45428db20828985857a5f6eb8f911",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/d271b25c9c7c6448967553da80f81d324c3c7fa9",
+                "reference": "d271b25c9c7c6448967553da80f81d324c3c7fa9",
                 "shasum": ""
             },
             "require": {
@@ -3090,7 +3090,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2013-03-27 18:08:43"
+            "time": "2013-04-02 08:51:06"
         },
         {
             "name": "sonata-project/block-bundle",

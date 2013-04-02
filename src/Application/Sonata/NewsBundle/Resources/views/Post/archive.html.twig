@@ -12,6 +12,31 @@
             width:100px;
 
         }
+        
+div.mypost
+{
+border:1px solid;
+border-radius:25px;
+-moz-border-radius:25px; /* Old Firefox */
+padding-bottom:10px;
+padding-left:5px;
+margin-bottom:10px;
+box-shadow: 7px 7px 5px #888888;
+background-color:  #e3e3e3;
+} 
+
+div.lescategories {
+border:1px solid;
+border-radius:10px;
+-moz-border-radius:10px; /* Old Firefox */
+padding-bottom:10px;
+padding-left:5px;
+margin-bottom:10px;
+box-shadow: 3px 3px 2px #888888;
+background-color:  #e3e3e3;
+}
+
+
 </style> 
   {% endblock %}
 
@@ -39,9 +64,9 @@
 <h1>{{ 'title_archive'|trans({}, 'SonataNewsBundle') }}</h1>
 {{ test }}
       
-<div class="sonata-blog-post-list">
+<!--<div class="sonata-blog-post-list">-->
     {% for post in pager.getResults() %}
-         
+         <div class="mypost">
         <hr class="myhr">
     
            
@@ -98,11 +123,12 @@
                     
             <span class="badge badge-warning">{{ 'comments_count'|trans({'%comments_count%': post.commentsCount }, 'SonataNewsBundle') }}</span>
        <!-- </div>-->
+       </div>
     {% else %}
         {{ 'no_post_found'|trans({}, 'SonataNewsBundle') }}
-
+<!--</div>-->
     {% endfor %}
-</div>
+
 
 {% endblock %}
 
