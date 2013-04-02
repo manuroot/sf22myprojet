@@ -16,11 +16,11 @@
 div.mypost
 {
 border:1px solid;
-border-radius:25px;
--moz-border-radius:25px; /* Old Firefox */
+border-radius:20px;
+-moz-border-radius:20px; /* Old Firefox */
 padding-bottom:10px;
-padding-left:5px;
-margin-bottom:10px;
+padding-left:10px;
+margin-bottom:20px;
 box-shadow: 7px 7px 5px #888888;
 background-color:  #e3e3e3;
 } 
@@ -67,9 +67,6 @@ background-color:  #e3e3e3;
 <!--<div class="sonata-blog-post-list">-->
     {% for post in pager.getResults() %}
          <div class="mypost">
-        <hr class="myhr">
-    
-           
             <div class="sonata-blog-post-date-container">
                 {{ post.publicationDateStart | format_date }}
                  - ({{ post.publicationDateStart | created_ago  }})

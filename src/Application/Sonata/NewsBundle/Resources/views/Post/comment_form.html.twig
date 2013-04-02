@@ -11,6 +11,7 @@
 
 #}
 
+<div class="viewpost">
 <h3>{{'title_leave_comment'|trans({}, 'SonataNewsBundle') }}</h3>
 
 <form action="{{ url('sonata_news_add_comment', {'id': post_id}) }}" method="POST" >
@@ -40,5 +41,7 @@
 
     {{ form_rest(form) }}
 
-    <input type="submit" class="btn btn-large btn-success" value="{{'btn_add_comment'|trans({}, 'SonataNewsBundle') }}" />
+    <input type="submit" class="btn btn-large btn-primary" value="{{'btn_add_comment'|trans({}, 'SonataNewsBundle') }}" />
 </form>
+
+</div>
