@@ -17,25 +17,18 @@
 <div class="sonata-blog-comment-container">
     <h3>{{ 'title_comments'|trans({}, 'SonataNewsBundle') }}</h3>
 
+    
     <div class="sonata-blog-comment-list">
+       <div id="accordion">   
         {% for comment in pager.results %}
-              <hr class="myhr">
-            <div class="sonata-blog-comment">
-                <div class="sonata-blog-comment-name">
-                    <a href="{{ comment.url }}" target="new" rel="nofollow">{{ comment.name }}</a>
-                </div>
-                <div class="sonata-blog-comment-date">
-                    {{ comment.createdAt | format_date }}
-                </div>
-                <div class="sonata-blog-comment-message">
-                    {{ comment.message }}
-                </div>
-            </div>
-             
-     
+         <h3><a href="{{ comment.url }}" target="new" rel="nofollow">{{ comment.name }}</a> 
+          {{ comment.createdAt | format_date }}
+         </h3>
+          <div><p>{{ comment.message }}</p></div>
+       
         {% else %}
             {{ 'no_comments_available'|trans({}, 'SonataNewsBundle') }}
         {% endfor %}
-                <hr class="myhr">
+              </div>
     </div>
 </div>

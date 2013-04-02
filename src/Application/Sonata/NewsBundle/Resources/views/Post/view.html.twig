@@ -24,14 +24,23 @@ box-shadow: 7px 7px 5px #888888;
 background-color:  #e3e3e3;
 } 
 
+div#accordion{
+padding-right:10px;}
+
 
 </style> 
   {% endblock %}
-
-
-      
-       {% block javascripts %}
+     
+{% block javascripts %}
       {{ parent() }}
+ <script>
+$(function() {
+$( "#accordion" ).accordion({
+collapsible: true
+});
+});
+</script>
+
      {#{ tinymce_init() }#}
   {% endblock %}
       
