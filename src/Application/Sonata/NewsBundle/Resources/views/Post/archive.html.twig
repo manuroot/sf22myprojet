@@ -40,6 +40,22 @@ background-color:  #e3e3e3;
 </style> 
   {% endblock %}
 
+
+
+{% block javascripts %}
+      {{ parent() }}
+ <script>
+$(function() {
+$( "#accordion-archives" ).accordion({
+collapsible: true
+});
+});
+</script>
+
+     {#{ tinymce_init() }#}
+  {% endblock %}
+
+
 {% block content_header '' %}
 {% block title %}
  MON BLOG DE TESTS
@@ -62,7 +78,7 @@ background-color:  #e3e3e3;
 #}
 
 <h1>{{ 'title_archive'|trans({}, 'SonataNewsBundle') }}</h1>
-{{ test }}
+{#{ test }#}
       
 <!--<div class="sonata-blog-post-list">-->
     {% for post in pager.getResults() %}
@@ -129,16 +145,16 @@ background-color:  #e3e3e3;
 
 {% endblock %}
 
+{#{ include('ApplicationSonataNewsBundle::Post::sidebarone.html.twig') }#}
 
- {% block archives %}
- <hr class="myhr">
+
+{% block archives %}
     {{ parent() }}
  {% endblock %}
  
  
    {% block categories %}
- <hr class="myhr">
-    {{ parent() }}
+   {{ parent() }}
         {% for category in allcategories %}
        <span class="label">
                              <!--Catégorie: -->
@@ -152,8 +168,8 @@ background-color:  #e3e3e3;
     
     
       {% block tags %}
-  <hr class="myhr">
     {{ parent() }}
+<div><p>
         {% for tag in alltags %}
        <span class="badge badge-warning">
                              <!--Catégorie: -->
@@ -162,5 +178,6 @@ background-color:  #e3e3e3;
     
     
                  {% endfor %}
+                </p></div>
    {% endblock %}
 

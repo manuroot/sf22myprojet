@@ -91,6 +91,11 @@ background-color:  #e3e3e3;
 }
 
 
+div#accordion-archives{
+padding-right:10px;
+padding-bottom:10px;
+}
+
  /*body {
 	background-image: url("/images/bg.jpg");
 }*/
@@ -127,25 +132,31 @@ background-color:  #e3e3e3;
 
                         <div class="span3">
                                
+                            
+                              <div id="accordion-archives">   
+                                  
+                                 <h3>Categories</h3>
+                                 
+                                  <div><p>
+                                 {% block categories %}
+                                 
+                                 {% endblock %}
+                                                </p></div>
+                               <h3>Tags</h3>
+                                                
+                                
+                                   {% block tags %}
+                                {% endblock %}
+                                        <h3>Archives</h3>
+                                   
+                            {% block archives %}
+                                  <div><p>TODO</p></div>
+                            {% endblock %}        
+                                </div>
+                          
                        {% block sidebar %}
                         
                         {% endblock %}
-                                        <div class="lescategories">
-                                   {% block archives %}
-                                <h3 class="widget-title">Archives</h3>
-                                
-                                 {% endblock %}
-                                   {% block tags %}
-                                <h3 class="widget-title">Tags</h3>
-                                
-                                 {% endblock %}
-                                  {% block categories %}
-                                <h3 class="widget-title">Categories</h3>
-                                
-                                 {% endblock %}
-                               
-                                </div>
-                          
                         </div>
                     </div>
                     <!-- ==============================================

@@ -5,8 +5,8 @@
     <div class="sonata-blog-comment-list">
        <div id="accordion">   
         {% for comment in pager.results %}
-         <h3><a href="{{ comment.url }}" target="new" rel="nofollow">{{ comment.name }}</a> 
-          {{ comment.createdAt | format_date }}
+         <h3><a href="{{ comment.url }}" target="new" rel="nofollow">{{ comment.name }}</a>: 
+          le {{ comment.createdAt | format_date }}
          </h3>
           <div><p>{{ comment.message }}</p></div>
        

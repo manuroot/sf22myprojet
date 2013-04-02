@@ -57,6 +57,14 @@ class PostController extends Controller {
         $pager = $this->getPostManager()->getPager(
                 $criteria, $this->getRequest()->get('page', 1)
         );
+        /*
+          $paginator = $this->get('knp_paginator');
+      $pagination = $paginator->paginate(
+                $query, $this->get('request')->query->get('page', 1)
+        );
+        $pagination->setTemplate('ApplicationCertificatsBundle:pagination:sliding.html.twig');
+          */
+          
         $test = "(surcharge du controleur: phase de développement)";
         /*   $em = $this->container->get('doctrine')->getEntityManager();
           $allcategories = $em->getRepository('ApplicationSonataNewsBundle:Category')->findAll(); */
