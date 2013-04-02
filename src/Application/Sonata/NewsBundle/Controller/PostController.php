@@ -53,9 +53,11 @@ class PostController extends Controller {
      * @return Response
      */
     public function renderArchive(array $criteria = array(), array $parameters = array()) {
+        
+       //  $this->setMaxPerPage(2);
         $form_paypal = $this->createPurchaseForm();
         $pager = $this->getPostManager()->getPager(
-                $criteria, $this->getRequest()->get('page', 1)
+                $criteria, $this->getRequest()->get('page', 1),2
         );
         /*
           $paginator = $this->get('knp_paginator');
@@ -65,6 +67,7 @@ class PostController extends Controller {
         $pagination->setTemplate('ApplicationCertificatsBundle:pagination:sliding.html.twig');
           */
           
+        //$pager->setTemplate('ApplicationCertificatsBundle:pagination:sliding.html.twig');
         $test = "(surcharge du controleur: phase de développement)";
         /*   $em = $this->container->get('doctrine')->getEntityManager();
           $allcategories = $em->getRepository('ApplicationSonataNewsBundle:Category')->findAll(); */
