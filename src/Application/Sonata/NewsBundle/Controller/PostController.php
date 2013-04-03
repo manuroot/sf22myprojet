@@ -91,12 +91,12 @@ class PostController extends Controller {
         
         $form_paypal = $this->createPurchaseForm();
         $pager = $this->getPostManager()-> getPagerquery(
-                $criteria, $this->getRequest()->get('page', 1),5
+                $criteria, $this->getRequest()->get('page', 1)
         );
        
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $pager, $this->get('request')->query->get('page', 1)/* page number */, 5/* limit per page */
+                $pager, $this->get('request')->query->get('page', 1)/* page number */, 4/* limit per page */
         );
         $pagination->setTemplate('ApplicationSonataNewsBundle:Post:paginationtwitter.html.twig');
      

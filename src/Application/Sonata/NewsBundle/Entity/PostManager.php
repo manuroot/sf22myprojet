@@ -249,6 +249,16 @@ class PostManager extends ModelPostManager
         }
 
         $query->setParameters($parameters);
+       //   $query->setMaxResults( $maxPerPage);
+     
+      //  $pager = new Pager();
+      //  $pager->setMaxPerPage($maxPerPage);
+      //  $qquery=$pager->setQuery(new ProxyQuery($query));
+       // $pager->setPage($page);
+      //  $pager->init();
+
+      //  return $qquery;
+        
 return $query;
     }
 
