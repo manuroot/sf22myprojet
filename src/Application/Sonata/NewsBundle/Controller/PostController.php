@@ -93,10 +93,16 @@ class PostController extends Controller {
         $pager = $this->getPostManager()-> getPagerquery(
                 $criteria, $this->getRequest()->get('page', 1)
         );
-       
+        /*
+          $pager = new Pager();
+        $pager->setMaxPerPage($maxPerPage);
+        $qquery=$pager->setQuery(new ProxyQuery($query));
+       $pager->setPage($page);
+        $pager->init();
+        */
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $pager, $this->get('request')->query->get('page', 1)/* page number */, 4/* limit per page */
+                $pager->getQuery(), $this->get('request')->query->get('page', 1)/* page number */, 4/* limit per page */
         );
         $pagination->setTemplate('ApplicationSonataNewsBundle:Post:paginationtwitter.html.twig');
      
