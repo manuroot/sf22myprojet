@@ -20,7 +20,9 @@ application_payment:
 #    type:     annotation
 #    prefix:   /
 
-   
+list_news:
+    resource: "@ApplicationSonataNewsBundle/Resources/config/routing.yml"
+    prefix:   /   
    
 application_test:
     resource: "@ApplicationTestBundle/Resources/config/routing.yml"

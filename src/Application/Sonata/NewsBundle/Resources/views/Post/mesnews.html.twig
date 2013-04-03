@@ -1,0 +1,99 @@
+  {% extends "ApplicationSonataNewsBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+<script>
+.mywarn{ background-color: #fe8a05;}
+  .page,.current,.next,.last{
+    display: inline-block;
+    border: 1px solid blue;
+    color: blue;
+    margin-right: 0.2em;
+    padding: 0.25em 0.35em;
+   }
+    .current {
+    
+      background-color: #d3d3d3;
+   /* color: red;*/
+  
+}
+        
+tr.title {
+    background-color: #e4e4e4;
+}
+</script>
+ {% endblock %}
+
+
+{% block content_header '' %}
+{% block title %}
+ MES NEWS
+{% endblock %}
+   
+ 
+{% block content %}
+
+<br>
+
+ <table class="table small table-striped table-condensed table-bordered table-hover">
+     
+     <thead>
+                       
+                         
+                        
+            <tr class="title">
+                   <th>{{ knp_pagination_sortable(pagination, 'title', 'p.title') }}</th>
+                     <th>{{ knp_pagination_sortable(pagination, 'Résumé', 'p.abstract') }}</th>
+                     <th>{{ knp_pagination_sortable(pagination, 'NCommentaires', 'p.commentsCount') }}</th>
+                      <th><i class="icon-user"></i>
+                   {{ knp_pagination_sortable(pagination, '', 'p.author') }}</th>
+                       <th>{{ knp_pagination_sortable(pagination, 'Date Pub', 'p.publicationDateStart') }}</th>
+                 
+              <th>Catégorie</th>
+               <th>Tags</th>
+            </tr>  
+        </thead>
+         <tbody>
+              {% for post in pagination %}
+            <tr>
+            
+                         <td>
+           
+          <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{{ post.title }}</a>
+           
+                   </td>
+                  <td>
+                 {{ post.abstract  }}
+                   </td>
+                   
+                   <td>
+                 {{ post.commentsCount  }}
+                   </td>
+                   
+                      <td>
+                 {{ post.author  }}
+                   </td>
+                   
+                              <td>
+                 {{ post.publicationDateStart | created_ago  }}
+                   </td>
+                   
+                  <td>
+                    {% if  post.category is defined and  post.category is not empty%}
+                            <a href="{{ url('sonata_news_category', {'category': post.category.slug} ) }}">{{ post.category }}</a>
+                  
+                        {% else %}
+                       --
+                        {% endif %}
+                   </td>
+                   
+                     <td>{{ post.tags|join(', ') }}   </td>
+            </tr>
+                  {% endfor %}
+                  </tbody>
+ </table>
+
+  {{ knp_pagination_render(pagination) }}
+
+
+{% endblock %}

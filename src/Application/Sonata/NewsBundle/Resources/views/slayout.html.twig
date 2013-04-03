@@ -1,0 +1,44 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+ {{ parent() }}  
+{% endblock %}
+ 
+{% block stylesheets %}
+{{ parent() }}
+<style>
+     
+        
+         .myhr {
+            border: 1px solid #D4E0EE;
+            background-color: #f1f1f1;
+            width:auto;
+
+        }
+       
+       
+    </style> 
+{% endblock %}
+  
+   {% block javascripts %}
+{{ parent() }}
+    <script>
+$(function() {
+$( "#datepicker" ).datepicker();
+});
+</script>
+{% endblock %}
+    
+                       
+{% block sidebar %}
+   
+       {{ parent() }}
+{% endblock %}
+    
+    
+{#% block body %}
+  
+   
+{% endblock %#}
+ 
+    

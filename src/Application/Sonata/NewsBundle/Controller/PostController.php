@@ -54,24 +54,17 @@ class PostController extends Controller {
      */
     public function renderArchive(array $criteria = array(), array $parameters = array()) {
         
-       //  $this->setMaxPerPage(2);
+        
+     /*   print_r($criteria);
+        exit(1);
+       */
+//  $this->setMaxPerPage(2);
         $form_paypal = $this->createPurchaseForm();
         $pager = $this->getPostManager()->getPager(
                 $criteria, $this->getRequest()->get('page', 1),2
         );
-        /*
-          $paginator = $this->get('knp_paginator');
-      $pagination = $paginator->paginate(
-                $query, $this->get('request')->query->get('page', 1)
-        );
-        $pagination->setTemplate('ApplicationCertificatsBundle:pagination:sliding.html.twig');
-          */
-          
-        //$pager->setTemplate('ApplicationCertificatsBundle:pagination:sliding.html.twig');
         $test = "(surcharge du controleur: phase de développement)";
-        /*   $em = $this->container->get('doctrine')->getEntityManager();
-          $allcategories = $em->getRepository('ApplicationSonataNewsBundle:Category')->findAll(); */
-        $alltags = $this->sidebar_tags();
+          $alltags = $this->sidebar_tags();
           $allcategories = $this->sidebar_categories();
         // $alltags=$em->getRepository('ApplicationSonataNewsBundle:Tag')->findAll();
          $parameters = array_merge(array(
@@ -92,6 +85,39 @@ class PostController extends Controller {
         return $response;
     }
 
+    
+    
+      public function mesnewsAction(array $criteria = array(), array $parameters = array()) {
+        
+        $form_paypal = $this->createPurchaseForm();
+        $pager = $this->getPostManager()-> getPagerquery(
+                $criteria, $this->getRequest()->get('page', 1),5
+        );
+       
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $pager, $this->get('request')->query->get('page', 1)/* page number */, 5/* limit per page */
+        );
+        $pagination->setTemplate('ApplicationSonataNewsBundle:Post:paginationtwitter.html.twig');
+     
+      //  print_r($pager);
+      //  exit(1);
+          /*  $parameters = array_merge(array(
+          'pager' => $pager,
+          'blog'  => $this->get('sonata.news.blog'),
+          'tag'   => false,
+              ), $parameters); */
+     
+        return $this->render('ApplicationSonataNewsBundle:Post:mesnews.html.twig',
+                array(
+                'pagination' => $pagination,
+                       'form_paypal' => $form_paypal->createView(),
+      ));
+   
+    }
+
+    
+    
     /**
      * @return Response
      */

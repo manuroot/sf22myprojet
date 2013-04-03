@@ -8,8 +8,10 @@
                 <span class="icon-bar"></span> 
             </a>
             <a class="brand" href="#"><i class="icon-white icon-home"></i>{% block toto %} PROJET v1.0a{% endblock %}</a>
-            <a class="brand" href="{{ path('sonata_news_home') }}"> <i class="icon-white icon-book"></i> {{ 'Blog'|trans }}</a>
-             <div class="btn-group pull-right"> 
+         
+             
+           
+            <div class="btn-group pull-right"> 
                      <a class="brand" href="{{ path('sonata_news_archive',{'_format': 'rss'}) }}"> <i class="icon-white icon-briefcase"></i> News RSS</a>
  
             {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -54,11 +56,21 @@
 
                     </ul>
                 </div>
-            
-       
                 <div class="nav-collapse">
                     <ul class="nav">
 
+                          <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-book"></i>
+                                Blog<b class="caret"></b> </a>
+                            <ul class="dropdown-menu">
+                                
+                                   <li><a href="{{ path('sonata_news_home') }}"><i class="icon-book"></i>{{ 'Blog'|trans }}</a></li>
+                                <li><a href="{{ path('list_mesnews') }}"><i class="icon-book"></i>{{ 'Blog DataGRID'|trans }}</a></li>
+                          
+
+                            </ul>
+                                  
+                                  
+                                  
                         <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white  icon-gift"></i>
                                 Donation<b class="caret"></b> </a>
                             <ul class="dropdown-menu">

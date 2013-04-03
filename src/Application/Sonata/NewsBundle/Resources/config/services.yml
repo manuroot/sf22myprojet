@@ -3,3 +3,11 @@ services:
         class: Application\Sonata\NewsBundle\Twig\Extensions\ApplicationSonataNewsExtension
         tags:
             - { name: twig.extension }
+
+
+    sonata.news.manager.post:
+       class: Application\Sonata\NewsBundle\Entity\PostManager
+       
+            
+            
+   

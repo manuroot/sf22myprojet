@@ -1,0 +1,3 @@
+list_mesnews:
+    pattern:  /mesnews
+    defaults: { _controller: "ApplicationSonataNewsBundle:Post:mesnews" }
