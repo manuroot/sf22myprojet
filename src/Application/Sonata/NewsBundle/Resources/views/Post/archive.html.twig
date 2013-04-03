@@ -79,8 +79,18 @@ collapsible: true
 
 <h1>{{ 'title_archive'|trans({}, 'SonataNewsBundle') }}</h1>
 {#{ test }#}
+page={{ pager.page }}/{{ pager|length }}
+{% for page in pager.getLinks() %}
+
+                                        {% endfor %}
       
 <!--<div class="sonata-blog-post-list">-->
+
+
+ <!--   <li class="active"><a href="#11">d</a></li></ul>
+     </td></tr>               
+                                        </table> -->
+                                   
     {% for post in pager.getResults() %}
          <div class="mypost">
             <div class="sonata-blog-post-date-container">
@@ -143,12 +153,25 @@ collapsible: true
     {% endfor %}
   {#{ knp_pagination_render(pager) }#}
 
+<!--http://symvideo:92/archive?page=2-->
 
-{% endblock %}
 
 {#{ include('ApplicationSonataNewsBundle::Post::sidebarone.html.twig') }#}
 
-
+ <table class="table table-bordered table-striped">
+ <tr>
+                            <td colspan="{{ pager|length }}">
+                                <div class="pagination pagination-centered">
+                                    <ul>
+                         
+   <li class="active"><a href="#11">{{pager.page}}</a></li></ul>
+           {% for page in pager.getLinks() %}
+                                
+           <li class="active"><a href="{{ pager.generateUrl('list', pager.modelmanager.paginationparameters(pager.datagrid, page)) }}">{{ page }}</a></li>
+                 {% endfor %}                             
+     </td></tr>               
+                                        </table> 
+{% endblock %}
 {% block archives %}
     {{ parent() }}
  {% endblock %}
