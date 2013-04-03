@@ -32,7 +32,41 @@ tr.title {
    
  
 {% block content %}
+{#
+<table border="1">   {% for post in pager.getResults() %}
+ {% if pager.haveToPaginate() %}
+                        <tr>
+                            <td colspan="{{ pager|length }}">
+                                <div class="pagination pagination-centered">
+                                    <ul>
+                                        {% if pager.page != 1  %}
+                                            <li><a href="#">First</a></li>
+                                     
+                                        {% endif %}
 
+                                        {% if pager.page != pager.previouspage %}
+         <li><a href="#">First</a></li>
+   {% endif %}
+
+                                        {# Set the number of pages to display in the pager #}
+                                        {#% for page in pager.getLinks() %}
+                                            {% if page == pager.page %}
+                                              {% else %}
+                                             {% endif %}
+                                        {% endfor %}
+
+                                        {% if pager.page != pager.nextpage %}kml
+                                         {% endif %}
+
+                                        {% if pager.page != pager.lastpage  %}jlk  {% endif %}
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endif %}
+          {% endfor %}   
+            </table>
+            #}
 <br>
 
  <table class="table small table-striped table-condensed table-bordered table-hover">

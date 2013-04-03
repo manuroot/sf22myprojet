@@ -18,6 +18,7 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Sonata\NewsBundle\Model\CommentInterface;
 use Sonata\NewsBundle\Model\PostInterface;
+use Doctrine\ORM\EntityRepository;
 
 class PostController extends Controller {
 
@@ -90,6 +91,10 @@ class PostController extends Controller {
       public function mesnewsAction(array $criteria = array(), array $parameters = array()) {
         
         $form_paypal = $this->createPurchaseForm();
+       /*  $mypager = $this->getPostManager()-> getPager(
+                $criteria, $this->getRequest()->get('page', 1)
+        );*/
+         //$mypager->getResult();
         $pager = $this->getPostManager()-> getPagerquery(
                 $criteria, $this->getRequest()->get('page', 1)
         );
@@ -102,7 +107,7 @@ class PostController extends Controller {
         */
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $pager->getQuery(), $this->get('request')->query->get('page', 1)/* page number */, 4/* limit per page */
+                $pager, $this->get('request')->query->get('page', 1)/* page number */, 10/* limit per page */
         );
         $pagination->setTemplate('ApplicationSonataNewsBundle:Post:paginationtwitter.html.twig');
      
@@ -116,6 +121,7 @@ class PostController extends Controller {
      
         return $this->render('ApplicationSonataNewsBundle:Post:mesnews.html.twig',
                 array(
+                   // 'pager' => $mypager,
                 'pagination' => $pagination,
                        'form_paypal' => $form_paypal->createView(),
       ));

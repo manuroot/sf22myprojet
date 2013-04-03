@@ -17,14 +17,14 @@ use Sonata\NewsBundle\Model\BlogInterface;
 use Sonata\NewsBundle\Model\CategoryInterface;
 use Sonata\DoctrineORMAdminBundle\Datagrid\Pager;
 use Sonata\DoctrineORMAdminBundle\Datagrid\ProxyQuery;
-
+use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query\Expr;
 
 use Doctrine\ORM\Query;
 
-class PostManager extends ModelPostManager
+class PostManager extends ModelPostManager 
 {
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -143,7 +143,7 @@ class PostManager extends ModelPostManager
      *
      * @return \Sonata\AdminBundle\Datagrid\Pager
      */
-    public function getPager(array $criteria, $page, $maxPerPage = 10)
+    public function getPager(array $criteria, $page, $maxPerPage = 3)
     {
         $parameters = array();
         $query = $this->em->getRepository($this->class)
@@ -213,12 +213,12 @@ class PostManager extends ModelPostManager
       public function getPagerquery(array $criteria, $page, $maxPerPage = 10)
     {
         $parameters = array();
-        $query = $this->em->getRepository($this->class)
+        $query=$this->em->getRepository($this->class)
             ->createQueryBuilder('p')
             ->select('p, t')
             ->leftJoin('p.tags', 't', Expr\Join::WITH, 't.enabled = true')
             ->leftJoin('p.author', 'a', Expr\Join::WITH, 'a.enabled = true')
-            ->orderby('p.publicationDateStart', 'DESC');
+          ->orderby('p.publicationDateStart', 'DESC');
 
         // enabled
         $criteria['enabled'] = isset($criteria['enabled']) ? $criteria['enabled'] : true;
@@ -245,19 +245,33 @@ class PostManager extends ModelPostManager
 
         if (isset($criteria['category']) && $criteria['category'] instanceof CategoryInterface) {
             $query->andWhere('p.category = :categoryid');
-            $parameters['categoryid'] = $criteria['category']->getId();
+         //   $parameters['categoryid'] = $criteria['category']->getId();
         }
 
-        $query->setParameters($parameters);
-       //  $query->setMaxResults( $maxPerPage);
+       $query->setParameters($parameters);
+        $query->setMaxResults( $maxPerPage);
+        
+        
+     /*  $pager = new Pager();
+        $pager->setMaxPerPage($maxPerPage);
+        $pager->setQuery(new ProxyQuery($query));
+        $pager->setPage($page);
+        $pager->init();
+        */
+    // return $pager->getQueryBuilder();
+/*return $pager->getQuery();*/
+     //   return $pager;
      /*
         $pager = new Pager();
-        $pager->setMaxPerPage($maxPerPage);
-        $qquery=$pager->setQuery(new ProxyQuery($query));
+        $pager->setMaxPerPage($maxPerPage);*/
+       /* $qquery=$pager->setQuery(new ProxyQuery($query));
        $pager->setPage($page);
-        $pager->init();
-*/
-      return $query;
+        $pager->init();*/
+
+        
+         
+                        
+     return $query;
         
 //return $pager;
     }
