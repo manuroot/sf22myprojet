@@ -157,20 +157,52 @@ page={{ pager.page }}/{{ pager|length }}
 
 
 {#{ include('ApplicationSonataNewsBundle::Post::sidebarone.html.twig') }#}
-
- <table class="table table-bordered table-striped">
- <tr>
+<table class="table table-bordered table-striped">
+ {% if pager.haveToPaginate() %}
+                        <tr>
                             <td colspan="{{ pager|length }}">
                                 <div class="pagination pagination-centered">
                                     <ul>
-                         
-   <li class="active"><a href="#11">{{pager.page}}</a></li></ul>
-           {% for page in pager.getLinks() %}
-                                
-           <li class="active"><a href="{{ pager.generateUrl('list', pager.modelmanager.paginationparameters(pager.datagrid, page)) }}">{{ page }}</a></li>
-                 {% endfor %}                             
-     </td></tr>               
-                                        </table> 
+                                        {% if pager.page != 1  %}
+                                       <li>
+                                           <a href="{{ url('sonata_news_archive', { 'page': pager.firstpage }) }}">{{ pager.firstpage }}</a>                                 
+                                           </li>
+                                     
+                                        {% endif %}
+
+                                        {% if pager.page != pager.previouspage and pager.previouspage !=1 %}
+  <li>       <a href="{{ url('sonata_news_archive', { 'page': pager.previouspage }) }}">{{ pager.previouspage }}</a>                                 
+      </li>
+   {% endif %}
+
+                                        {# Set the number of pages to display in the pager #}
+                                        {% for page in pager.getLinks() %}
+                                            {% if page == pager.page %}
+                                              {% else %}
+                                             {% endif %}
+                                        {% endfor %}
+
+                                        {% if pager.page != pager.nextpage %}
+                               <li>          <a href="{{ url('sonata_news_archive', { 'page': pager.nextpage }) }}">{{ pager.nextpage }}</a>                                 
+                                   </li>
+                                         {% endif %}
+
+                                        {% if pager.page != pager.lastpage  %}
+ 
+                 <li> <a href="{{ url('sonata_news_archive', { 'page': pager.lastpage }) }}"> ></a> </li>                                
+   
+       
+ {% endif %}
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endif %}
+        
+            </table>
+
+
+
 {% endblock %}
 {% block archives %}
     {{ parent() }}
