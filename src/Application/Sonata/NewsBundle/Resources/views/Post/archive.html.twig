@@ -67,7 +67,7 @@ collapsible: true
      {#% block NAVIGATION_BAR %}jkljklT{% endblock %#}
  
 {% block content %}
-
+<br>
 {#
 
 /*
@@ -84,9 +84,6 @@ collapsible: true
 <h1>{{ 'title_archive'|trans({}, 'SonataNewsBundle') }}</h1>#}
 {#{ test }#}
 
-{% for page in pager.getLinks() %}
-
-                                        {% endfor %}
       
 <!--<div class="sonata-blog-post-list">-->
 
@@ -159,88 +156,8 @@ collapsible: true
 
 <!--http://symvideo:92/archive?page=2-->
 
-
-<table class="table table-bordered table-striped">
- {% if pager.haveToPaginate() %}
-                        <tr>
-                             <td>
-                                <div class="pagination pagination-centered">
-                                    <ul>
-                                        {% if pager.page != 1  and pager.page != pager.lastpage%}
-                                             <li>
-                                             <a href="{{ url('sonata_news_archive', { 'page': pager.firstpage }) }}">ARTICLES RECENTS</a> 
-                                            </li>
-                                        {% if pager.previouspage != 1 %}
-                                          <li>          <a href="{{ url('sonata_news_archive', { 'page': pager.previouspage }) }}">{{ pager.previouspage }}</a>
-                                              </li>
-                                             
-                                             
-                                        {% endif %}
-                                        
-
-                                        {# Set the number of pages to display in the pager #}
-                                        {% for page in pager.getLinks() %}
-                                            {% if page == pager.page %}
-                                                <li class="active">
-                                                    jhj  <a href="{{ url('sonata_news_archive', { 'page': pager.page }) }}">{{ pager.page }}</a>
-                                                </li>
-                                            {% else %}
-                                                <li> <a href="{{ url('sonata_news_archive', { 'page': pager.page }) }}">{{ pager.page }}</a></li>
-                                            {% endif %}
-                                        {% endfor %}
-                                                
-                                                 <li class="active">
-                                                    <a href="{{ url('sonata_news_archive', { 'page': pager.page }) }}">{{ pager.page }}</a>
-                                                </li>
-
-                                        {% if pager.nextpage != pager.lastpage %}
-                                          <li>          <a href="{{ url('sonata_news_archive', { 'page': pager.nextpage }) }}">{{ pager.nextpage }}</a>
-                                              </li>
-                                              
-                                        {% endif %}
-                                            
-                                            <li>
-                                                  <a href="{{ url('sonata_news_archive', { 'page': pager.lastpage }) }}">+ ARTICLES ANCIENS</a> 
-                                             </li>
-{% endif %}
-                                             
-                                               {% if pager.page == 1 %}
-                                               <li class="active">
-                                             <a href="{{ url('sonata_news_archive', { 'page': pager.firstpage }) }}">ARTICLES RECENTS</a> 
-                                            </li>
-                                             <li>
-                                                 <a href="{{ url('sonata_news_archive', { 'page': pager.nextpage }) }}">{{ pager.nextpage }}
-                                                 </a> 
-                                            </li>
-                                          <li>
-                                             <a href="{{ url('sonata_news_archive', { 'page': pager.lastpage }) }}">ARTICLES ANCIENS</a> 
-                                            </li>
-                                            {% endif %}
-                                            
-                                            
-                                            
-                                              {% if pager.page == pager.lastpage %}
-                                               <li>
-                                             <a href="{{ url('sonata_news_archive', { 'page': pager.firstpage }) }}">ARTICLES RECENTS</a> 
-                                            </li>
-                                             <li>
-                                                 <a href="{{ url('sonata_news_archive', { 'page': pager.previouspage }) }}">{{ pager.previouspage }}
-                                                 </a> 
-                                            </li>
-                                          <li class="active">
-                                             <a href="{{ url('sonata_news_archive', { 'page': pager.lastpage }) }}">ARTICLES ANCIENS</a> 
-                                            </li>
-                                            {% endif %}
-                                    </ul>
-                                    
-                              
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        </table>
-                    {% endif %}
-                        
+{% include 'ApplicationSonataNewsBundle:Post:pager.html.twig' with {'mything': 'ARTICLES', 'myurl': 'sonata_news_archive'} %}
+                      
 
 
 {% endblock %}

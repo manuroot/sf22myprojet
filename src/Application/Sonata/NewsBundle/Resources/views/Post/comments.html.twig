@@ -3,16 +3,28 @@
 
     
     <div class="sonata-blog-comment-list">
+     
+{#     
+    {% include 'ApplicationSonataNewsBundle:Post:pagercomments.html.twig' with {'mything': 'COMMENTAIRES','postId': post.id } %}
+#}
+         {{ render(controller('SonataNewsBundle:Post:comments', { 'postId': post.id  })) }}
        <div id="accordion">   
-        {% for comment in pager.results %}
+           {% for comment in pager.getResults() %}
+        {#% for comment in pager.results %#}
          <h3><a href="{{ comment.url }}" target="new" rel="nofollow">{{ comment.name }}</a>: 
           le {{ comment.createdAt | format_date }}
          </h3>
           <div><p>{{ comment.message }}</p></div>
-       
         {% else %}
             {{ 'no_comments_available'|trans({}, 'SonataNewsBundle') }}
         {% endfor %}
-              </div>
+      
+           </div>
+           
     </div>
+     
 </div>
+ 
+          
+       
+   

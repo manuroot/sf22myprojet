@@ -148,15 +148,64 @@ class PostController extends Controller {
                     ->addMeta('property', 'og:description', $post->getAbstract())
             ;
         }
+/*
+        
+        ADD
+        */
+ 
+        $page=$this->getRequest()->get('page', 1);
+        $pager = $this->getCommentManager()
+            ->getPager(array(
+                'postId' => $post->getId(),
+                'status'  => CommentInterface::STATUS_VALID
+            ), $page, 2); //no limit
 
+       
+        
         return $this->render('SonataNewsBundle:Post:view.html.twig', array(
                     'post' => $post,
                     'form' => false,
                     'blog' => $this->get('sonata.news.blog'),
                     'form_paypal' => $form_paypal->createView(),
+              'pager'  => $pager,
                 ));
     }
 
+    
+     /**
+     * @param integer $postId
+     *
+     * @return Response
+     */
+    public function mycommentsAction($mpost,$postId)
+            {
+        $pager = $this->getCommentManager()
+            ->getPager(array(
+                'postId' => $postId,
+                'status'  => CommentInterface::STATUS_VALID
+            ), 1, 2); //no limit
+
+        return $this->render('SonataNewsBundle:Post:comments.html.twig', array(
+            'pager'  => $pager,
+            'mpost' => $mpost,
+        ));
+    }
+    
+    public function commentsAction($postId)
+    {
+         $pager = $this->getCommentManager()
+            ->getPager(array(
+                'postId' => $postId,
+                'status'  => CommentInterface::STATUS_VALID
+            ), 1, 500); //no limit
+
+        return $this->render('SonataNewsBundle:Post:comments.html.twig', array(
+            'pager'  => $pager,
+             'postId' => $postId,
+           
+        ));
+    }
+    
      /**
      * @param $postId
      * @param bool $form

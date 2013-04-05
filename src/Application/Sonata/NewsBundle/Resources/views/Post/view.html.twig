@@ -94,9 +94,45 @@ collapsible: true
     <div class="sonata-blog-post-content">
         {{ post.content|raw }}
     </div>
+            
+            {#
+COMMENTS
+#}
+<div class="sonata-blog-comment-container">
+    <h3>{{ 'title_comments'|trans({}, 'SonataNewsBundle') }}</h3>
 
-        
-       {{ render(controller('SonataNewsBundle:Post:comments', { 'postId': post.id  })) }}
+    
+    <div class="sonata-blog-comment-list">
+     
+{#     
+    {% include 'ApplicationSonataNewsBundle:Post:pagercomments.html.twig' with {'mything': 'COMMENTAIRES','postId': post.id } %}
+  {{ render(controller('SonataNewsBundle:Post:comments', { 'postId': post.id  })) }}#}
+       
+       <div id="accordion">   
+           {% for comment in pager.getResults() %}
+        {#% for comment in pager.results %#}
+         <h3><a href="{{ comment.url }}" target="new" rel="nofollow">{{ comment.name }}</a>: 
+          le {{ comment.createdAt | format_date }}
+         </h3>
+          <div><p>{{ comment.message }}</p></div>
+        {% else %}
+            {{ 'no_comments_available'|trans({}, 'SonataNewsBundle') }}
+        {% endfor %}
+      
+           </div>
+           
+    </div>
+     
+</div>
+            
+       
+{% include 'ApplicationSonataNewsBundle:Post:pagercomments.html.twig' with {'mything': 'COMMENTAIRES', 'myurl': 'sonata_news_view'} %}
+                      
+
+{#         {{ render(controller('SonataNewsBundle:Post:comments', { 'postId': post.id  })) }}
+ {{ render(controller('SonataNewsBundle:Post:mcomments', { 'mpost': post, 'postId': post.id  })) }}
+   #}         
+              
 </div>
     {#% render 'SonataNewsBundle:Post:comments' with {'postId': post.id} %#}
  {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
