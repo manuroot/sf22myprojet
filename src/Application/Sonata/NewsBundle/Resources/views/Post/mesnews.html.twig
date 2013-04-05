@@ -109,16 +109,22 @@ collapsible: true
                          
                         
             <tr class="title">
-                <th>{{ knp_pagination_sortable(pagination, 'title', 'p.title') }} <i class="icon-book"></i></th>
+                <th>{{ knp_pagination_sortable(pagination, 'title', 'p.title') }} 
+                    <i class="icon-book"></i></th>
+                
                 <th>{{ knp_pagination_sortable(pagination, 'Résumé', 'p.abstract') }}</th>
+                
                 <th>{{ knp_pagination_sortable(pagination, 'NCommentaires', 'p.commentsCount') }}
-                 <i class="icon-pencil"></i></th>
-                <th><i class="icon-user"></i>
-                  {{ knp_pagination_sortable(pagination, '', 'p.author') }}</th>
+                 <i class="icon-comment"></i></th>
+                 
+                <th>{{ knp_pagination_sortable(pagination, 'User', 'e.author.username') }}
+                 <i class="icon-user"></i></th>
+                
                 <th>{{ knp_pagination_sortable(pagination, 'Publication', 'p.publicationDateStart') }}
                  <i class="icon-time"></i></th>
-                <th>{{ knp_pagination_sortable(pagination, 'Catégorie', 'd.category.name') }}</th>      
-                <th>Tags  <i class="icon-flag"></i></th>
+                <th>{{ knp_pagination_sortable(pagination, 'Catégorie', 'd.category.name') }}
+                  <i class="icon-folder-open"></i></th>      
+                <th>Tags  <i class="icon-tags"></i></th>
             </tr>  
         </thead>
          <tbody>
@@ -131,7 +137,9 @@ collapsible: true
            
                    </td>
                   <td>
-                 {{ post.abstract  }}
+               {{  post.abstract|length > 30 ? post.abstract|slice(0, 30) ~ ' ...' : post.abstract  }}
+                 {#{ post.abstract|truncate(20)  }#}
+             
                    </td>
                    
                    <td>

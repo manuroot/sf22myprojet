@@ -21,6 +21,8 @@ class PostRepository extends BasePostRepository
                 //  ->add('orderBy', 'p.id DESC')
                  ->where('p.enabled = true')
                 ->leftJoin('p.category', 'd')
+                ->leftJoin('p.author', 'e')
+                
             ->orderby('p.createdAt', 'DESC')
                         ->getQuery();
 
