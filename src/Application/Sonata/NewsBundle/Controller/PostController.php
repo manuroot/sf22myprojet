@@ -100,6 +100,8 @@ class PostController extends Controller {
         );
          $em = $this->getDoctrine()->getManager();
         $query = $em->getRepository('ApplicationSonataNewsBundle:Post')->myFindAll();
+          $alltags = $this->sidebar_tags();
+          $allcategories = $this->sidebar_categories();
       
         /*
           $pager = new Pager();
@@ -127,6 +129,9 @@ class PostController extends Controller {
                    // 'pager' => $mypager,
                 'pagination' => $pagination,
                        'form_paypal' => $form_paypal->createView(),
+                       'allcategories' => $allcategories,
+          'alltags' => $alltags,
+      
       ));
    
     }

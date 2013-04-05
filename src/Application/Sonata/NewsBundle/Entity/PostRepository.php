@@ -17,8 +17,11 @@ class PostRepository extends BasePostRepository
 
     public function myFindAll() {
         return $this->createQueryBuilder('p')
-                //  ->leftJoin('p.category', 'd')
-                  ->add('orderBy', 'p.id DESC')
+                
+                //  ->add('orderBy', 'p.id DESC')
+                 ->where('p.enabled = true')
+                ->leftJoin('p.category', 'd')
+            ->orderby('p.createdAt', 'DESC')
                         ->getQuery();
 
         //->getResult();

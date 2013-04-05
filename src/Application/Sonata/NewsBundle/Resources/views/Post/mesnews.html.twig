@@ -1,28 +1,61 @@
-  {% extends "ApplicationSonataNewsBundle::layout.html.twig" %}
+{% extends "ApplicationSonataNewsBundle::layout.html.twig" %}
+
+
 
 {% block stylesheets %}
 {{ parent() }}
-<script>
-.mywarn{ background-color: #fe8a05;}
-  .page,.current,.next,.last{
-    display: inline-block;
-    border: 1px solid blue;
-    color: blue;
-    margin-right: 0.2em;
-    padding: 0.25em 0.35em;
-   }
-    .current {
-    
-      background-color: #d3d3d3;
-   /* color: red;*/
-  
-}
+<style>
+   
+        .mytext {
+           
+            background-color: #f1f1f1;
+            width:100px;
+
+        }
         
-tr.title {
-    background-color: #e4e4e4;
+div.mypost
+{
+border:1px solid;
+border-radius:20px;
+-moz-border-radius:20px; /* Old Firefox */
+padding-bottom:10px;
+padding-left:10px;
+margin-bottom:20px;
+box-shadow: 7px 7px 5px #888888;
+background-color:  #e3e3e3;
+} 
+
+div.lescategories {
+border:1px solid;
+border-radius:10px;
+-moz-border-radius:10px; /* Old Firefox */
+padding-bottom:10px;
+padding-left:5px;
+margin-bottom:10px;
+box-shadow: 3px 3px 2px #888888;
+background-color:  #e3e3e3;
 }
+
+
+</style> 
+  {% endblock %}
+
+
+
+{% block javascripts %}
+      {{ parent() }}
+ <script>
+$(function() {
+$( "#accordion-archives" ).accordion({
+collapsible: true
+});
+});
 </script>
- {% endblock %}
+
+     {#{ tinymce_init() }#}
+  {% endblock %}
+
+
 
 
 {% block content_header '' %}
@@ -76,16 +109,16 @@ tr.title {
                          
                         
             <tr class="title">
-                   <th>{{ knp_pagination_sortable(pagination, 'title', 'p.title') }}</th>
-                     <th>{{ knp_pagination_sortable(pagination, 'Résumé', 'p.abstract') }}</th>
-                     <th>{{ knp_pagination_sortable(pagination, 'NCommentaires', 'p.commentsCount') }}</th>
-                      <th><i class="icon-user"></i>
-                   {{ knp_pagination_sortable(pagination, '', 'p.author') }}</th>
-                       <th>{{ knp_pagination_sortable(pagination, 'Date Pub', 'p.publicationDateStart') }}</th>
-             {#       <th>{{ knp_pagination_sortable(pagination, 'Date Pub', 'd.category') }}</th>      
-             #}
-                        <th>Categories</th>
-               <th>Tags</th>
+                <th>{{ knp_pagination_sortable(pagination, 'title', 'p.title') }} <i class="icon-book"></i></th>
+                <th>{{ knp_pagination_sortable(pagination, 'Résumé', 'p.abstract') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'NCommentaires', 'p.commentsCount') }}
+                 <i class="icon-pencil"></i></th>
+                <th><i class="icon-user"></i>
+                  {{ knp_pagination_sortable(pagination, '', 'p.author') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Publication', 'p.publicationDateStart') }}
+                 <i class="icon-time"></i></th>
+                <th>{{ knp_pagination_sortable(pagination, 'Catégorie', 'd.category.name') }}</th>      
+                <th>Tags  <i class="icon-flag"></i></th>
             </tr>  
         </thead>
          <tbody>
@@ -132,3 +165,38 @@ tr.title {
 
 
 {% endblock %}
+
+
+{% block archives %}
+    {{ parent() }}
+ {% endblock %}
+ 
+ 
+   {% block categories %}
+   {{ parent() }}
+        {% for category in allcategories %}
+       <span class="label">
+                             <!--Catégorie: -->
+                        <a href="{{ url('sonata_news_category', {'category': category.slug} ) }}">{{ category.name }}</a>
+                        </span>
+    
+    
+                 {% endfor %}
+   {% endblock %}
+
+    
+    
+      {% block tags %}
+    {{ parent() }}
+<div><p>
+        {% for tag in alltags %}
+       <span class="badge badge-warning">
+                             <!--Catégorie: -->
+                        <a href="{{ url('sonata_news_tag', {'tag': tag.slug} ) }}">{{ tag.name }}</a>
+                        </span>
+    
+    
+                 {% endfor %}
+                </p></div>
+   {% endblock %}
+
