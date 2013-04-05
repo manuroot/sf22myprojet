@@ -82,8 +82,9 @@ tr.title {
                       <th><i class="icon-user"></i>
                    {{ knp_pagination_sortable(pagination, '', 'p.author') }}</th>
                        <th>{{ knp_pagination_sortable(pagination, 'Date Pub', 'p.publicationDateStart') }}</th>
-                 
-              <th>Catégorie</th>
+             {#       <th>{{ knp_pagination_sortable(pagination, 'Date Pub', 'd.category') }}</th>      
+             #}
+                        <th>Categories</th>
                <th>Tags</th>
             </tr>  
         </thead>

@@ -58,7 +58,7 @@
         "stfalcon/tinymce-bundle": "dev-master",
         "jms/payment-core-bundle": "dev-master",
         "jms/payment-paypal-bundle": "dev-master",
-        "payum/payum": "0.4.x-dev",
+        "payum/payum": "0.5.x-dev",
       "payum/payum-bundle": "0.4.x-dev",
         "payum/paypal-express-checkout-nvp": "0.4.x-dev",
         "payum/authorize-net-aim": "0.4.x-dev",

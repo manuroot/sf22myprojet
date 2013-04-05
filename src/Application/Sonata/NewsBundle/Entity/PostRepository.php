@@ -15,6 +15,14 @@ use Sonata\NewsBundle\Entity\BasePostRepository;
 class PostRepository extends BasePostRepository
 {
 
+    public function myFindAll() {
+        return $this->createQueryBuilder('p')
+                //  ->leftJoin('p.category', 'd')
+                  ->add('orderBy', 'p.id DESC')
+                        ->getQuery();
+
+        //->getResult();
+    }
 public function getTags()
 {
     $blogTags = $this->createQueryBuilder('b')
