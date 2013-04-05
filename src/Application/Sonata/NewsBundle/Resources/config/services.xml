@@ -16,6 +16,9 @@
            <argument type="service" id="sonata.news.entity_manager" />
            <argument>Application\Sonata\NewsBundle\Entity\Post</argument>
         </service>
+          <service id="sonata.news.form.type.comment" class="Application\Sonata\NewsBundle\Form\Type\CommentType">
+            <tag name="form.type" alias="sonata_post_comment" />
+    </service>
     </services>
 </container>
 
