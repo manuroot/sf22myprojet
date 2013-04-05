@@ -58,12 +58,13 @@ class PostController extends Controller {
 //  $this->setMaxPerPage(2);
         $form_paypal = $this->createPurchaseForm();
         $pager = $this->getPostManager()->getPager(
-                $criteria, $this->getRequest()->get('page', 1),2
+                $criteria, $this->getRequest()->get('page', 1),5
         );
         $test = "(surcharge du controleur: phase de développement)";
           $alltags = $this->sidebar_tags();
           $allcategories = $this->sidebar_categories();
         // $alltags=$em->getRepository('ApplicationSonataNewsBundle:Tag')->findAll();
+         // $pager->setLinks(3);
          $parameters = array_merge(array(
           'pager' => $pager,
           'blog'  => $this->get('sonata.news.blog'),
