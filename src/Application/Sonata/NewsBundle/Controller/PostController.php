@@ -103,7 +103,8 @@ class PostController extends Controller {
         $pagination = $paginator->paginate(
                 $query, $this->get('request')->query->get('page', 1)/* page number */, 10/* limit per page */
         );
-        $pagination->setTemplate('ApplicationSonataNewsBundle:Post:paginationtwitter.html.twig');
+   
+     $pagination->setTemplate('ApplicationSonataNewsBundle:pagination:twitter_bootstrap_pagination.html.twig');
      
          return $this->render('ApplicationSonataNewsBundle:Post:mesnews.html.twig',
                 array(
