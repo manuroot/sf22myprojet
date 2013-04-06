@@ -37,9 +37,9 @@ class Post extends BasePost
     {
         return $this->id;
     }
-     public function __toString()
+   /*  public function __toString()
     {
         //return $this->getTitle();
          return (string) $this->getTitle();
-    }
+    }*/
 }

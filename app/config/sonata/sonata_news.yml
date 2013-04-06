@@ -50,3 +50,4 @@ doctrine:
                 mappings:
                     ApplicationSonataNewsBundle: ~
                     SonataNewsBundle: ~
+                
