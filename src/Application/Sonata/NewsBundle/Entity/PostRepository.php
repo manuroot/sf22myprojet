@@ -38,7 +38,8 @@ public function getTags()
     $tags = array();
     foreach ($blogTags as $blogTag)
     {
-        $tags = array_merge(explode(",", $blogTag['tags']), $tags);
+   //     $tags = array_merge(explode(",", $blogTag['tags']), $tags);
+            $tags = $blogTag['tags'];
     }
 
     foreach ($tags as &$tag)

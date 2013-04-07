@@ -17,8 +17,6 @@
                    
                 </div>
                 <div id="content">
-
- {#% block navbartitle %} MONBLOG{% endblock %#}
                  <center><h1>   {% block title %}PROJET{% endblock %}</h1></center>
                 {% block content %}
                 {% endblock %}
@@ -29,19 +27,14 @@
                 </div>
                 <!-- Le javascript ================================================== -->
                 <!-- Placed at the end of the document so the pages load faster -->
-
+            </div>
        {% block javascripts %}
                 <script src="{{ asset('jquery/jquery-1.8.3.js') }}" type="text/javascript"></script>
                 <script type="text/javascript" src="{{ asset('jquery/jquery-ui-1.9.2.custom.min.js') }}"></script>
                 <script type="text/javascript" src="{{ asset('jquery/jquery.ui.datepicker.js') }}"></script>
                 <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
-         
-          <script type="text/javascript" src="{{ asset('js/paypal-button.min.js') }}">
-                   
-   </script>
+               <script type="text/javascript" src="{{ asset('js/paypal-button.min.js') }}"></script>
  {% endblock %}
-    
-            </div>
         </body>
 
     </html>

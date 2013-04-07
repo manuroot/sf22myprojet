@@ -38,17 +38,13 @@ class Post extends BasePost
         return $this->id;
     }
     
-   /* 
-    * @return integer $note
-    * 
-    */
-     /*protected $note;
+     protected $city;
      
-     public function getNote()
+     public function getCity()
     {
         return $this->city;
     }
-     public function setNote($city)
+     public function setCity($city)
     {
         $this->city = $city;
     
@@ -63,8 +59,7 @@ class Post extends BasePost
      *   @ORM\JoinColumn(name="image", referencedColumnName="id")
      * })
      */
-    
-  protected $image;
+    protected $image;
     
     
    /*  public function __toString()
@@ -72,29 +67,4 @@ class Post extends BasePost
         //return $this->getTitle();
          return (string) $this->getTitle();
     }*/
-    
-    /**
-     * Set image
-     *
-     * @param \Application\Sonata\MediaBundle\Entity\Media $image
-     * @return Post
-     */
-    public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
-    {
-        $this->image = $image;
-    
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return \Application\Sonata\MediaBundle\Entity\Media 
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-   
 }

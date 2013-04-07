@@ -155,3 +155,17 @@ COMMENTS
         {% endif %}
 </div>
 {% endblock %}
+ 
+ 
+ 
+{% block categories %}
+{{ parent() }}
+{% include 'ApplicationSonataNewsBundle:Post:sidebarcategories.html.twig' %}
+{% endblock %}
+
+    
+    
+{% block tags %}
+{{ parent() }}
+{% include 'ApplicationSonataNewsBundle:Post:sidebartags.html.twig' %}
+{% endblock %}

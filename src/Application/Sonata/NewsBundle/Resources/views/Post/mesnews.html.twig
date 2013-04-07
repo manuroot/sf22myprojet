@@ -52,6 +52,11 @@ background-color:  #e3e3e3;
 tr.title {
     background-color: #e4e4e4;
 }
+a.example {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:12px; 
+    color: rgb(51, 51, 51);
+}
 
 </style> 
   {% endblock %}
@@ -65,9 +70,13 @@ $(function() {
 $( "#accordion-archives" ).accordion({
 collapsible: true
 });
-});
-</script>
+ $(".example").popover({trigger: 'hover',placement:'top'});  
 
+});
+          
+</script>
+  <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap-tooltip.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('bootstrap/js/bootstrap-popover.js') }}"></script>
      {#{ tinymce_init() }#}
   {% endblock %}
 
@@ -83,6 +92,8 @@ collapsible: true
 {% block content %}
 <br>
 
+
+           
  <table class="table small table-striped table-condensed table-bordered table-hover">
      <thead>
                       
@@ -109,30 +120,18 @@ collapsible: true
               {% for post in pagination %}
             <tr>
             
-                         <td>
-           
-          <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{{ post.title }}</a>
-           
-                   </td>
+                 <td><a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{{ post.title }}</a>    </td>
                   <td>
-               {{  post.abstract|length > 30 ? post.abstract|slice(0, 30) ~ ' ...' : post.abstract  }}
-                 {#{ post.abstract|truncate(20)  }#}
-             
-                   </td>
+   <a href="#" class="example"  
+      data-toggle="tooltip" rel="popover" data-content="{{ post.abstract }}">{{  post.abstract|length > 30 ? post.abstract|slice(0, 30) ~ ' ...' : post.abstract  }}
+  </a>  
+
+                    </td>
                    
+                   <td>{{ post.commentsCount  }}</td>
+                   <td>{{ post.author  }}</td>
+                   <td>{{ post.publicationDateStart | created_ago  }} </td>
                    <td>
-                 {{ post.commentsCount  }}
-                   </td>
-                   
-                      <td>
-                 {{ post.author  }}
-                   </td>
-                   
-                              <td>
-                 {{ post.publicationDateStart | created_ago  }}
-                   </td>
-                   
-                  <td>
                     {% if  post.category is defined and  post.category is not empty%}
                             <a href="{{ url('sonata_news_category', {'category': post.category.slug} ) }}">{{ post.category }}</a>
                   
@@ -140,8 +139,7 @@ collapsible: true
                        --
                         {% endif %}
                    </td>
-                   
-                     <td>{{ post.tags|join(', ') }}   </td>
+                 <td>{{ post.tags|join(', ') }}   </td>
             </tr>
                   {% endfor %}
                   </tbody>
@@ -153,35 +151,16 @@ collapsible: true
 {% endblock %}
 
 
-{% block archives %}
-    {{ parent() }}
- {% endblock %}
- 
-   {% block categories %}
-   {{ parent() }}
-        {% for category in allcategories %}
-       <span class="label">
-                             <!--Catégorie: -->
-                        <a href="{{ url('sonata_news_category', {'category': category.slug} ) }}">{{ category.name }}</a>
-                        </span>
-    
-    
-                 {% endfor %}
-   {% endblock %}
+{% block categories %}
+{{ parent() }}
+{% include 'ApplicationSonataNewsBundle:Post:sidebarcategories.html.twig' %}
+{% endblock %}
 
     
     
-      {% block tags %}
-    {{ parent() }}
-<div><p>
-        {% for tag in alltags %}
-       <span class="badge badge-warning">
-                             <!--Catégorie: -->
-                        <a href="{{ url('sonata_news_tag', {'tag': tag.slug} ) }}">{{ tag.name }}</a>
-                        </span>
-    
-    
-                 {% endfor %}
-                </p></div>
-   {% endblock %}
-
+{% block tags %}
+{{ parent() }}
+{% include 'ApplicationSonataNewsBundle:Post:sidebartags.html.twig' %}
+{% endblock %}
+  
+     

@@ -77,7 +77,7 @@ public function getTemplate($name)
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $commentClass = $this->commentManager->getClass();
+     //   $commentClass = $this->commentManager->getClass();
 
          parent::configureFormFields($formMapper);
          $formMapper->remove('rawContent');
@@ -91,7 +91,19 @@ public function getTemplate($name)
          'data-theme' => 'simple'
            
 // simple, advanced, bbcode
-        )));
+        )))
+                    ->end();
+          
+          /*  $formMapper->with('Image')
+                    ->add('image', 'sonata_type_model_list', array(), 
+                    array('link_parameters' => array('context' => 'default')));*/
+           /* $formMapper->with('Image')
+                    ->add('image', 'sonata_type_model', array());*/
+          
+          
+          $formMapper->with('Image')
+          ->add('image', 'sonata_type_model_list', array(), array('link_parameters' => array('context' => 'default')))
+           ->end();
         /*$formMapper
             ->with('General')
                 ->add('enabled', null, array('required' => false))

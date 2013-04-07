@@ -51,12 +51,7 @@ class PostController extends Controller {
      */
     public function renderArchive(array $criteria = array(), array $parameters = array()) {
         
-        
-     /*   print_r($criteria);
-        exit(1);
-       */
-//  $this->setMaxPerPage(2);
-        $form_paypal = $this->createPurchaseForm();
+         $form_paypal = $this->createPurchaseForm();
         $pager = $this->getPostManager()->getPager(
                 $criteria, $this->getRequest()->get('page', 1),5
         );
@@ -135,7 +130,9 @@ class PostController extends Controller {
         if (!$post || !$post->isPublic()) {
             throw new NotFoundHttpException('Unable to find the post');
         }
-
+   $alltags = $this->sidebar_tags();
+          $allcategories = $this->sidebar_categories();
+       
         if ($seoPage = $this->getSeoPage()) {
             $seoPage
                     ->setTitle($post->getTitle())
@@ -150,7 +147,7 @@ class PostController extends Controller {
         }
 /*
         
-        ADD
+        ADD: tout sur la meme page
         */
  
         $page=$this->getRequest()->get('page', 1);
@@ -168,6 +165,9 @@ class PostController extends Controller {
                     'blog' => $this->get('sonata.news.blog'),
                     'form_paypal' => $form_paypal->createView(),
               'pager'  => $pager,
+              'allcategories' => $allcategories,
+          'alltags' => $alltags,
+      
                 ));
     }
 
@@ -231,7 +231,7 @@ class PostController extends Controller {
              
         }*/
             $form = $this->getCommentForm($post);
-            $form->setData(array('email'=>'email'));
+          //  $form->setData(array('email'=>'email'));
 
         }
 
