@@ -30,10 +30,10 @@ sonata_media:
                 strategy: sonata.media.security.superadmin_strategy
                 mode: http
             providers:
-                - sonata.media.provider.dailymotion
-                - sonata.media.provider.youtube
+                #- sonata.media.provider.dailymotion
+                #- sonata.media.provider.youtube
                 - sonata.media.provider.image
-                - sonata.media.provider.file
+                #- sonata.media.provider.file
 
             formats:
                 small: { width: 150 , quality: 95}

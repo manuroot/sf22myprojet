@@ -100,10 +100,45 @@ public function getTemplate($name)
            /* $formMapper->with('Image')
                     ->add('image', 'sonata_type_model', array());*/
           
-          
-          $formMapper->with('Image')
-          ->add('image', 'sonata_type_model_list', array(), array('link_parameters' => array('context' => 'default')))
-           ->end();
+        /* $formMapper->add('image', 'sonata_media_type', array(
+                 'provider' => 'sonata.media.provider.image',
+                 'context'  => 'news'
+            ))*/
+           // ...
+       /*     $formMapper->with('Image')
+    ->add('image', 'sonata_type_model_list',
+            array(),
+           // array('required' => false),
+            array('link_parameters' => array(
+                 'provider' => 'sonata.media.provider.image',
+                'context' => 'news')))
+             ->end();*/
+            
+           
+            $formMapper->with('ImagePost')
+            ->add('image', 'sonata_type_model_list', array('required' => false),
+                array('link_parameters'=>array('context'=>'default',
+               'provider'=>'sonata.media.provider.image')))
+                  ->end();
+       /*
+->add('galleryHasMedias', 'sonata_type_collection', array(
+            'by_reference' => false
+        ), array(
+            'edit' => 'inline',
+            'inline' => 'table',
+            'sortable'  => 'position',
+            'link_parameters' => array('context' => 'default')
+        ))*/
+                    //  ->end();
+         /* $formMapper->with('Image')
+                  ->add('image', 'sonata_type_model_list', array('required' => false), 
+                    array('link_parameters' => array('context' => 'default')))*/
+                /* ->add('image', 'sonata_type_model', array(), array('edit' => 'list'))*/
+          /*->add('image', 'sonata_type_model_list', array(),
+                  array(
+                       'provider' => 'sonata.media.provider.image',
+                      'link_parameters' => array('context' => 'default')))*/
+          // ->end();
         /*$formMapper
             ->with('General')
                 ->add('enabled', null, array('required' => false))
