@@ -57,9 +57,9 @@ class AppKernel extends Kernel {
             //====================================================
             // PAYPAL: JMSPAYMENT
             //====================================================
-            new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
+            /*new JMS\Payment\CoreBundle\JMSPaymentCoreBundle(),
             new JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle(),
-            new Application\JMSPaymentBundle\ApplicationJMSPaymentBundle(),
+            new Application\JMSPaymentBundle\ApplicationJMSPaymentBundle(),*/
             //new Application\PaypalBundle\ApplicationPaypalBundle(),
             //====================================================
             // PAYPAL: PAYUM

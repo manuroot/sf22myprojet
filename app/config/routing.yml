@@ -1,6 +1,6 @@
-application_jms_payment:
-    resource: "@ApplicationJMSPaymentBundle/Resources/config/routing.yml"
-    prefix:   /
+#application_jms_payment:
+#    resource: "@ApplicationJMSPaymentBundle/Resources/config/routing.yml"
+#    prefix:   /
 
 
 application_paypal_express_checkout:
