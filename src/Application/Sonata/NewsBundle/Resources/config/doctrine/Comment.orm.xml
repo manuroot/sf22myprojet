@@ -11,7 +11,7 @@
     <entity
         name="Application\Sonata\NewsBundle\Entity\Comment"
         table="news__comment"
-        repository-class="Doctrine\ORM\EntityRepository">
+        repository-class="Application\Sonata\NewsBundle\Entity\CommentRepository">
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>

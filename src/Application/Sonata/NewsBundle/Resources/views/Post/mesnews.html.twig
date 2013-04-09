@@ -114,6 +114,8 @@ collapsible: true
                 <th>{{ knp_pagination_sortable(pagination, 'Catégorie', 'd.category.name') }}
                   <i class="icon-folder-open"></i></th>      
                 <th>Tags  <i class="icon-tags"></i></th>
+               <th>Image<i class="icon-folder-open"></i></th>    
+ 
             </tr>  
         </thead>
          <tbody>
@@ -140,6 +142,10 @@ collapsible: true
                         {% endif %}
                    </td>
                  <td>{{ post.tags|join(', ') }}   </td>
+                 <td>
+             {#       <img width="40px" src="{{  post.image }}" alt="fds" /></td>#}
+              
+                 <td>{% thumbnail post.image, 'mini' %}</td>
             </tr>
                   {% endfor %}
                   </tbody>

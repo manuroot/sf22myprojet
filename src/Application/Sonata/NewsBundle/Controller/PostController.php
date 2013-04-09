@@ -36,14 +36,23 @@ class PostController extends Controller {
              //   ->findAll();
       return ($alltags);
     }
-
-    private function sidebar_categories() {
+ 
+    private function sidebar_comments() {
         $em = $this->container->get('doctrine')->getEntityManager();
-        $allcategories = $em->getRepository('ApplicationSonataNewsBundle:Category')->findByEnabled(1);
+        //myFindAll
+      //  $allcategories = $em->getRepository('ApplicationSonataNewsBundle:Category')->myFindAll();
+       $lastcomments = $em->getRepository('ApplicationSonataNewsBundle:Comment')->FindLastComments();
+            //    ->findAll();
+       return ($lastcomments);
+    }
+   private function sidebar_categories() {
+        $em = $this->container->get('doctrine')->getEntityManager();
+        //myFindAll
+      //  $allcategories = $em->getRepository('ApplicationSonataNewsBundle:Category')->myFindAll();
+       $allcategories = $em->getRepository('ApplicationSonataNewsBundle:Category')->findByEnabled(1);
             //    ->findAll();
        return ($allcategories);
     }
-
     /**
      * @param array $criteria
      *
@@ -58,6 +67,7 @@ class PostController extends Controller {
         $test = "(surcharge du controleur: phase de développement)";
           $alltags = $this->sidebar_tags();
           $allcategories = $this->sidebar_categories();
+          $lastcomments=$this->sidebar_comments();
         // $alltags=$em->getRepository('ApplicationSonataNewsBundle:Tag')->findAll();
          // $pager->setLinks(3);
          $parameters = array_merge(array(
@@ -68,6 +78,7 @@ class PostController extends Controller {
           'form_paypal' => $form_paypal->createView(),
           'allcategories' => $allcategories,
           'alltags' => $alltags,
+           'lastcomments' =>  $lastcomments,
           ), $parameters); 
         $response = $this->render(sprintf('SonataNewsBundle:Post:archive.%s.twig', $this->getRequest()->getRequestFormat()), $parameters);
 
@@ -171,7 +182,31 @@ class PostController extends Controller {
                 ));
     }
 
-    
+     /**
+     * @param $category
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
+    public function categoryAction($category)
+    {
+        $category = $this->get('sonata.news.manager.category')->findOneBy(array(
+            'slug' => $category,
+            'enabled' => true
+        ));
+
+        if (!$category) {
+            throw new NotFoundHttpException('Unable to find the category');
+        }
+
+        if (!$category->getEnabled()) {
+            throw new NotFoundHttpException('Unable to find the category');
+        }
+
+        return $this->renderArchive(array('category' => $category), array('category' => $category));
+    }
+
      /**
      * @param integer $postId
      *

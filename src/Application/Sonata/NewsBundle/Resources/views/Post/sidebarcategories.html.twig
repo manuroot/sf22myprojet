@@ -1,7 +1,10 @@
 {% for category in allcategories %}
        <span class="label">
        <!--Catégorie: -->
-        <a href="{{ url('sonata_news_category', {'category': category.slug} ) }}">{{ category.name }}</a>
+        <a href="{{ url('sonata_news_category', {'category': category.slug} ) }}">
+          
+{{ category.name }}({{ category.posts|length }})</a>
        </span>
+
 {% endfor %}
 

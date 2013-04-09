@@ -172,3 +172,9 @@ collapsible: true
 {% include 'ApplicationSonataNewsBundle:Post:sidebartags.html.twig' %}
 {% endblock %}
 
+   
+{% block comments %}
+{#
+{{ parent() }}#}
+{% include 'ApplicationSonataNewsBundle:Post:lastcomments.html.twig' %}
+{% endblock %}
