@@ -21,11 +21,12 @@ sonata_media:
                 - sonata.media.provider.file
 
             formats:
-                small: { width: 100 , quality: 70}
-                big:   { width: 500 , quality: 70}
-                mini: { width: 50 , quality: 70}
-
-      
+                small:  { width: 50, quality: 70}
+                #medium: { width: 100, quality: 70}
+                big:    { width: 100, quality: 90}
+                #smallest:   { width: 50, quality: 70}
+             
+    
         news:
             download:
                 strategy: sonata.media.security.superadmin_strategy
@@ -37,13 +38,16 @@ sonata_media:
                 #- sonata.media.provider.file
 
             formats:
-                small: { width: 150 , quality: 95}
-                big:   { width: 500 , quality: 90}
-                mini:  { width: 50 , quality: 70}
+                small: { width: 50 , quality: 70}
+                big:   { width: 100 , quality: 90}
+                #medium: { width: 100, quality: 70}
+                #mini:  { width: 50 , quality: 70}
+                #smallest:   { width: 50, quality: 70}
 
     cdn:
         server:
             path:      /uploads/media # http://media.sonata-project.org
+            #path:      http://symvideo:92/uploads/media # http://media.sonata-project.org
 
         panther:
             path:       http://domain.pantherportal.com/uploads/media
@@ -85,6 +89,8 @@ sonata_media:
             thumbnail:  sonata.media.thumbnail.format
 
         image:
+            allowed_extensions: ['jpg', 'png', 'gif', 'jpeg']
+            allowed_mime_types: ['image/pjpeg','image/jpeg','image/png','image/x-png', 'image/gif']
             resizer:    sonata.media.resizer.simple # sonata.media.resizer.square
             filesystem: sonata.media.filesystem.local
             cdn:        sonata.media.cdn.server

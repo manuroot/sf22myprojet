@@ -1,11 +1,15 @@
-<div>
-    <p>
+<div style="width:80%">
+   
 {% for comment in lastcomments %}
-    <span class="badge badge-warning">
+    
     <!--Catégorie: -->
-     Il y' a {{ comment.updatedAt | created_ago  }}, {{ comment.name }}
-    <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(comment.post) }) }}">{{ comment.message }}</a>
-    </span>
+    Il y' a {{ comment.updatedAt | created_ago  }}, <span class="badge badge-warning">
+   
+            <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(comment.post) }) }}">
+{{ comment.name }}</a> </span>
+    <p> 
+    {{ comment.message }}
+   </p> 
 {% endfor %}
-</p>
+
 </div>

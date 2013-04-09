@@ -15,15 +15,13 @@
 div.viewpost
 {
 border:1px solid;
-/*border-radius:10px;
--moz-border-radius:10px; */
-/* Old Firefox */
+border-radius:10px;
+-moz-border-radius:10px; /* Old Firefox */
 padding-bottom:10px;
 padding-left:5px;
 margin-bottom:10px;
 box-shadow: 7px 7px 5px #888888;
-/*background-color:  #e3e3e3;*/
-background-color: rgb(249, 249, 249);
+background-color:  #e3e3e3;
 } 
 
 div#accordion{
@@ -39,22 +37,6 @@ width: 100%;
 height: 135px;
 padding: 0.1em;
 }
-
-.sidebar .section { margin-bottom: 20px; }
-.sidebar h3 { line-height: 1.2em; font-size: 20px; margin-bottom: 10px; font-weight: normal; background: #eee; padding: 5px;  }
-.sidebar p { line-height: 1.5em; margin-bottom: 20px; }
-.sidebar ul { list-style: none }
-.sidebar ul li { line-height: 1.5em }
-.sidebar .small { font-size: 12px; }
-.sidebar .comment p { margin-bottom: 5px; }
-.sidebar .comment { margin-bottom: 10px; padding-bottom: 10px; }
-.sidebar .tags { font-weight: bold; }
-.sidebar .tags span { color: #000; font-size: 12px; }
-.weight-1 { font-size: 12px; }
-.weight-2 { font-size: 15px; }
-.weight-3 { font-size: 18px; }
-.weight-4 { font-size: 21px; }
-.weight-5 { font-size: 24px; }
 </style> 
   {% endblock %}
      
@@ -102,7 +84,7 @@ collapsible: true
 <div class="sonata-blog-post-container">
     <div class="viewpost">
     <div class="sonata-blog-post-date-container">
-        {{ post.publicationDateStart | format_datetime }}
+        {{ post.publicationDateStart | format_date }}
     </div>
 
     <h1 class="sonata-blog-post-title">
@@ -125,54 +107,49 @@ collapsible: true
         </div>
     </div>
 
-  
     <div class="sonata-blog-post-content">
         {{ post.content|raw }}
     </div>
-    </div>
-
-   <br>   <br> 
-       
-        {% if pager.getResults()|length > 0 %}
-         {#{% if pager.haveToPaginate() %} #}
-         <table class="table table-striped table-bordered table-hover" style="width:100%">
-     <thead>
-                      
-             <tr class="title">
-                <th>User <i class="icon-user"></i></th>
-                <th>Date <i class="icon-time"></i></th>
-                <th>Commentaire <i class="icon-pencil"></i></th>      
-                </tr>  
-        </thead>
-         <tbody>
             
-         
+            {#
+COMMENTS
+#}
+<div class="sonata-blog-comment-container">
+    <h3>{{ 'title_comments'|trans({}, 'SonataNewsBundle') }}</h3>
+
+    
+    <div class="sonata-blog-comment-list">
+     
+{#     
+    {% include 'ApplicationSonataNewsBundle:Post:pagercomments.html.twig' with {'mything': 'COMMENTAIRES','postId': post.id } %}
+  {{ render(controller('SonataNewsBundle:Post:comments', { 'postId': post.id  })) }}#}
+       
+       <div id="accordion">   
            {% for comment in pager.getResults() %}
         {#% for comment in pager.results %#}
-<tr> 
-    <td>
-<a href="{{ comment.url }}" target="new" rel="nofollow">{{ comment.name }}</a>
-</td><td>
-           {{ comment.createdAt | format_datetime }}</td>
-         <td>
-              <div class="sonata-blog-post-content">
-          {{ comment.message|raw }}
-                  </div></td>
-     </tr>   {% else %}
+         <h3><a href="{{ comment.url }}" target="new" rel="nofollow">{{ comment.name }}</a>: 
+          le {{ comment.createdAt | format_date }}
+         </h3>
+          <div><p>{{ comment.message|raw }}</p></div>
+        {% else %}
             {{ 'no_comments_available'|trans({}, 'SonataNewsBundle') }}
         {% endfor %}
-    </tbody>
-</table>
-    {%endif %}  
-      </div>
+      
+           </div>
            
-{% include 'ApplicationSonataNewsBundle:Post:pagercommentsa.html.twig' with {'mything': 'COMMENTAIRES', 'myurl': 'sonata_news_view'} %}
+    </div>
+     
+</div>
+            
+       
+{% include 'ApplicationSonataNewsBundle:Post:pagercomments.html.twig' with {'mything': 'COMMENTAIRES', 'myurl': 'sonata_news_view'} %}
                       
 
 {#         {{ render(controller('SonataNewsBundle:Post:comments', { 'postId': post.id  })) }}
  {{ render(controller('SonataNewsBundle:Post:mcomments', { 'mpost': post, 'postId': post.id  })) }}
    #}         
-
+              
+</div>
     {#% render 'SonataNewsBundle:Post:comments' with {'postId': post.id} %#}
  {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         Pour poster un commentaire, vous devez être enregistré et connecté.
@@ -192,7 +169,7 @@ collapsible: true
         </div>
     {% endif %}
         {% endif %}
-
+</div>
 {% endblock %}
  
  

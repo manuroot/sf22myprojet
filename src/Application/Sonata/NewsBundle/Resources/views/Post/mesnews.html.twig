@@ -58,6 +58,22 @@ a.example {
     color: rgb(51, 51, 51);
 }
 
+
+.sidebar .section { margin-bottom: 20px; }
+.sidebar h3 { line-height: 1.2em; font-size: 20px; margin-bottom: 10px; font-weight: normal; background: #eee; padding: 5px;  }
+.sidebar p { line-height: 1.5em; margin-bottom: 20px; }
+.sidebar ul { list-style: none }
+.sidebar ul li { line-height: 1.5em }
+.sidebar .small { font-size: 12px; }
+.sidebar .comment p { margin-bottom: 5px; }
+.sidebar .comment { margin-bottom: 10px; padding-bottom: 10px; }
+.sidebar .tags { font-weight: bold; }
+.sidebar .tags span { color: #000; font-size: 12px; }
+.weight-1 { font-size: 10px; }
+.weight-2 { font-size: 12px; }
+.weight-3 { font-size: 16px; }
+.weight-4 { font-size: 21px; }
+.weight-5 { font-size: 26px; }
 </style> 
   {% endblock %}
 
@@ -103,7 +119,7 @@ collapsible: true
                 
                 <th>{{ knp_pagination_sortable(pagination, 'Résumé', 'p.abstract') }}</th>
                 
-                <th>{{ knp_pagination_sortable(pagination, 'C', 'p.commentsCount') }}
+                <th>{{ knp_pagination_sortable(pagination, 'Comments', 'p.commentsCount') }}
                  <i class="icon-comment"></i></th>
                  
                 <th>{{ knp_pagination_sortable(pagination, 'User', 'e.author.username') }}
@@ -114,7 +130,7 @@ collapsible: true
                 <th>{{ knp_pagination_sortable(pagination, 'Catégorie', 'd.category.name') }}
                   <i class="icon-folder-open"></i></th>      
                 <th>Tags  <i class="icon-tags"></i></th>
-               <th>Image<i class="icon-folder-open"></i></th>    
+               <th><center><i class="icon-eye-open"></i></center></th>    
  
             </tr>  
         </thead>
@@ -142,10 +158,16 @@ collapsible: true
                         {% endif %}
                    </td>
                  <td>{{ post.tags|join(', ') }}   </td>
-                 <td>
-             {#       <img width="40px" src="{{  post.image }}" alt="fds" /></td>#}
-              
-                 <td>{% thumbnail post.image, 'mini' %}</td>
+               {#  <td>
+             {      <img width="40px" src="{{  post.image }}" alt="fds" /></td>#}
+               <td>
+<img src="{% path post.image, 'small' %}" width="50"> 
+{#
+ {% thumbnail post.image, 'smallest'  %}
+{% thumbnail post.image, 'big'  %}
+                  
+                        {% media post.image, 'medium'  %} #}
+                   </td>
             </tr>
                   {% endfor %}
                   </tbody>
@@ -156,7 +178,11 @@ collapsible: true
 
 {% endblock %}
 
-
+{% block archives %}
+    {{ parent() }}
+ {% endblock %}
+ 
+ 
 {% block categories %}
 {{ parent() }}
 {% include 'ApplicationSonataNewsBundle:Post:sidebarcategories.html.twig' %}
@@ -168,5 +194,11 @@ collapsible: true
 {{ parent() }}
 {% include 'ApplicationSonataNewsBundle:Post:sidebartags.html.twig' %}
 {% endblock %}
-  
+
+   
+{% block comments %}
+{#
+{{ parent() }}#}
+{% include 'ApplicationSonataNewsBundle:Post:lastcomments.html.twig' %}
+{% endblock %}
      

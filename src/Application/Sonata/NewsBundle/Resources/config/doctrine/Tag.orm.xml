@@ -11,7 +11,7 @@
     <entity
         name="Application\Sonata\NewsBundle\Entity\Tag"
         table="news__tag"
-        repository-class="Doctrine\ORM\EntityRepository">
+        repository-class="Application\Sonata\NewsBundle\Entity\TagRepository">
 
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
