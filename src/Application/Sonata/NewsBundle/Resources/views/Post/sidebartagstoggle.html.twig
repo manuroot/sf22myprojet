@@ -1,7 +1,6 @@
 <div class="toggler">
 <div id="effect" class="ui-widget-content ui-corner-all">
 <h3 class="ui-widget-header ui-corner-all">Tags</h3>
-<p>
 
 {% for tag in alltags %}
     <!--<span class="badge badge-warning">-->
@@ -10,7 +9,7 @@
         <a href="{{ url('sonata_news_tag', {'tag': tag.slug} ) }}">{{ tag.name }}({{ tag.posts|length }})</a>
     </span>
 {% endfor %}
-    </p>
+  
 </div>
 </div>
 

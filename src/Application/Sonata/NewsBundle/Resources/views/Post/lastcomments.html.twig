@@ -1,15 +1,15 @@
-<div style="width:80%">
+<div>
    
 {% for comment in lastcomments %}
-    
+ <br>   
     <!--Catégorie: -->
     Il y' a {{ comment.updatedAt | created_ago  }}, <span class="badge badge-warning">
    
             <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(comment.post) }) }}">
 {{ comment.name }}</a> </span>
-    <p> 
+ <br>    
     {{ comment.message }}
-   </p> 
+
 {% endfor %}
 
 </div>
