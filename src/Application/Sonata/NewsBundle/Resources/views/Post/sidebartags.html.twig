@@ -1,5 +1,5 @@
 <div>
-   
+    <h4 class="ui-widget-header ui-corner-all">Tags</h4>
 {% for tag in alltags %}
     <!--<span class="badge badge-warning">-->
         <span class="weight-{{ tagweight[tag.name] }}">
@@ -10,7 +10,6 @@
      <a href="{{ url('sonata_news_tag', {'tag': tag.slug} ) }}">{{ tag.name }}</a>
     </span>
 {% endfor %}
-
 </div>
 
 {#

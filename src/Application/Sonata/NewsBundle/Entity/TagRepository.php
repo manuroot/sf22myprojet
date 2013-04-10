@@ -49,22 +49,20 @@ public function getTags()
 
 public function getTagWeights($tags)
 {
-    $tagWeights = array();
-    if (empty($tags))
-        return $tagWeights;
-
-    foreach ($tags as $tag)
+        //getPosts()
+        $tagWeights=array();
+        $aa=array();
+        foreach ($tags as $tag)
     {
-        
-        $tagWeights[$tag] =count($tags->getPosts());
-    }
-    // Shuffle the tags
-    uksort($tagWeights, function() {
+         $a=$tag->getPosts();
+         $b=count($a);
+         $tagWeights[$tag->getName()] =$b;
+      }
+ // Shuffle the tags
+   /* uksort($tagWeights, function() {
         return rand() > rand();
-    });
-
-    $max = max($tagWeights);
-
+    }); */   
+     $max = max($tagWeights);
     // Max of 5 weights
     $multiplier = ($max > 5) ? 5 / $max : 1;
     foreach ($tagWeights as &$tag)
@@ -72,7 +70,6 @@ public function getTagWeights($tags)
         $tag = ceil($tag * $multiplier);
     }
 
-    return $tagWeights;
+  return $tagWeights;
 }
-
 }

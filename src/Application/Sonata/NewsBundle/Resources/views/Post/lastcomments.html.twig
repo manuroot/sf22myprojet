@@ -1,14 +1,15 @@
 <div>
-   
+  <!-- <h4 class="ui-widget-header ui-corner-all">Commentaires Recents</h4>-->
 {% for comment in lastcomments %}
- <br>   
     <!--Catégorie: -->
+
     Il y' a {{ comment.updatedAt | created_ago  }}, <span class="badge badge-warning">
    
             <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(comment.post) }) }}">
 {{ comment.name }}</a> </span>
  <br>    
-    {{ comment.message }}
+   
+    {{  comment.message|length > 30 ? comment.message|slice(0, 30) ~ ' ...' : comment.message  }}
 
 {% endfor %}
 

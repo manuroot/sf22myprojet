@@ -135,36 +135,29 @@ padding-bottom:10px;
                                
                             
                               <div id="accordion-archives">   
+                                  <h3 class="ui-widget-header ui-corner-all">Categories</h3>
+                                   {% block categories %}
+                                  {% endblock %}
                                   
-                                 <h3>Categories</h3>
-                                 
-                                  <div>
-                                 {% block categories %}
-                                 
-                                 {% endblock %}
-                                </div>
-                               <h3>Tags</h3>
-                                                
-                                
+                                  <h3 class="ui-widget-header ui-corner-all">Tags</h3>
                                    {% block tags %}
                                 {% endblock %}
-                                        <h3>Archives</h3>
-                                   
-                            {% block archives %}
+                                      <h3 class="ui-widget-header ui-corner-all">Commentaires</h3>
+                               {% block comments %}
+                               {% endblock %}
+                              <h3 class="ui-widget-header ui-corner-all">Archives</h3>
+                               {% block archives %}
+                              
                                   <div><p>TODO</p></div>
                             {% endblock %} 
-                                  <h3>Last Comments</h3>
-                                                
-                                
-                                   {% block comments %}
-                                  
-                                {% endblock %}
+                    
                                 </div>
                           
                        {% block sidebar %}
                         
                         {% endblock %}
                         </div>
+                    </div>
                     </div>
                     <!-- ==============================================
                                            FOOTER 

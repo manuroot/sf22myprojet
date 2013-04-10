@@ -34,39 +34,26 @@ class PostController extends Controller {
 
         $em = $this->container->get('doctrine')->getEntityManager();
         $alltags = $em->getRepository('ApplicationSonataNewsBundle:Tag')->findByEnabled(1);
-        //   ->findAll();
-         // $tagWeights = $em->getRepository('ApplicationSonataNewsBundle:Tag')->getTagWeights($alltags);
+        $tagWeights = $em->getRepository('ApplicationSonataNewsBundle:Tag')->getTagWeights($alltags);
       
         //getPosts()
-        $tagWeights=array();
-        $aa=array();
+     
+     /*   $aa=array();
         foreach ($alltags as $tag)
     {
-        
-       // $tagWeights[$alltags] =1;
-        $a=$tag->getPosts();
-       // $b=0;
-        $b=count($a);
-        //$aa[$tag->getName()]=$b;
+         $a=$tag->getPosts();
+         $b=count($a);
          $tagWeights[$tag->getName()] =$b;
-       //   $tagWeights[$tag] =$b;
-    }
- // Shuffle the tags
-   /* uksort($tagWeights, function() {
-        return rand() > rand();
-    }); */   
+      }
+ 
      $max = max($tagWeights);
-
     // Max of 5 weights
     $multiplier = ($max > 5) ? 5 / $max : 1;
     foreach ($tagWeights as &$tag)
     {
         $tag = ceil($tag * $multiplier);
-    }
-
-   // print_r($tagWeights);
-    //exit(1);
-      return array($alltags,$tagWeights);
+    }*/
+    return array($alltags,$tagWeights);
     }
 
     private function sidebar_comments() {
@@ -127,13 +114,6 @@ class PostController extends Controller {
     public function mesnewsAction(array $criteria = array(), array $parameters = array()) {
 
         $form_paypal = $this->createPurchaseForm();
-        /*  $mypager = $this->getPostManager()-> getPager(
-          $criteria, $this->getRequest()->get('page', 1)
-          ); */
-        //$mypager->getResult();
-        /* $pager = $this->getPostManager()-> getPagerquery(
-          $criteria, $this->getRequest()->get('page', 1)
-          ); */
         $em = $this->getDoctrine()->getManager();
         $query = $em->getRepository('ApplicationSonataNewsBundle:Post')->myFindAll();
      //   $alltags = $this->sidebar_tags();
