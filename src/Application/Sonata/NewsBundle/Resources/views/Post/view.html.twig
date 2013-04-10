@@ -167,7 +167,7 @@ collapsible: true
     {%endif %}  
       </div>
            
-{% include 'ApplicationSonataNewsBundle:Post:pagercommentsa.html.twig' with {'mything': 'COMMENTAIRES', 'myurl': 'sonata_news_view'} %}
+{% include 'ApplicationSonataNewsBundle:pagination:pagercommentsa.html.twig' with {'mything': 'COMMENTAIRES', 'myurl': 'sonata_news_view'} %}
                       
 
 {#         {{ render(controller('SonataNewsBundle:Post:comments', { 'postId': post.id  })) }}
@@ -200,21 +200,20 @@ collapsible: true
  
 {% block categories %}
 {{ parent() }}
-{% include 'ApplicationSonataNewsBundle:Post:sidebarcategories.html.twig' %}
+{% include 'ApplicationSonataNewsBundle:sidebar:sidebarcategories.html.twig' %}
 {% endblock %}
 
     
     
 {% block tags %}
 {{ parent() }}
-{% include 'ApplicationSonataNewsBundle:Post:sidebartagstoggle.html.twig' %}
+{% include 'ApplicationSonataNewsBundle:sidebar:sidebartags.html.twig' %}
 {% endblock %}
- 
- 
+
    
 {% block comments %}
 {#
 {{ parent() }}#}
-{% include 'ApplicationSonataNewsBundle:Post:lastcomments.html.twig' %}
+{% include 'ApplicationSonataNewsBundle:sidebar:lastcomments.html.twig' %}
 {% endblock %}
      
