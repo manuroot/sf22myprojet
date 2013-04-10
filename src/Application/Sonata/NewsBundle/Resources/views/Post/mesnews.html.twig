@@ -161,7 +161,7 @@ collapsible: true
                {#  <td>
              {      <img width="40px" src="{{  post.image }}" alt="fds" /></td>#}
                <td>
-<img src="{% path post.image, 'small' %}" width="50"> 
+<img src="{% path post.image, 'small' %}" width="50" /> 
 {#
  {% thumbnail post.image, 'smallest'  %}
 {% thumbnail post.image, 'big'  %}
@@ -185,20 +185,20 @@ collapsible: true
  
 {% block categories %}
 {{ parent() }}
-{% include 'ApplicationSonataNewsBundle:Post:sidebarcategories.html.twig' %}
+{% include 'ApplicationSonataNewsBundle:sidebar:sidebarcategories.html.twig' %}
 {% endblock %}
 
     
     
 {% block tags %}
 {{ parent() }}
-{% include 'ApplicationSonataNewsBundle:Post:sidebartags.html.twig' %}
+{% include 'ApplicationSonataNewsBundle:sidebar:sidebartags.html.twig' %}
 {% endblock %}
 
    
 {% block comments %}
 {#
 {{ parent() }}#}
-{% include 'ApplicationSonataNewsBundle:Post:lastcomments.html.twig' %}
+{% include 'ApplicationSonataNewsBundle:sidebar:lastcomments.html.twig' %}
 {% endblock %}
      

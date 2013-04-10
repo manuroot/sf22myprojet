@@ -98,7 +98,10 @@ collapsible: true
  <!--   <li class="active"><a href="#11">d</a></li></ul>
      </td></tr>               
                                         </table> -->
-                                   
+ {# avec renderXX action
+
+    {% for post in pager %}                               
+#}
     {% for post in pager.getResults() %}
          <div class="mypost">
             <div class="sonata-blog-post-date-container">
@@ -108,7 +111,7 @@ collapsible: true
             </div>
              <!--   <h2 class="entry-title">-->
             <h2 class="sonata-blog-post-title">
-              {% thumbnail post.image, 'big'  %}
+              {% thumbnail post.image, 'big' %}
 
                 <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{{ post.title }}</a>
                 <span class="sonata-blog-post-author">{{ 'archive_author'|trans({'%author%': post.author }, 'SonataNewsBundle') }}</span>
@@ -161,33 +164,30 @@ collapsible: true
         {{ 'no_post_found'|trans({}, 'SonataNewsBundle') }}
 <!--</div>-->
     {% endfor %}
-  {#{ knp_pagination_render(pager) }#}
-
-<!--http://symvideo:92/archive?page=2-->
-
-{% include 'ApplicationSonataNewsBundle:Post:pager.html.twig' with {'mything': 'ARTICLES', 'myurl': 'sonata_news_archive'} %}
+ {#
+{{ knp_pagination_render(pager) }}
+#}
+{% include 'ApplicationSonataNewsBundle:pagination:pager.html.twig' with {'mything': 'ARTICLES', 'myurl': 'sonata_news_archive'} %}
 {% endblock %}
 
-{% block archives %}
-    {{ parent() }}
- {% endblock %}
- 
+
  
 {% block categories %}
 {{ parent() }}
-{% include 'ApplicationSonataNewsBundle:Post:sidebarcategories.html.twig' %}
+{% include 'ApplicationSonataNewsBundle:sidebar:sidebarcategories.html.twig' %}
 {% endblock %}
 
     
     
 {% block tags %}
 {{ parent() }}
-{% include 'ApplicationSonataNewsBundle:Post:sidebartags.html.twig' %}
+{% include 'ApplicationSonataNewsBundle:sidebar:sidebartags.html.twig' %}
 {% endblock %}
 
    
 {% block comments %}
 {#
 {{ parent() }}#}
-{% include 'ApplicationSonataNewsBundle:Post:lastcomments.html.twig' %}
+{% include 'ApplicationSonataNewsBundle:sidebar:lastcomments.html.twig' %}
 {% endblock %}
+     

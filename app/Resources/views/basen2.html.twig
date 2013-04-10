@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-          <title>{% block headtitle %}BLOG MROOT PROJET{% endblock %}</title>
+        <title>{% block headtitle %}BLOG MROOT PROJET{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
           {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap-responsive.css') }}" type="text/css" />
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}" type="text/css" />
@@ -111,9 +111,11 @@ padding-bottom:10px;
            ================================================-->
 
             <div class="page-header">
-             {{ block('NAVIGATION_BAR') }}
-            </div>
-         
+                      {{ block('NAVIGATION_BAR') }}
+
+                </div>
+           
+          
             <div class="container-fluid">
                 <div class="row-fluid">
                     <!-- ==============================================
@@ -130,48 +132,30 @@ padding-bottom:10px;
                       ================================================-->
 
                         <div class="span3">
-                              
-              <div class="accordion" id="accordion2">
-                  <div class="accordion-group">
-<div class="accordion-heading">
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-     <h4 class="ui-widget-header ui-corner-all">Tags</h4>
-</a>
-</div>
-<div id="collapseOne" class="accordion-body collapse in">
-<div class="accordion-inner">
-    {% block tags %}
-    {% endblock %}
-</div>
-</div>
-</div>
-<div class="accordion-group">
-<div class="accordion-heading">
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-   <h4 class="ui-widget-header ui-corner-all">Commentaires</h4>
-</a>
-</div>
-<div id="collapseTwo" class="accordion-body collapse">
-<div class="accordion-inner">
-  {% block comments %}
-  {% endblock %}
-</div>
-</div>
-</div>
-                      <div class="accordion-group">
-<div class="accordion-heading">
-<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-   <h4 class="ui-widget-header ui-corner-all">Categories</h4>
-</a>
-</div>
-<div id="collapseThree" class="accordion-body collapse">
-<div class="accordion-inner">
-  {% block categories %}
+                               
+                            
+                              <div id="accordion-archives">   
+                              <h4 class="ui-widget-header ui-corner-all">Categories</h4>
+                              <!--<h3 class="ui-widget-header ui-corner-all">Categories</h3>-->
+                                   {% block categories %}
                                   {% endblock %}
-</div>
-</div>
-</div>
-</div>
+                                  
+                               <h4 class="ui-widget-header ui-corner-all">Tags</h4>
+                                  <!--<h3 class="ui-widget-header ui-corner-all">Tags</h3>-->
+                                   {% block tags %}
+                                {% endblock %}
+                             
+                                   <h4 class="ui-widget-header ui-corner-all">Commentaires</h4>
+                                 <!--  <h3 class="ui-widget-header ui-corner-all">Commentaires</h3>-->
+                               {% block comments %}
+                               {% endblock %}
+                              <h3 class="ui-widget-header ui-corner-all">Archives</h3>
+                               {% block archives %}
+                              
+                                  <div><p>TODO</p></div>
+                            {% endblock %} 
+                    
+                                </div>
                        {% block sidebar %}
                         
                         {% endblock %}

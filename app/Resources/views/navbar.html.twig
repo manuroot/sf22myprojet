@@ -2,15 +2,59 @@
 <div class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
         <div class="container-fluid"> 
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+           <!-- <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span> 
                 <span class="icon-bar"></span> 
-            </a>
+            </a>-->
             <a class="brand" href="#"><i class="icon-white icon-home"></i>{% block toto %} PROJET v1.0a{% endblock %}</a>
          
-             
-           
+                   <div class="nav-collapse">
+                    <ul class="nav">
+
+                          <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-book"></i>
+                                Blog<b class="caret"></b> </a>
+                            <ul class="dropdown-menu">
+                                
+                                   <li><a href="{{ path('sonata_news_home') }}"><i class="icon-book"></i>{{ 'Blog'|trans }}</a></li>
+                                <li><a href="{{ path('list_mesnews') }}"><i class="icon-book"></i>{{ 'Blog DataGRID'|trans }}</a></li>
+                          
+
+                            </ul>
+                                  
+                                  
+                                  
+                        <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white  icon-gift"></i>
+                                Donation<b class="caret"></b> </a>
+                            <ul class="dropdown-menu">
+                                
+                                <li><a href="{{ path('application_paypal_express_checkout_prepare_simple_purchase_and_doctrine') }}"><i class="icon-gift"></i> Via Paypal</a></li>
+                                <li><a href=""><i class="icon-gift"></i> Pourquoi?</a></li>
+
+                            </ul>
+
+
+
+
+                        </li>
+                        <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white  icon-user"></i>
+                                Team<b class="caret"></b> </a>
+                            <ul class="dropdown-menu">
+                                <li><a href=""><i class=" icon-hand-right"></i> Developpeurs</a></li>
+                                 <li class="divider"></li>
+                                <li><a href=""><i class=" icon-hand-right"></i> Team Projet</a></li>
+
+                            </ul>
+
+
+
+
+                        </li>
+
+
+
+                    </ul>  
+ 
             <div class="btn-group pull-right"> 
                      <a class="brand" href="{{ path('sonata_news_archive',{'_format': 'rss'}) }}"> <i class="icon-white icon-briefcase"></i> News RSS</a>
  
@@ -56,52 +100,8 @@
 
                     </ul>
                 </div>
-                <div class="nav-collapse">
-                    <ul class="nav">
-
-                          <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white icon-book"></i>
-                                Blog<b class="caret"></b> </a>
-                            <ul class="dropdown-menu">
-                                
-                                   <li><a href="{{ path('sonata_news_home') }}"><i class="icon-book"></i>{{ 'Blog'|trans }}</a></li>
-                                <li><a href="{{ path('list_mesnews') }}"><i class="icon-book"></i>{{ 'Blog DataGRID'|trans }}</a></li>
-                          
-
-                            </ul>
-                                  
-                                  
-                                  
-                        <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white  icon-gift"></i>
-                                Donation<b class="caret"></b> </a>
-                            <ul class="dropdown-menu">
-                                
-                                <li><a href="{{ path('application_paypal_express_checkout_prepare_simple_purchase_and_doctrine') }}"><i class="icon-gift"></i> Via Paypal</a></li>
-                                <li><a href=""><i class="icon-gift"></i> Pourquoi?</a></li>
-
-                            </ul>
-
-
-
-
-                        </li>
-                        <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-white  icon-user"></i>
-                                Team<b class="caret"></b> </a>
-                            <ul class="dropdown-menu">
-                                <li><a href=""><i class=" icon-hand-right"></i> Developpeurs</a></li>
-                                 <li class="divider"></li>
-                                <li><a href=""><i class=" icon-hand-right"></i> Team Projet</a></li>
-
-                            </ul>
-
-
-
-
-                        </li>
-
-
-
-                    </ul>  
-
+         
+           
                 </div>
                 <!--/.nav-collapse -->
             </div>

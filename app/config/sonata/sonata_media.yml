@@ -21,9 +21,9 @@ sonata_media:
                 - sonata.media.provider.file
 
             formats:
-                small:  { width: 50, quality: 70}
+                small:  { width: 50px, quality: 70}
                 #medium: { width: 100, quality: 70}
-                big:    { width: 100, quality: 90}
+                big:    { width: 100px, quality: 90}
                 #smallest:   { width: 50, quality: 70}
              
     
@@ -38,8 +38,8 @@ sonata_media:
                 #- sonata.media.provider.file
 
             formats:
-                small: { width: 50 , quality: 70}
-                big:   { width: 100 , quality: 90}
+                small: { width: 50px , quality: 70}
+                big:   { width: 100px , quality: 90}
                 #medium: { width: 100, quality: 70}
                 #mini:  { width: 50 , quality: 70}
                 #smallest:   { width: 50, quality: 70}

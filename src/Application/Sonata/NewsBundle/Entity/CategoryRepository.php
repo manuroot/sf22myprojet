@@ -28,4 +28,27 @@ class CategoryRepository extends EntityRepository
         //->getResult();
     }
 
+public function getCategoriesWeights($categories)
+{
+        //getPosts()
+        $catWeights=array();
+        $aa=array();
+        foreach ($categories as $cat)
+    {
+         $a=$cat->getPosts();
+         $b=count($a);
+         $catWeights[$cat->getSlug()] =$b;
+      }
+     $max = max($catWeights);
+    // Max of 5 weights
+    $multiplier = ($max > 5) ? 5 / $max : 1;
+    foreach ($catWeights as &$cat)
+    {
+        $cat = ceil($cat * $multiplier);
+    }
+    /*
+print_r($catWeights);
+exit(1);*/
+  return $catWeights;
+}
 }
