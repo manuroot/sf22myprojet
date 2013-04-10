@@ -20,6 +20,7 @@ use Sonata\NewsBundle\Model\CommentInterface;
 use Sonata\NewsBundle\Model\PostInterface;
 use Doctrine\ORM\EntityRepository;
 use Sonata\NewsBundle\Controller\PostController as Controller;
+use \Sonata\NewsBundle\Form\Type\CommentType;
 
 class PostController extends Controller {
 
@@ -30,17 +31,18 @@ class PostController extends Controller {
         return $this->redirect($this->generateUrl('sonata_news_archive'));
     }
 
-    /*====================================================================
+    /* ====================================================================
      * 
      *  SIDEBAR : TAGS, COMMENTS, CATEGORIES
      * 
-     ===================================================================*/
+      =================================================================== */
+
     private function sidebar_tags() {
 
         $em = $this->container->get('doctrine')->getEntityManager();
         $alltags = $em->getRepository('ApplicationSonataNewsBundle:Tag')->findByEnabled(1);
         $tagWeights = $em->getRepository('ApplicationSonataNewsBundle:Tag')->getTagWeights($alltags);
-    return array($alltags,$tagWeights);
+        return array($alltags, $tagWeights);
     }
 
     private function sidebar_comments() {
@@ -57,9 +59,9 @@ class PostController extends Controller {
         //myFindAll
         //  $allcategories = $em->getRepository('ApplicationSonataNewsBundle:Category')->myFindAll();
         $allcategories = $em->getRepository('ApplicationSonataNewsBundle:Category')->findByEnabled(1);
-      // $catWeights = $em->getRepository('ApplicationSonataNewsBundle:Category')->getCategoriesWeights($allcategories);
-     //  return array($allcategories,$catWeights);
-       return ($allcategories);
+        // $catWeights = $em->getRepository('ApplicationSonataNewsBundle:Category')->getCategoriesWeights($allcategories);
+        //  return array($allcategories,$catWeights);
+        return ($allcategories);
     }
 
     /**
@@ -67,37 +69,37 @@ class PostController extends Controller {
      *
      * @return Response
      */
-     /*===================================================================
+    /* ===================================================================
      * 
      *  MAIN: RENDER + KNP_PAGINATOR
      * 
-     ===================================================================*/
-   
+      =================================================================== */
+
     public function renderknpArchive(array $criteria = array(), array $parameters = array()) {
- 
-        
+
+
         $em = $this->container->get('doctrine')->getEntityManager();
         $form_paypal = $this->createPurchaseForm();
         $query = $em->getRepository('ApplicationSonataNewsBundle:Post')->getPager($criteria);
-         $paginator = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
                 $query, $this->get('request')->query->get('page', 1)/* page number */, 2/* limit per page */
         );
 
         $pagination->setTemplate('ApplicationSonataNewsBundle:pagination:twitter_bootstrap_pagination.html.twig');
-        list($alltags,$tagWeights) = $this->sidebar_tags();
-         $allcategories = $this->sidebar_categories();
+        list($alltags, $tagWeights) = $this->sidebar_tags();
+        $allcategories = $this->sidebar_categories();
         $lastcomments = $this->sidebar_comments();
-       $parameters = array_merge(array(
+        $parameters = array_merge(array(
             'blog' => $this->get('sonata.news.blog'),
             'tag' => false,
             'form_paypal' => $form_paypal->createView(),
             'allcategories' => $allcategories,
-           // 'catweight' => $catWeights,
+            // 'catweight' => $catWeights,
             'alltags' => $alltags,
             'lastcomments' => $lastcomments,
             'tagweight' => $tagWeights,
-              'pager' => $pagination,
+            'pager' => $pagination,
                 ), $parameters);
         $response = $this->render(sprintf('SonataNewsBundle:Post:archiveknp.%s.twig', $this->getRequest()->getRequestFormat()), $parameters);
 
@@ -107,21 +109,21 @@ class PostController extends Controller {
 
         return $response;
     }
-    
-     /*===================================================================
+
+    /* ===================================================================
      * 
      *  MAIN: RENDER + PAGER
      * 
-     ===================================================================*/
-   
- public function renderArchive(array $criteria = array(), array $parameters = array()) {
+      =================================================================== */
+
+    public function renderArchive(array $criteria = array(), array $parameters = array()) {
 
         $form_paypal = $this->createPurchaseForm();
         $pager = $this->getPostManager()->getPager(
                 $criteria, $this->getRequest()->get('page', 1), 5
         );
         $test = "(surcharge du controleur: phase de développement)";
-        list($alltags,$tagWeights) = $this->sidebar_tags();
+        list($alltags, $tagWeights) = $this->sidebar_tags();
         //list($allcategories,$catWeights) = $this->sidebar_categories();
         $allcategories = $this->sidebar_categories();
         $lastcomments = $this->sidebar_comments();
@@ -134,7 +136,7 @@ class PostController extends Controller {
             'test' => $test,
             'form_paypal' => $form_paypal->createView(),
             'allcategories' => $allcategories,
-           // 'catweight' => $catWeights,
+            // 'catweight' => $catWeights,
             'alltags' => $alltags,
             'lastcomments' => $lastcomments,
             'tagweight' => $tagWeights,
@@ -147,21 +149,21 @@ class PostController extends Controller {
 
         return $response;
     }
-    
-       /*===================================================================
+
+    /* ===================================================================
      * 
      *  MAIN: RENDER + DATAGRID
      * 
-     ===================================================================*/
-   
+      =================================================================== */
+
     public function mesnewsAction(array $criteria = array(), array $parameters = array()) {
 
         $form_paypal = $this->createPurchaseForm();
         $em = $this->getDoctrine()->getManager();
         $query = $em->getRepository('ApplicationSonataNewsBundle:Post')->myFindAll();
-     //   $alltags = $this->sidebar_tags();
-         list($alltags,$tagWeights) = $this->sidebar_tags();
-    
+        //   $alltags = $this->sidebar_tags();
+        list($alltags, $tagWeights) = $this->sidebar_tags();
+
         $allcategories = $this->sidebar_categories();
         $lastcomments = $this->sidebar_comments();
         $paginator = $this->get('knp_paginator');
@@ -178,7 +180,7 @@ class PostController extends Controller {
                     'allcategories' => $allcategories,
                     'lastcomments' => $lastcomments,
                     'alltags' => $alltags,
-             'tagweight' => $tagWeights,
+                    'tagweight' => $tagWeights,
                 ));
     }
 
@@ -189,13 +191,12 @@ class PostController extends Controller {
      *
      * @return Response
      */
-    
-     /*===================================================================
+    /* ===================================================================
      * 
      *  VIEW
      * 
-     ===================================================================*/
-   
+      =================================================================== */
+
     public function viewAction($permalink) {
         $form_paypal = $this->createPurchaseForm();
         $post = $this->getPostManager()->findOneByPermalink($permalink, $this->container->get('sonata.news.blog'));
@@ -203,11 +204,11 @@ class PostController extends Controller {
         if (!$post || !$post->isPublic()) {
             throw new NotFoundHttpException('Unable to find the post');
         }
-     //   $alltags = $this->sidebar_tags();
-          list($alltags,$tagWeights) = $this->sidebar_tags();
-     
+        //   $alltags = $this->sidebar_tags();
+        list($alltags, $tagWeights) = $this->sidebar_tags();
+
         $allcategories = $this->sidebar_categories();
-         $lastcomments = $this->sidebar_comments();
+        $lastcomments = $this->sidebar_comments();
         if ($seoPage = $this->getSeoPage()) {
             $seoPage
                     ->setTitle($post->getTitle())
@@ -242,9 +243,8 @@ class PostController extends Controller {
                     'pager' => $pager,
                     'allcategories' => $allcategories,
                     'alltags' => $alltags,
-             'lastcomments' => $lastcomments,
-               'tagweight' => $tagWeights,
-      
+                    'lastcomments' => $lastcomments,
+                    'tagweight' => $tagWeights,
                 ));
     }
 
@@ -303,32 +303,49 @@ class PostController extends Controller {
                 ));
     }
 
+  
     /**
      * @param $postId
      * @param bool $form
      *
      * @return Response
      */
+
+    /**
+     * @param $post
+     *
+     * @return \Symfony\Component\Form\FormInterface
+     */
+    public function getMyCommentForm(PostInterface $post, $user, $email) {
+        $comment = $this->getCommentManager()->create();
+        $comment->setPost($post);
+        $comment->setStatus($post->getCommentsDefaultStatus());
+        if (isset($user))
+            $comment->setName($user);
+        if (isset($email))
+            $comment->setEmail($email);
+        //  print_r($user);
+        //   exit(1);
+        return $this->get('form.factory')->createNamed('comment', 'sonata_post_comment', $comment);
+    }
+
     public function addCommentFormAction($postId, $form = false) {
         //    parent::addCommentFormAction($postId, $form=false);
         if (!$form) {
             $post = $this->getPostManager()->findOneBy(array(
                 'id' => $postId
                     ));
-            /* $em = $this->getDoctrine()->getManager();
-              $user = $this->get('security.context')->getToken()->getUser();
-              $user_security = $this->container->get('security.context');
-              //if( $user_security->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
-              if ($user_security->isGranted('IS_AUTHENTICATED_FULLY')) {
-              $user_id = $user->getId();
-
-              $current_user = $em->getRepository('ApplicationSonataUserBundle:User')->find($user_id);
-              $post->setDemandeur($current_user);
-
-
-              } */
-            $form = $this->getCommentForm($post);
-            //  $form->setData(array('email'=>'email'));
+            //$options=array();
+            $user_name = "unknown";
+            $user = $this->get('security.context')->getToken()->getUser();
+            $user_security = $this->container->get('security.context');
+            //if( $user_security->isGranted('IS_AUTHENTICATED_REMEMBERED') ){
+            if ($user_security->isGranted('IS_AUTHENTICATED_FULLY')) {
+                //     $user_id = $user->getId();
+                $user_name = $user->getUsername();
+                $user_email = $user->getEmail();
+            }
+            $form = $this->getMyCommentForm($post, $user_name, $user_email);
         }
 
         return $this->render('SonataNewsBundle:Post:comment_form.html.twig', array(
@@ -337,12 +354,12 @@ class PostController extends Controller {
                 ));
     }
 
-     /*===================================================================
+    /* ===================================================================
      * 
      *  PAYPAL FORM
      * 
-     ===================================================================*/
- 
+      =================================================================== */
+
     protected function createPurchaseForm() {
 
         return $this->createFormBuilder()

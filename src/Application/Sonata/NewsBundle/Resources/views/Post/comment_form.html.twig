@@ -16,7 +16,7 @@
 
 <form action="{{ url('sonata_news_add_comment', {'id': post_id}) }}" method="POST" >
     <div class="clearfix">
-        {{ form_label(form.name) }}
+       {{ form_label(form.name) }}
         {{ form_widget(form.name) }}
         {{ form_errors(form.name) }}
     </div>

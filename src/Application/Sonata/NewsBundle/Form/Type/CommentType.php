@@ -26,14 +26,18 @@ class CommentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $options['truc']="Votre Nom";
+    //  $name= $options['name'];
+    //  print_r($options);
+   //   exit(1);
    //$user=$this->buildvalues();
+    //          $name="Nom";
         $builder
-            ->add('name',null,array('label'=>'Nom','data'=>$options['truc']))
+            ->add('name',null,array('label'=>'Nom'))
                
             ->add('email', null, array('required' => false))
             ->add('url', null, array('required' => false))
-            ->add('message')
+            ->add('message','textarea')
+             //   ->add('message', null, array('required' => false, 'attr' => array('class' => 'ckeditor')))
         ;
     }
 

@@ -7,7 +7,7 @@
        {#
  <a href="{{ url('sonata_news_tag', {'tag': tag.slug} ) }}">{{ tag.name }}({{ tag.posts|length }})</a>
 #}
-     <a href="{{ url('sonata_news_tag', {'tag': tag.slug} ) }}">{{ tag.name }}</a>
+     <a href="{{ url('sonata_news_tag', {'tag': tag.slug} ) }}">{{ tag.name }}({{ tag.posts|length }})</a>
     </span>
 {% endfor %}</p>
 </div>
