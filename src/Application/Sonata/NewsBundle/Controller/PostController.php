@@ -73,7 +73,7 @@ class PostController extends Controller {
      * 
      ===================================================================*/
    
-    public function renderXXArchive(array $criteria = array(), array $parameters = array()) {
+    public function renderknpArchive(array $criteria = array(), array $parameters = array()) {
  
         
         $em = $this->container->get('doctrine')->getEntityManager();
@@ -99,7 +99,7 @@ class PostController extends Controller {
             'tagweight' => $tagWeights,
               'pager' => $pagination,
                 ), $parameters);
-        $response = $this->render(sprintf('SonataNewsBundle:Post:archive.%s.twig', $this->getRequest()->getRequestFormat()), $parameters);
+        $response = $this->render(sprintf('SonataNewsBundle:Post:archiveknp.%s.twig', $this->getRequest()->getRequestFormat()), $parameters);
 
         if ('rss' === $this->getRequest()->getRequestFormat()) {
             $response->headers->set('Content-Type', 'application/rss+xml');
