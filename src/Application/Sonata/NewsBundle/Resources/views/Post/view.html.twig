@@ -101,8 +101,11 @@ collapsible: true
 #}
  <br>
 <div class="sonata-blog-post-container">
+       
     <div class="viewpost">
+     
     <div class="sonata-blog-post-date-container">
+      
         {{ post.publicationDateStart | format_datetime }}
     </div>
 
@@ -194,7 +197,9 @@ collapsible: true
         </div>
     {% endif %}
         {% endif %}
-
+        <br><br>
+        
+     <a href="{{ path('sonata_news_home') }}" class="btn btn-primary"><i class="icon-arrow-left"></i> Retour</a>
 {% endblock %}
  
  
