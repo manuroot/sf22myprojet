@@ -154,7 +154,7 @@ collapsible: true
                  
            
             <div class="sonata-blog-post-abtract">
-              Extrait:  {{ post.abstract|raw }}
+              Extrait:  {{ post.abstract }}
             </div>
                     
             <span class="badge badge-warning">{{ 'comments_count'|trans({'%comments_count%': post.commentsCount }, 'SonataNewsBundle') }}</span>
@@ -167,7 +167,6 @@ collapsible: true
  {#
 {{ knp_pagination_render(pager) }}
 #}
-
 {% include 'ApplicationSonataNewsBundle:pagination:pager.html.twig' with {'mything': 'ARTICLES', 'myurl': 'sonata_news_archive'} %}
 {% endblock %}
 

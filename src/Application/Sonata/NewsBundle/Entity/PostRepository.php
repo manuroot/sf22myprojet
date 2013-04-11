@@ -33,6 +33,32 @@ class PostRepository extends BasePostRepository
         //->getResult();
     }
     
+    
+    /**
+* Count published elements from date
+*
+* @param DateTime $date
+* @return int
+*/
+    public function countFromDate(DateTime $date) {
+       
+        $query = $this->createQueryBuilder('p')
+            ->select('p, t')
+            ->leftJoin('p.tags', 't', Expr\Join::WITH, 't.enabled = true')
+            ->orderby('p.publicationDateStart', 'DESC');
+
+        $query = $em->createQuery(
+                        ' SELECT COUNT(p) FROM BlogBundle:Post p ' .
+                        ' WHERE p.isPublished = 1 ' .
+                        ' AND p.createdAt >= :date '
+                )
+                ->setParameter('date', $date)
+        ;
+        return $query->getSingleScalarResult();
+    }
+
+
+    
        public function getPager(array $criteria, $maxPerPage = 10)
     {
         $parameters = array();
