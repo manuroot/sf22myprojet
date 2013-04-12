@@ -174,14 +174,8 @@ collapsible: true
  </table>
 
   {{ knp_pagination_render(pagination) }}
-
-
 {% endblock %}
 
-{% block archives %}
-    {{ parent() }}
- {% endblock %}
- 
  
 {% block categories %}
 {{ parent() }}
@@ -201,4 +195,12 @@ collapsible: true
 {{ parent() }}#}
 {% include 'ApplicationSonataNewsBundle:sidebar:lastcomments.html.twig' %}
 {% endblock %}
+
+
+
+{% block archives %}
+{{ parent() }}
+{% include 'ApplicationSonataNewsBundle:sidebar:sidebaryears.html.twig' %}
+{% endblock %}
+
      

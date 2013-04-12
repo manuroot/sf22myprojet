@@ -4,6 +4,9 @@
 
 {% block stylesheets %}
 {{ parent() }}
+   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css" />
+   <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" type="text/css" />
+    
 <style>
    
         .mytext {
@@ -164,6 +167,38 @@ collapsible: true
         {{ 'no_post_found'|trans({}, 'SonataNewsBundle') }}
 <!--</div>-->
     {% endfor %}
+
+<p><i class="icon-camera-retro icon-2x"></i> icon-camera-retro</p>
+
+    <div class="btn-group open">
+    <a class="btn btn-primary" href="#"><i class="icon-user"></i> User</a>
+    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="icon-caret-down"></span></a>
+    <ul class="dropdown-menu">
+    <li><a href="#"><i class="icon-pencil"></i> Edit</a></li>
+    <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
+    <li><a href="#"><i class="icon-ban-circle"></i> Ban</a></li>
+    <li class="divider"></li>
+    <li><a href="#"><i class="i"></i> Make admin</a></li>
+    </ul>
+    </div>
+
+
+    <a class="btn" href="#">
+    <i class="icon-repeat"></i> Reload</a>
+    <a class="btn btn-success" href="#">
+    <i class="icon-shopping-cart icon-large"></i> Checkout</a>
+    <a class="btn btn-large btn-primary" href="#">
+    <i class="icon-comment"></i> Comment</a>
+    <a class="btn btn-small btn-info" href="#">
+    <i class="icon-info-sign"></i> Info</a>
+    <a class="btn btn-danger" href="#">
+    <i class="icon-trash icon-large"></i> Delete</a>
+    <a class="btn btn-small" href="#">
+    <i class="icon-cog"></i> Settings</a>
+    <a class="btn btn-large btn-danger" href="#">
+    <i class="icon-flag icon-2x pull-left"></i>Font Awesome<br>Version 3.0</a>
+    <a class="btn btn-primary" href="#">
+    <i class="icon-refresh icon-spin"></i> Synchronizing Content...</a>
  {#
 {{ knp_pagination_render(pager) }}
 #}

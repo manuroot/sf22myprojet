@@ -128,21 +128,26 @@ public function findaByYear($year){
   //  $year=2013;
       $qb = $this->createQueryBuilder('p');
     //$qb->select('COUNT(p)')
-            $qb->select('p.id,p.publicationDateStart');
+        $qb->select('p.id,p.publicationDateStart');
+        //         ->leftJoin('p.category', 'a', Expr\Join::WITH, 'a.enabled = true');
+            //$qb->select('p.id,p.publicationDateStart,p.slug');
     //   ->where('YEAR(p.publicationDateStart) = :year');
   //  $qb->setParameter('year', $year);
    $arr=array();
   //  ->getSingleScalarResult();
-//print_r($qb->getQuery()->getResult());
+/*print_r($qb->getQuery()->getResult());
    // $arr["$year"]=0;
-  
+exit(1); */ 
 foreach ($qb->getQuery()->getResult() as $d){
     
    // echo $d['publicationDateStart']->format('Y-m-d H:i:s') . "<br>";
   //   echo $d['publicationDateStart']->format('Y') . "<br>";
       $year=$d['publicationDateStart']->format('Y');
+    //  $cat=$d['category'];
         if (!(isset($arr["$year"]))) $arr["$year"]=0;
         $arr["$year"]=$arr["$year"]+1;
+        
+        //$arr[""]
     //  $arr[$year]= isset($arr[$year]) ? ($arr[$year]++) : '1';
     /* if (isset($year)){
     //     $temp=$d['publicationDateStart']->format('Y');
@@ -150,8 +155,9 @@ foreach ($qb->getQuery()->getResult() as $d){
       //   $arr[$year]= isset($arr[$year]) ? ($arr[$year]++) : 1;
      }*/
 }
-//print_r($arr);
-//exit(1);
+/*
+print_r($arr);
+exit(1);*/
 return ($arr);
         return $query->getResult();
 

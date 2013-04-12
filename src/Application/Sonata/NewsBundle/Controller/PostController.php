@@ -202,7 +202,7 @@ $all_years = $this->sidebar_years();
         $query = $em->getRepository('ApplicationSonataNewsBundle:Post')->myFindAll();
         //   $alltags = $this->sidebar_tags();
         list($alltags, $tagWeights) = $this->sidebar_tags();
-
+$all_years = $this->sidebar_years();
         $allcategories = $this->sidebar_categories();
         $lastcomments = $this->sidebar_comments();
         $paginator = $this->get('knp_paginator');
@@ -220,6 +220,7 @@ $all_years = $this->sidebar_years();
                     'lastcomments' => $lastcomments,
                     'alltags' => $alltags,
                     'tagweight' => $tagWeights,
+             'all_years'=>$all_years,
                 ));
     }
 
