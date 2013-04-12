@@ -128,9 +128,9 @@ public function findaByYear($year){
   //  $year=2013;
       $qb = $this->createQueryBuilder('p');
     //$qb->select('COUNT(p)')
-            $qb->select('p.id,p.publicationDateStart')
-       ->where('YEAR(p.publicationDateStart) = :year');
-    $qb->setParameter('year', $year);
+            $qb->select('p.id,p.publicationDateStart');
+    //   ->where('YEAR(p.publicationDateStart) = :year');
+  //  $qb->setParameter('year', $year);
    $arr=array();
   //  ->getSingleScalarResult();
 //print_r($qb->getQuery()->getResult());
