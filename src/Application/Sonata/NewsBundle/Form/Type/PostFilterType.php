@@ -32,6 +32,22 @@ class PostFilterType extends AbstractType
                     'attr' => array('placeholder' => 'Name'),*/
             'condition_pattern' => FilterOperands::OPERAND_SELECTOR,
     ));
+       /*  $builder->add('startDate', 'date', array(
+            'label' => 'Date début',
+            'widget' => 'single_text'
+        ));*/
+         $builder->add('publicationDateStart', 'filter_date_range', array(
+             'label'=>'Date de Publication',
+    'left_date' => array(
+       'widget' => 'single_text'
+        /*'time_widget' => 'single_text'*/
+    ),
+    'right_date' => array(
+       'widget' => 'single_text'
+       /* 'time_widget' => 'single_text'*/
+    ),
+));
+         
     /*  $builder
             ->add(
                 'abstract',
