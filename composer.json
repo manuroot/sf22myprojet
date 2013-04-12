@@ -66,7 +66,10 @@
         "payum/authorize-net-aim": "dev-master",
         "payum/be2bill": "dev-master",
         "payum/omnipay-bridge": "dev-master",
-          "beberlei/DoctrineExtensions": "dev-master"
+         "beberlei/DoctrineExtensions": "dev-master",
+         "lexik/form-filter-bundle": "dev-master",
+         "lexik/form-filter-bundle": "dev-event_dispatcher",
+          "savvy/filternator-bundle": "dev-master"
         
     },
     "scripts": {

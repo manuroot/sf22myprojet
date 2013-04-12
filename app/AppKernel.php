@@ -52,7 +52,9 @@ class AppKernel extends Kernel {
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             //MOPA
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
-            new Braincrafted\BootstrapBundle\BraincraftedBootstrapBundle(),
+           // new Bc\Bundle\BootstrapBundle\BcBootstrapBundle(),
+            //new Braincrafted\BootstrapBundle(),
+            //new Braincrafted\BootstrapBundle\BraincraftedBootstrapBundle(),
             new Application\TestBundle\ApplicationTestBundle(),
             //====================================================
             // PAYPAL: JMSPAYMENT
@@ -64,10 +66,11 @@ class AppKernel extends Kernel {
             //====================================================
             // PAYPAL: PAYUM
             //====================================================
-           /* new Payum\Bundle\PayumBundle\PayumBundle(),
+           new Payum\Bundle\PayumBundle\PayumBundle(),
             new Application\PaymentBundle\ApplicationPaymentBundle(),
-            new Application\PaypalExpressCheckoutBundle\ApplicationPaypalExpressCheckoutBundle(),*/
-
+            new Application\PaypalExpressCheckoutBundle\ApplicationPaypalExpressCheckoutBundle(),
+  new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
+            new Savvy\FilterNatorBundle\SavvyFilterNatorBundle()
 
                 /* new Payum\Bundle\PayumBundle\PayumBundle(),
                   //  new Application\PaymentBundle\ApplicationPaymentBundle(),

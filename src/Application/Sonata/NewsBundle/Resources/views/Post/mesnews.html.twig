@@ -108,7 +108,11 @@ collapsible: true
 {% block content %}
 <br>
 
-
+<form action="{{ url('list_mesnews') }}" method="GET" >
+ 
+    {{ form_rest(form) }}
+    <input type="submit" name="submit-filter" class="btn btn-medium btn-primary" value="filter" />
+</form>
            
  <table class="table small table-striped table-condensed table-bordered table-hover">
      <thead>

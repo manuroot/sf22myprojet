@@ -8,7 +8,7 @@ imports:
     - { resource: sonata/sonata_media.yml }
     - { resource: sonata/sonata_formatter.yml }
     - { resource: sonata/sonata_news.yml }
-    #- { resource: paypal/paypal.yml }
+  #  - { resource: paypal/paypal.yml }
   #  - { resource: paypal/jmspaypal.yml }
   #  - { resource: sonata/sonata_page.yml }
 
@@ -37,6 +37,9 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    form:
+        resources:
+            - LexikFormFilterBundle:Form:form_div_layout.html.twig
    # form:
     #   resources:
      #       - "BraincraftedBootstrapBundle:Form:form_div_layout.html.twig"
@@ -173,8 +176,8 @@ knp_paginator:
         sort_direction_name: direction # sort direction query parameter name
         distinct: false                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
     template:
-             pagination: BraincraftedBootstrapBundle:Pagination:pagination.html.twig
-             #pagination: ApplicationCertificatsBundle:pagination:twitter_bootstrap_pagination.html.twig
+             #pagination: BraincraftedBootstrapBundle:Pagination:pagination.html.twig
+             pagination: ApplicationSonataNewsBundle:pagination:twitter_bootstrap_pagination.html.twig
              sortable: ApplicationSonataNewsBundle:pagination:sortable_link.html.twig 
   
 #==================================================

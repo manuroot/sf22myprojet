@@ -23,7 +23,8 @@ use Sonata\NewsBundle\Model\CommentInterface;
 use Sonata\NewsBundle\Model\PostInterface;
 use Doctrine\ORM\EntityRepository;
 use Sonata\NewsBundle\Controller\PostController as Controller;
-use \Sonata\NewsBundle\Form\Type\CommentType;
+use Application\Sonata\NewsBundle\Form\Type\CommentType;
+use Application\Sonata\NewsBundle\Form\Type\PostFilterType;
 
 class PostController extends Controller {
 
@@ -198,16 +199,41 @@ $all_years = $this->sidebar_years();
     public function mesnewsAction(array $criteria = array(), array $parameters = array()) {
 
         //  $form_paypal = $this->createPurchaseForm();
+          $form = $this->get('form.factory')->create(new PostFilterType());
+          if ($this->get('request')->query->has('submit-filter')) {
+            // bind values from the request
+            $form->bindRequest($this->get('request'));
+$filterBuilder = $this->get('doctrine.orm.entity_manager')
+                ->getRepository('ApplicationSonataNewsBundle:Post')
+                ->createQueryBuilder('e');
+ 
+            // initliaze a query builder
+           
+
+            // build the query from the given form object
+            
+            $query=$this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($form, $filterBuilder);
+//$query=$queryf->getDql();
+            // now look at the DQL =)
+       //     var_dump($filterBuilder->getDql());
+       //   exit(1);
+        }
+        else {
         $em = $this->getDoctrine()->getManager();
         $query = $em->getRepository('ApplicationSonataNewsBundle:Post')->myFindAll();
+        
+        }
         //   $alltags = $this->sidebar_tags();
         list($alltags, $tagWeights) = $this->sidebar_tags();
 $all_years = $this->sidebar_years();
         $allcategories = $this->sidebar_categories();
         $lastcomments = $this->sidebar_comments();
-        $paginator = $this->get('knp_paginator');
+       // $paginator = $this->container->get("savvy.filter_nator");
+     //  $pagination=$paginator->filterNate($filterBuilder, $form, 'foo',5,1);
+
+       $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $query, $this->get('request')->query->get('page', 1)/* page number */, 5/* limit per page */
+                $query, $this->get('request')->query->get('page', 1), 5
         );
 
         $pagination->setTemplate('ApplicationSonataNewsBundle:pagination:twitter_bootstrap_pagination.html.twig');
@@ -221,6 +247,7 @@ $all_years = $this->sidebar_years();
                     'alltags' => $alltags,
                     'tagweight' => $tagWeights,
              'all_years'=>$all_years,
+            'form' => $form->createView(),
                 ));
     }
 
