@@ -3,13 +3,13 @@
 #    prefix:   /
 
 
-application_paypal_express_checkout:
-    resource: "@ApplicationPaypalExpressCheckoutBundle/Resources/config/routing.yml"
-    prefix:   /
+#application_paypal_express_checkout:
+#    resource: "@ApplicationPaypalExpressCheckoutBundle/Resources/config/routing.yml"
+#    prefix:   /
 
-application_payment:
-    resource: "@ApplicationPaymentBundle/Resources/config/routing.yml"
-    prefix:   /
+#application_payment:
+#    resource: "@ApplicationPaymentBundle/Resources/config/routing.yml"
+#    prefix:   /
     
 #application_paypal_express_checkout:
 #    resource: "@ApplicationPaypalExpressCheckoutBundle/Resources/config/routing.yml"

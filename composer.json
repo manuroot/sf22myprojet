@@ -24,7 +24,7 @@
      
         "knplabs/gaufrette" : "0.2.*@dev",
         "knplabs/knp-gaufrette-bundle" : "dev-master",
-        "knplabs/knp-paginator-bundle": "dev-master", 
+        "knplabs/knp-paginator-bundle": "dev-master",
         "knplabs/knp-menu-bundle": "1.1.x-dev",
         "knplabs/knp-menu": "1.1.x-dev",
       
@@ -39,11 +39,11 @@
         "sonata-project/doctrine-extensions": "1.0.0",
         "sonata-project/user-bundle": "dev-master",
         "sonata-project/doctrine-orm-admin-bundle": "dev-master",
-        "sonata-project/notification-bundle":  "dev-master",
+        "sonata-project/notification-bundle": "dev-master",
      
         "sonata-project/media-bundle" : "dev-master",
         "sonata-project/formatter-bundle": "dev-master",
-        "sonata-project/news-bundle":  "dev-master",
+        "sonata-project/news-bundle": "dev-master",
         "sonata-project/intl-bundle" :"2.1.0",
         "sonata-project/google-authenticator": "1.0.0",
         "sonata-project/markitup-bundle" : "dev-master",
@@ -65,7 +65,8 @@
         "payum/paypal-express-checkout-nvp": "dev-master",
         "payum/authorize-net-aim": "dev-master",
         "payum/be2bill": "dev-master",
-        "payum/omnipay-bridge": "dev-master"
+        "payum/omnipay-bridge": "dev-master",
+          "beberlei/DoctrineExtensions": "dev-master"
         
     },
     "scripts": {
@@ -94,4 +95,3 @@
         }
     }
 }
-

@@ -88,5 +88,21 @@ class PostManager extends BasePostManager
 //return $pager;
     }*/
 
-   
+    /**
+     * @param string $date  Date in format YYYY-MM-DD
+     * @param string $step  Interval step: year|month|day
+     * @param string $alias Table alias for the publicationDateStart column
+     *
+     * @return array
+     */
+    public function getPublicationDateQueryParts($date, $step, $alias = 'p')
+    {
+        return array(
+            'query'  => sprintf('%s.publicationDateStart >= :startDate AND %s.publicationDateStart < :endDate', $alias, $alias),
+            'params' => array(
+                'startDate' => new \DateTime($date),
+                'endDate'   => new \DateTime($date . '+1 ' . $step)
+            )
+        );
+    }
 }

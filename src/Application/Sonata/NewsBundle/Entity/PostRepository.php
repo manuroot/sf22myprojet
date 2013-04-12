@@ -13,7 +13,7 @@ namespace Application\Sonata\NewsBundle\Entity;
 use Sonata\NewsBundle\Entity\BasePostRepository;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query\Expr;
-
+//use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
 
 class PostRepository extends BasePostRepository
@@ -100,4 +100,66 @@ class PostRepository extends BasePostRepository
        return $query;
     }
 
+// .........
+// Doctrine2 repository class for entity 'Post'
+// .........
+   // public function findOneByYearMonthDay($year, $month, $day)
+    /*
+public function findcaByYear($year)
+{
+   $year="2013";
+    $query = $this->createQueryBuilder('p')
+        ->where('p.publicationDateStart LIKE %2013%');
+    $q=$query->getQuery()->getResult();
+   // print($q);
+    foreach ($q as $i){print_r($i);}
+    exit(1);
+  
+    return $query->getResult();
+}*/
+
+
+public function findaByYear($year){
+   /*  $emConfig = $this->getEntityManager()->getConfiguration();
+    $emConfig->addCustomDatetimeFunction('YEAR', 'DoctrineExtensions\Query\Mysql\Year');
+    $emConfig->addCustomDatetimeFunction('MONTH', 'DoctrineExtensions\Query\Mysql\Month');
+    $emConfig->addCustomDatetimeFunction('DAY', 'DoctrineExtensions\Query\Mysql\Day');
+    */
+  //  $year=2013;
+      $qb = $this->createQueryBuilder('p');
+    //$qb->select('COUNT(p)')
+            $qb->select('p.id,p.publicationDateStart')
+       ->where('YEAR(p.publicationDateStart) = :year');
+    $qb->setParameter('year', $year);
+   $arr=array();
+  //  ->getSingleScalarResult();
+//print_r($qb->getQuery()->getResult());
+   // $arr["$year"]=0;
+  
+foreach ($qb->getQuery()->getResult() as $d){
+    
+   // echo $d['publicationDateStart']->format('Y-m-d H:i:s') . "<br>";
+  //   echo $d['publicationDateStart']->format('Y') . "<br>";
+      $year=$d['publicationDateStart']->format('Y');
+        if (!(isset($arr["$year"]))) $arr["$year"]=0;
+        $arr["$year"]=$arr["$year"]+1;
+    //  $arr[$year]= isset($arr[$year]) ? ($arr[$year]++) : '1';
+    /* if (isset($year)){
+    //     $temp=$d['publicationDateStart']->format('Y');
+         $arr["$year"]+=1;
+      //   $arr[$year]= isset($arr[$year]) ? ($arr[$year]++) : 1;
+     }*/
+}
+//print_r($arr);
+//exit(1);
+return ($arr);
+        return $query->getResult();
+
+        
+        /*return $this->createQueryBuilder('a')
+ ->select('COUNT(a)')
+ ->getQuery()
+ ->getSingleScalarResult();
+*/
+ }
 }

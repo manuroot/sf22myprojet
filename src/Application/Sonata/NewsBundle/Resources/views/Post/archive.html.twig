@@ -167,7 +167,42 @@ collapsible: true
  {#
 {{ knp_pagination_render(pager) }}
 #}
+
+{#
+    <div class="sonata-blog-post-pagination">
+        {% if pager.haveToPaginate() %}
+            <table class="table table-bordered table-striped">
+    <tr>
+         <td>
+                                <div class="pagination pagination-centered">
+                                    <ul>
+            {% if pager.page != pager.previouspage %}
+               <li> <a href="{{ url(route, route_parameters|merge({'page': pager.previouspage})) }}" title="{{ 'link_previous_page'|trans({}, 'SonataNewsBundle') }}">{{ 'link_previous_page'|trans({}, 'SonataNewsBundle') }}</a>
+                   </li>
+            {% endif %}
+
+            {% if pager.page != pager.nextpage %}
+                   <li>
+                <a href="{{ url(route, route_parameters|merge({'page': pager.nextpage})) }}" title="{{ 'link_next_page'|trans({}, 'SonataNewsBundle') }}">{{ 'link_next_page'|trans({}, 'SonataNewsBundle') }}</a>
+</li>          
+  {% endif %}
+                  </ul>
+                                    
+                              
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        </table>
+        {% endif %}
+    </div>
+#}
 {% include 'ApplicationSonataNewsBundle:pagination:pager.html.twig' with {'mything': 'ARTICLES', 'myurl': 'sonata_news_archive'} %}
+{#
+  {% for xpost in post_year %}
+{{ post_year.id }}
+{% endfor %}
+#}
 {% endblock %}
 
 
@@ -190,4 +225,9 @@ collapsible: true
 {{ parent() }}#}
 {% include 'ApplicationSonataNewsBundle:sidebar:lastcomments.html.twig' %}
 {% endblock %}
-     
+
+
+{% block archives %}
+{{ parent() }}
+{% include 'ApplicationSonataNewsBundle:sidebar:sidebaryears.html.twig' %}
+{% endblock %}

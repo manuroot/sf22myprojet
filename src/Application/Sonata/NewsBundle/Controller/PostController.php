@@ -1,5 +1,8 @@
 <?php
 
+// Doctrine2 DQL
+//     "doctrine/doctrine-fixtures-bundle": "dev-master",
+
 /*
  * This file is part of the Sonata package.
  *
@@ -64,6 +67,31 @@ class PostController extends Controller {
         return ($allcategories);
     }
 
+    private function sidebar_years($max = 5) {
+        $em = $this->container->get('doctrine')->getEntityManager();
+
+
+        $myarr = array();
+        $myarr['current_year'] = date('Y');
+      //  $myarr['first_year'] = date('Y'-1);
+       // echo "year=" . $myarr['current_year'];
+      //  echo "year=" . $myarr['first_year'];
+        $arr_years = $em->getRepository('ApplicationSonataNewsBundle:Post')->findaByYear($myarr['current_year']);
+        //$fist_year = $em->getRepository('ApplicationSonataNewsBundle:Post')->findaByYear($myarr['first_year']);
+        
+       // $count = count($post_year);
+        /* $minyear=$myarr['year']-10;
+          $myarr['month']=date('m');
+          $myarr['dat']=date('dd');
+         *
+          for */
+       //   echo "nb_year";
+     //   print_r($arr_years);
+     //     exit(1);
+          return ($arr_years);
+      //  return array($post_year, $myarr['year']);
+    }
+
     /**
      * @param array $criteria
      *
@@ -79,7 +107,7 @@ class PostController extends Controller {
 
 
         $em = $this->container->get('doctrine')->getEntityManager();
-        $form_paypal = $this->createPurchaseForm();
+        //$form_paypal = $this->createPurchaseForm();
         $query = $em->getRepository('ApplicationSonataNewsBundle:Post')->getPager($criteria);
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -93,7 +121,7 @@ class PostController extends Controller {
         $parameters = array_merge(array(
             'blog' => $this->get('sonata.news.blog'),
             'tag' => false,
-            'form_paypal' => $form_paypal->createView(),
+            //  'form_paypal' => $form_paypal->createView(),
             'allcategories' => $allcategories,
             // 'catweight' => $catWeights,
             'alltags' => $alltags,
@@ -118,7 +146,7 @@ class PostController extends Controller {
 
     public function renderArchive(array $criteria = array(), array $parameters = array()) {
 
-        $form_paypal = $this->createPurchaseForm();
+        // $form_paypal = $this->createPurchaseForm();
         $pager = $this->getPostManager()->getPager(
                 $criteria, $this->getRequest()->get('page', 1), 5
         );
@@ -127,6 +155,9 @@ class PostController extends Controller {
         //list($allcategories,$catWeights) = $this->sidebar_categories();
         $allcategories = $this->sidebar_categories();
         $lastcomments = $this->sidebar_comments();
+  //      list($post_year, $current_year) = $this->sidebar_years();
+$all_years = $this->sidebar_years();
+        //  $first_year=$current_year-5;
         // $alltags=$em->getRepository('ApplicationSonataNewsBundle:Tag')->findAll();
         // $pager->setLinks(3);
         $parameters = array_merge(array(
@@ -134,15 +165,23 @@ class PostController extends Controller {
             'blog' => $this->get('sonata.news.blog'),
             'tag' => false,
             'test' => $test,
-            'form_paypal' => $form_paypal->createView(),
+            //  'form_paypal' => $form_paypal->createView(),
             'allcategories' => $allcategories,
             // 'catweight' => $catWeights,
             'alltags' => $alltags,
             'lastcomments' => $lastcomments,
             'tagweight' => $tagWeights,
+            'all_years'=>$all_years,
+            /* 'current_year'=>$current_year,
+              'first_year'=>$first_year,
+              'nb_year'=>5,
+              'post_year'=>$post_year, */
+            'route' => $this->getRequest()->get('_route'),
+            'route_parameters' => $this->getRequest()->get('_route_params')
                 ), $parameters);
         $response = $this->render(sprintf('SonataNewsBundle:Post:archive.%s.twig', $this->getRequest()->getRequestFormat()), $parameters);
 
+        //$this->archivebymonth();
         if ('rss' === $this->getRequest()->getRequestFormat()) {
             $response->headers->set('Content-Type', 'application/rss+xml');
         }
@@ -158,7 +197,7 @@ class PostController extends Controller {
 
     public function mesnewsAction(array $criteria = array(), array $parameters = array()) {
 
-        $form_paypal = $this->createPurchaseForm();
+        //  $form_paypal = $this->createPurchaseForm();
         $em = $this->getDoctrine()->getManager();
         $query = $em->getRepository('ApplicationSonataNewsBundle:Post')->myFindAll();
         //   $alltags = $this->sidebar_tags();
@@ -176,7 +215,7 @@ class PostController extends Controller {
         return $this->render('ApplicationSonataNewsBundle:Post:mesnews.html.twig', array(
                     // 'pager' => $mypager,
                     'pagination' => $pagination,
-                    'form_paypal' => $form_paypal->createView(),
+                    //   'form_paypal' => $form_paypal->createView(),
                     'allcategories' => $allcategories,
                     'lastcomments' => $lastcomments,
                     'alltags' => $alltags,
@@ -198,7 +237,7 @@ class PostController extends Controller {
       =================================================================== */
 
     public function viewAction($permalink) {
-        $form_paypal = $this->createPurchaseForm();
+        //  $form_paypal = $this->createPurchaseForm();
         $post = $this->getPostManager()->findOneByPermalink($permalink, $this->container->get('sonata.news.blog'));
 
         if (!$post || !$post->isPublic()) {
@@ -239,7 +278,7 @@ class PostController extends Controller {
                     'post' => $post,
                     'form' => false,
                     'blog' => $this->get('sonata.news.blog'),
-                    'form_paypal' => $form_paypal->createView(),
+                    // 'form_paypal' => $form_paypal->createView(),
                     'pager' => $pager,
                     'allcategories' => $allcategories,
                     'alltags' => $alltags,
@@ -303,7 +342,6 @@ class PostController extends Controller {
                 ));
     }
 
-  
     /**
      * @param $postId
      * @param bool $form
@@ -377,6 +415,47 @@ class PostController extends Controller {
                         ))
                         ->getForm()
         ;
+    }
+
+    public function archivebymonth() {
+
+        $myarr = array();
+        $myarr['year'] = date('Y');
+        $myarr['month'] = date('m');
+        $myarr['dat'] = date('dd');
+
+
+        print_r($myarr);
+        exit(1);
+        /* $now=new DateTime();
+          $week_ago = new DateTime('-1 week');
+          $month_ago = new DateTime('-1 month');
+          $year_ago = new DateTime('-1 year');
+          $first_time = new DateTime('1th January 1970 00:00:00 (UTC)');
+         */
+    }
+
+    /**
+     * @param string $year
+     * @param string $month
+     *
+     * @return Response
+     */
+    public function archiveMonthlyAction($year, $month) {
+        return $this->renderArchive(array(
+                    'date' => $this->getPostManager()->getPublicationDateQueryParts(sprintf('%d-%d-%d', $year, $month, 1), 'month')
+                ));
+    }
+
+    /**
+     * @param string $year
+     *
+     * @return Response
+     */
+    public function archiveYearlyAction($year) {
+        return $this->renderArchive(array(
+                    'date' => $this->getPostManager()->getPublicationDateQueryParts(sprintf('%d-%d-%d', $year, 1, 1), 'year')
+                ));
     }
 
 }

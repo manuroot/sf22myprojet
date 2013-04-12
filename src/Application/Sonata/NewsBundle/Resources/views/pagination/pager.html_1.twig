@@ -1,15 +1,16 @@
  {% if pager.haveToPaginate() %}
 <table class="table table-bordered table-striped">
     <tr>
-                                 <td>
+        url(route, route_parameters|merge({'page': pager.nextpage})) 
+                             <td>
                                 <div class="pagination pagination-centered">
                                     <ul>
                                         {% if pager.page != 1  and pager.page != pager.lastpage%}
                                              <li>
-                                             <a href="{{ url(myurl, route_parameters|merge({ 'page': pager.firstpage })) }}">{{ mything }} RECENTS</a> 
+                                             <a href="{{ url(myurl, { 'page': pager.firstpage }) }}">{{ mything }} RECENTS</a> 
                                             </li>
                                         {% if pager.previouspage != 1 %}
-                                          <li>          <a href="{{ url(myurl, route_parameters|merge( { 'page': pager.previouspage })) }}">{{ pager.previouspage }}</a>
+                                          <li>          <a href="{{ url(myurl, { 'page': pager.previouspage }) }}">{{ pager.previouspage }}</a>
                                               </li>
                                              
                                              
@@ -20,38 +21,38 @@
                                         {% for page in pager.getLinks() %}
                                             {% if page == pager.page %}
                                                 <li class="active">
-                                                    jhj  <a href="{{ url(myurl, route_parameters|merge( { 'page': pager.page })) }}">{{ pager.page }}</a>
+                                                    jhj  <a href="{{ url(myurl, { 'page': pager.page }) }}">{{ pager.page }}</a>
                                                 </li>
                                             {% else %}
-                                                <li> <a href="{{ url(myurl, route_parameters|merge({ 'page': pager.page })) }}">{{ pager.page }}</a></li>
+                                                <li> <a href="{{ url(myurl, { 'page': pager.page }) }}">{{ pager.page }}</a></li>
                                             {% endif %}
                                         {% endfor %}
                                                 
                                                  <li class="active">
-                                                    <a href="{{ url(myurl, route_parameters|merge( { 'page': pager.page })) }}">{{ pager.page }}</a>
+                                                    <a href="{{ url(myurl, { 'page': pager.page }) }}">{{ pager.page }}</a>
                                                 </li>
 
                                         {% if pager.nextpage != pager.lastpage %}
-                                          <li>          <a href="{{ url(myurl, route_parameters|merge( { 'page': pager.nextpage })) }}">{{ pager.nextpage }}</a>
+                                          <li>          <a href="{{ url(myurl, { 'page': pager.nextpage }) }}">{{ pager.nextpage }}</a>
                                               </li>
                                               
                                         {% endif %}
                                             
                                             <li>
-                                                  <a href="{{ url(myurl, route_parameters|merge( { 'page': pager.lastpage })) }}">+ {{ mything }} ANCIENS</a> 
+                                                  <a href="{{ url(myurl, { 'page': pager.lastpage }) }}">+ {{ mything }} ANCIENS</a> 
                                              </li>
 {% endif %}
                                              
                                                {% if pager.page == 1 %}
                                                <li class="active">
-                                             <a href="{{ url(myurl, route_parameters|merge( { 'page': pager.firstpage })) }}">{{ mything }} RECENTS</a> 
+                                             <a href="{{ url(myurl, { 'page': pager.firstpage }) }}">{{ mything }} RECENTS</a> 
                                             </li>
                                              <li>
-                                                 <a href="{{ url(myurl, route_parameters|merge( { 'page': pager.nextpage })) }}">{{ pager.nextpage }}
+                                                 <a href="{{ url(myurl, { 'page': pager.nextpage }) }}">{{ pager.nextpage }}
                                                  </a> 
                                             </li>
                                           <li>
-                                             <a href="{{ url(myurl, route_parameters|merge( { 'page': pager.lastpage })) }}">{{ mything }} ANCIENS</a> 
+                                             <a href="{{ url(myurl, { 'page': pager.lastpage }) }}">{{ mything }} ANCIENS</a> 
                                             </li>
                                             {% endif %}
                                             
@@ -59,14 +60,14 @@
                                             
                                               {% if pager.page == pager.lastpage %}
                                                <li>
-                                             <a href="{{ url(myurl, route_parameters|merge( { 'page': pager.firstpage })) }}">{{ mything }} RECENTS</a> 
+                                             <a href="{{ url(myurl, { 'page': pager.firstpage }) }}">{{ mything }} RECENTS</a> 
                                             </li>
                                              <li>
-                                                 <a href="{{ url(myurl, route_parameters|merge( { 'page': pager.previouspage })) }}">{{ pager.previouspage }}
+                                                 <a href="{{ url(myurl, { 'page': pager.previouspage }) }}">{{ pager.previouspage }}
                                                  </a> 
                                             </li>
                                           <li class="active">
-                                             <a href="{{ url(myurl, route_parameters|merge( { 'page': pager.lastpage })) }}">{{ mything }} ANCIENS</a> 
+                                             <a href="{{ url(myurl, { 'page': pager.lastpage }) }}">{{ mything }} ANCIENS</a> 
                                             </li>
                                             {% endif %}
                                     </ul>

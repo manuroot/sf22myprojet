@@ -8,7 +8,7 @@ imports:
     - { resource: sonata/sonata_media.yml }
     - { resource: sonata/sonata_formatter.yml }
     - { resource: sonata/sonata_news.yml }
-    - { resource: paypal/paypal.yml }
+    #- { resource: paypal/paypal.yml }
   #  - { resource: paypal/jmspaypal.yml }
   #  - { resource: sonata/sonata_page.yml }
 
@@ -88,6 +88,13 @@ doctrine:
         #result_cache_driver: apc
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
+        dql:
+            string_functions:
+                        GroupConcat: DoctrineExtensions\Query\Mysql\GroupConcat
+            datetime_functions:
+                    MONTH: DoctrineExtensions\Query\Mysql\Month
+                    YEAR: DoctrineExtensions\Query\Mysql\Year
+                    DAY: DoctrineExtensions\Query\Mysql\Day
         
         mappings:
             payum_paypal_express_checkout_nvp:
