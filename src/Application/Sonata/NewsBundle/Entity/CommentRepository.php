@@ -15,7 +15,7 @@ use Doctrine\ORM\EntityRepository;
 class CommentRepository extends EntityRepository
 {
 
-    public function FindLastComments($limit=10) {
+    public function FindLastComments($limit=20) {
         return $this->createQueryBuilder('p')
                 
                 //  ->add('orderBy', 'p.id DESC')

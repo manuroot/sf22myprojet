@@ -1,0 +1,100 @@
+           .main-col { width: 70%; display: inline-block; float: left; border-right: 1px solid #ccc; padding: 20px; margin-bottom: 20px; }
+                .sidebar {  padding: 10px; display: inline-block; }
+                #footer { border-top: 1px solid #ccc; clear: both; text-align: center; padding: 10px; color: #aaa; }
+
+                .widget-container h3 {
+                    background: url("images/header-menu.png") no-repeat scroll left top transparent;
+                    background-color: transparent;
+                    background-image: url("images/bg-menu.png");
+                    background-repeat: no-repeat;
+                    background-attachment: scroll;
+                    background-position: left top;
+                    background-clip: border-box;
+                    background-origin: padding-box;
+                    background-size: auto auto;
+                    height: 31px;
+                    color: rgb(255, 255, 255);
+                    font-size: 18px;
+                    padding-left: 10px;
+                    padding-top: 4px;
+                    text-align: left;
+                }
+                .widget-title {
+                    color: rgb(34, 34, 34);
+                    font-weight: bold;
+                }
+                
+                .entry-title {
+    font-family: Georgia,"Bitstream Charter",serif;
+    font-variant: small-caps;
+    color: rgb(255, 255, 255);
+    height: 22px;
+    line-height: 22px;
+    padding-top: 5px;
+    margin-bottom: 3px;
+    text-align: left;
+    clear: none;
+}
+
+ .entry-content, #content .entry-summary, #content .entry-utility, #respond {
+    background: url("images/block_bg.png") repeat-y scroll left top transparent;
+    padding: 0px 10px;
+        padding-top: 0px;
+        padding-right-value: 10px;
+        padding-bottom: 0px;
+        padding-left-value: 10px;
+        padding-left-ltr-source: physical;
+        padding-left-rtl-source: physical;
+        padding-right-ltr-source: physical;
+        padding-right-rtl-source: physical;
+    text-align: justify;
+    clear: both;
+    overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: hidden;
+}
+ 
+
+
+#primary, #secondary {
+    float: right;
+    overflow: hidden;
+    width: auto;
+}
+
+
+h1{
+   /* padding-left: 200px;*/
+   
+   text-shadow:4px 4px 4px #000000;
+
+}
+div.paypal {
+border:1px solid;
+border-radius:10px;
+-moz-border-radius:10px; /* Old Firefox */
+padding-bottom:10px;
+padding-left:5px;
+margin-bottom:10px;
+box-shadow: 3px 3px 2px #888888;
+background-color:  #e3e3e3;
+}
+
+
+div#accordion-archives{
+padding-right:10px;
+padding-bottom:10px;
+}
+
+ /*body {
+	background-image: url("/images/bg.jpg");
+}*/
+
+             #footer {
+    position:relative;
+    bottom:0;
+    width:100%;
+    height:30px;   /* Height of the footer */
+    background:#eaeaea;
+}         
+     

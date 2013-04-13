@@ -43,14 +43,14 @@ class PostController extends Controller {
 
     private function sidebar_tags() {
 
-        $em = $this->container->get('doctrine')->getEntityManager();
+        $em = $this->container->get('doctrine')->getManager();
         $alltags = $em->getRepository('ApplicationSonataNewsBundle:Tag')->findByEnabled(1);
         $tagWeights = $em->getRepository('ApplicationSonataNewsBundle:Tag')->getTagWeights($alltags);
         return array($alltags, $tagWeights);
     }
 
     private function sidebar_comments() {
-        $em = $this->container->get('doctrine')->getEntityManager();
+        $em = $this->container->get('doctrine')->getManager();
         //myFindAll
         //  $allcategories = $em->getRepository('ApplicationSonataNewsBundle:Category')->myFindAll();
         $lastcomments = $em->getRepository('ApplicationSonataNewsBundle:Comment')->FindLastComments();
@@ -59,7 +59,7 @@ class PostController extends Controller {
     }
 
     private function sidebar_categories() {
-        $em = $this->container->get('doctrine')->getEntityManager();
+        $em = $this->container->get('doctrine')->getManager();
         //myFindAll
         //  $allcategories = $em->getRepository('ApplicationSonataNewsBundle:Category')->myFindAll();
         $allcategories = $em->getRepository('ApplicationSonataNewsBundle:Category')->findByEnabled(1);
@@ -69,7 +69,7 @@ class PostController extends Controller {
     }
 
     private function sidebar_years($max = 5) {
-        $em = $this->container->get('doctrine')->getEntityManager();
+        $em = $this->container->get('doctrine')->getManager();
 
 
         $myarr = array();
@@ -107,7 +107,7 @@ class PostController extends Controller {
     public function renderknpArchive(array $criteria = array(), array $parameters = array()) {
 
 
-        $em = $this->container->get('doctrine')->getEntityManager();
+        $em = $this->container->get('doctrine')->getManager();
         //$form_paypal = $this->createPurchaseForm();
         $query = $em->getRepository('ApplicationSonataNewsBundle:Post')->getPager($criteria);
         $paginator = $this->get('knp_paginator');

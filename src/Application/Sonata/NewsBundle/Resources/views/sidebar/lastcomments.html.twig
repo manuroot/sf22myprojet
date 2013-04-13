@@ -5,10 +5,11 @@
 {% for comment in lastcomments %}
     <!--Catégorie: -->
  {{ comment.updatedAt | created_ago  }}
-   <span class="badge badge-warning">
+   <span class="badge badge-info">
       
-   {{ comment.post.title }}: <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(comment.post) }) }}">
-{{ comment.name }}</a> </span>
+   {{ comment.post.title }}:</span><br>
+    <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(comment.post) }) }}">
+{{ comment.name }}</a> 
  
   {{  comment.message|length > 30 ? comment.message|slice(0, 30) ~ ' ...' : comment.message  }}
 <br>

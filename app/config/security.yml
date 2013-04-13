@@ -38,6 +38,12 @@ security:
  
         # defaut login area for standard users
         main:
+            remember_me:
+                   httponly: false
+                   key:      "%secret%"
+                   lifetime: 31536000 # 365 days in seconds
+                   path:     /
+                   domain:   ~ # Defaults to the current domain from $_SERVER
             switch_user:        true
             context:            user
             pattern:      .*

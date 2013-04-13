@@ -61,26 +61,29 @@
         "jms/payment-core-bundle": "dev-master",
         "jms/payment-paypal-bundle": "dev-master",
         "payum/payum": "dev-master",
-        "payum/payum-bundle": "dev-master",
+          "payum/payum-bundle": "dev-master",
         "payum/paypal-express-checkout-nvp": "dev-master",
+        "payum/paypal-pro-checkout-nvp": "dev-master",
         "payum/authorize-net-aim": "dev-master",
         "payum/be2bill": "dev-master",
         "payum/omnipay-bridge": "dev-master",
-         "beberlei/DoctrineExtensions": "dev-master",
-         "lexik/form-filter-bundle": "dev-master",
-         "lexik/form-filter-bundle": "dev-event_dispatcher",
-          "savvy/filternator-bundle": "dev-master"
+       
+        "beberlei/DoctrineExtensions": "dev-master",
+        "lexik/form-filter-bundle": "dev-master",
+        "savvy/filternator-bundle": "dev-master"
         
     },
     "scripts": {
-        "post-install-cmd": [
+          "post-install-cmd": [
         "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
-        "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+              "Mopa\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::postInstallSymlinkTwitterBootstrapSass",
+              "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
         "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
         "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ],
         "post-update-cmd": [
         "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+        "Mopa\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::postInstallSymlinkTwitterBootstrap",
         "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
         "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
         "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
@@ -98,3 +101,6 @@
         }
     }
 }
+
+
+

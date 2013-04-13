@@ -4,11 +4,13 @@ namespace Application\PaypalExpressCheckoutBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Payum\Paypal\ExpressCheckout\Nvp\Bridge\Doctrine\Entity\PaymentDetails as BasePaymentDetails;
+//use Payum\Paypal\ExpressCheckout\Nvp\Bridge\Doctrine\Entity\PaymentInstruction;
 
 /**
  * @ORM\Entity
  */
-class PaymentDetails extends BasePaymentDetails
+class PaymentDetails extends PaymentInstruction
+//class PaymentDetails extends BasePaymentDetails
 {
     /**
      * @ORM\Column(name="id", type="integer")
