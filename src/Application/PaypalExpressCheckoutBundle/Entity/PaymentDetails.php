@@ -9,8 +9,8 @@ use Payum\Paypal\ExpressCheckout\Nvp\Bridge\Doctrine\Entity\PaymentDetails as Ba
 /**
  * @ORM\Entity
  */
-class PaymentDetails extends PaymentInstruction
-//class PaymentDetails extends BasePaymentDetails
+//class PaymentDetails extends PaymentInstruction
+class PaymentDetails extends BasePaymentDetails
 {
     /**
      * @ORM\Column(name="id", type="integer")
