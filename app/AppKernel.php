@@ -52,7 +52,7 @@ class AppKernel extends Kernel {
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             //MOPA
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
-            new Bc\Bundle\BootstrapBundle\BcBootstrapBundle(),
+           // new Bc\Bundle\BootstrapBundle\BcBootstrapBundle(),
             // new Bc\Bundle\BootstrapBundle\BcBootstrapBundle(),
             //new Braincrafted\BootstrapBundle(),
             // new Braincrafted\BootstrapBundle\BraincraftedBootstrapBundle(),

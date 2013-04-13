@@ -4,7 +4,7 @@
 
 {% block stylesheets %}
 {{ parent() }}
-{% stylesheets '@ApplicationSonataNewsBundle/Resources/public/css/*' filter='yui_css' %}
+{% stylesheets '@ApplicationSonataNewsBundle/Resources/public/css/*' output='css/compiled/main.css' filter='yui_css' %}
 <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" />
 {% endstylesheets %}
 {% endblock %}
