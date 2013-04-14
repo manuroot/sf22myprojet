@@ -130,6 +130,7 @@ $( "#form_bis" ).datepicker( "option", "minDate", selectedDate );
                {#  <td>
              {      <img width="40px" src="{{  post.image }}" alt="fds" /></td>#}
                <td>
+{#<img src="/sf1/{% path post.image, 'small' %}" width="50" /> #}
 <img src="{% path post.image, 'small' %}" width="50" /> 
 {#
  {% thumbnail post.image, 'smallest'  %}

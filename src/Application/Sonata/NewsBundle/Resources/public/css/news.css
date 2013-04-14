@@ -74,6 +74,8 @@ a.example {
 
     div.connection {
     position: relative;
+    background: rgb(234, 234, 234);
+
   /*  left: 50%;
     top: 35%;*/
    /* width: 460px;
