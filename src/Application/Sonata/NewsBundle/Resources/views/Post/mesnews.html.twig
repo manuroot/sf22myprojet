@@ -1,7 +1,6 @@
 {% extends "ApplicationSonataNewsBundle::layout.html.twig" %}
 
 
-
 {% block stylesheets %}
 {{ parent() }}
 {% stylesheets '@ApplicationSonataNewsBundle/Resources/public/css/*' output='css/compiled/main.css' filter='yui_css' %}
@@ -9,7 +8,12 @@
 {% endstylesheets %}
 {% endblock %}
 
-
+{#
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="{{ asset('bundles/applicationsonatanews/css/news.css') }}" type="text/css" />
+{% endblock %}
+#}
 
 {% block javascripts %}
       {{ parent() }}

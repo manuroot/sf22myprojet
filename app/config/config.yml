@@ -41,9 +41,9 @@ twig:
     form:
         resources:
             - LexikFormFilterBundle:Form:form_div_layout.html.twig
-   # form:
+    #form:
     #   resources:
-     #       - "BraincraftedBootstrapBundle:Form:form_div_layout.html.twig"
+    #        - "BcBootstrapBundle:Form:form_div_layout.html.twig"
 
 #==================================================
 #  ASSETIC
@@ -53,6 +53,7 @@ assetic:
     debug:          %kernel.debug%
     use_controller: false
     bundles:        [ ApplicationSonataNewsBundle,SonataNewsBundle ]
+    # bundles:        [ ApplicationSonataNewsBundle,SonataNewsBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -112,12 +113,12 @@ doctrine:
                     YEAR: DoctrineExtensions\Query\Mysql\Year
                     DAY: DoctrineExtensions\Query\Mysql\Day
         
-        mappings:
-            payum_paypal_express_checkout_nvp:
-                is_bundle: false
-                type: xml 
-                dir: %kernel.root_dir%/../vendor/payum/paypal-express-checkout-nvp/src/Payum/Paypal/ExpressCheckout/Nvp/Bridge/Doctrine/Resources/mapping
-                prefix: Payum\Paypal\ExpressCheckout\Nvp\Bridge\Doctrine\Entity
+     #   mappings:
+      #      payum_paypal_express_checkout_nvp:
+       #         is_bundle: false
+        #        type: xml 
+         #       dir: %kernel.root_dir%/../vendor/payum/paypal-express-checkout-nvp/src/Payum/Paypal/ExpressCheckout/Nvp/Bridge/Doctrine/Resources/mapping
+          #      prefix: Payum\Paypal\ExpressCheckout\Nvp\Bridge\Doctrine\Entity
                 #dql:
         #    string_functions:
          #               GroupConcat: DoctrineExtensions\Query\Mysql\GroupConcat
@@ -274,5 +275,5 @@ stfalcon_tinymce:
 #mopa_bootstrap:
 #    form:
 #       show_legend: false # default is true
-#        show_child_legend: false # default is true
-#        error_type: block # or inline which is default
+#       show_child_legend: false # default is true
+#       error_type: block # or inline which is default

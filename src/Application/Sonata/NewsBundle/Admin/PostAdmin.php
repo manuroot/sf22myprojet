@@ -55,7 +55,7 @@ public function getTemplate($name)
     /**
      * {@inheritdoc}
      */
-    protected function configureShowFields(ShowMapper $showMapper)
+  /*  protected function configureShowFields(ShowMapper $showMapper)
     {
            parent::configureShowFields($showMapper);
       
@@ -70,7 +70,7 @@ public function getTemplate($name)
             ->add('content', null, array('safe' => true))
             ->add('tags')
         ;*/
-    }
+ /*  }*/
 
     /**
      * {@inheritdoc}
@@ -185,13 +185,13 @@ public function getTemplate($name)
     /**
      * {@inheritdoc}
      */
-    protected function configureListFields(ListMapper $listMapper)
+   /* protected function configureListFields(ListMapper $listMapper)
     {
             parent::configureListFields($listMapper);
       
        $listMapper
            ->add('contentFormatter');
-   
+   */
       /*  $listMapper
             ->addIdentifier('title')
             ->add('author')
@@ -204,7 +204,7 @@ public function getTemplate($name)
             ->add('publicationDateStart')
                    
         ;*/
-    }
+ //  }
 
     /**
      * {@inheritdoc}
