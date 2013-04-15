@@ -57,9 +57,9 @@ assetic:
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
-        cssembed:
-            jar: %kernel.root_dir%/Resources/java/cssembed-0.4.5.jar
-            apply_to: "\.css$|\.less$"
+       # cssembed:
+        #    jar: %kernel.root_dir%/Resources/java/cssembed-0.4.5.jar
+         #   apply_to: "\.css$|\.less$"
         yui_css:
             jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
             apply_to: "\.css$"

@@ -233,7 +233,7 @@ $all_years = $this->sidebar_years();
 
        $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $query, $this->get('request')->query->get('page', 1), 5
+                $query, $this->get('request')->query->get('page', 1), 10
         );
 
         $pagination->setTemplate('ApplicationSonataNewsBundle:pagination:twitter_bootstrap_pagination.html.twig');

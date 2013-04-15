@@ -1,12 +1,6 @@
 {% extends "ApplicationSonataNewsBundle::layout.html.twig" %}
 
 
-{% block stylesheets %}
-{{ parent() }}
-{% stylesheets '@ApplicationSonataNewsBundle/Resources/public/css/*' output='css/compiled/main.css' filter='yui_css' %}
-<link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" />
-{% endstylesheets %}
-{% endblock %}
 
 {#
 {% block stylesheets %}
@@ -76,7 +70,7 @@ $( "#form_bis" ).datepicker( "option", "minDate", selectedDate );
 <form class="form-horizontal" action="{{ url('list_mesnews') }}" method="GET" >
  
     {{ form_rest(form) }}
-    <input type="submit" name="submit-filter" class="btn btn-medium btn-primary" value="filter" />
+    <input type="submit" name="submit-filter" class="btn btn-medium btn-primary" value="Filter" />
 </form>
 </div>           
  <table class="table small table-striped table-condensed table-bordered table-hover">
