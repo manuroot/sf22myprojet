@@ -69,7 +69,18 @@
        
         "beberlei/DoctrineExtensions": "dev-master",
         "lexik/form-filter-bundle": "dev-master",
-        "savvy/filternator-bundle": "dev-master"
+        "savvy/filternator-bundle": "dev-master",
+        
+        /*test*/
+        
+        "payum/payum": "0.4.0",
+       "payum/payum-bundle": "0.4.0",
+        "payum/paypal-express-checkout-nvp": "0.4.*",
+        "payum/paypal-pro-checkout-nvp": "0.4.*",
+        "payum/authorize-net-aim": "0.4.*",
+        "payum/be2bill": "0.4.*",
+        "payum/omnipay-bridge": "0.4.*",
+        
         
     },
     "scripts": {

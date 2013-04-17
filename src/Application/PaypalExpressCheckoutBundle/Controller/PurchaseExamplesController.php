@@ -71,8 +71,8 @@ class PurchaseExamplesController extends Controller {
             $form->bind($request);
             if ($form->isValid()) {
                 $data = $form->getData();
-                   print_r($data);
-                   exit(1);
+                //   print_r($data);
+                //   exit(1);
                 if (!isset($data['currency']))
                     $data['currency'] = "EUR";
                 $paymentContext = $this->getPayum()->getContext('simple_purchase_paypal_express_checkout_doctrine');
@@ -81,7 +81,7 @@ class PurchaseExamplesController extends Controller {
                 $paymentDetails = $paymentContext->getStorage()->createModel();
                 $paymentDetails->setPaymentrequestCurrencycode(0, $data['currency']);
                 $paymentDetails->setPaymentrequestAmt(0, $data['amount']);
-//PAYMENTREQEUST_
+
                 $paymentDetails->setLPaymentrequestName(0, 0, 'Participation MROOT BLOG');
                 $paymentDetails->setLPaymentrequestDesc(0, 0, 'Une aide au developpement');
                 $paymentDetails->setLPaymentrequestAmt(0, 0, $data['amount']);

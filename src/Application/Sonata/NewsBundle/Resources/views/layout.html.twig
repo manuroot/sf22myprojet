@@ -38,7 +38,7 @@ $( "#datepicker" ).datepicker();
  </div>
  <hr class="myhr">
 
- {#
+
 Faire une donation
 <form action="{{ path('application_paypal_express_checkout_prepare_simple_purchase_and_doctrine')}}" method="post" {{ form_enctype(form_paypal) }}>
    
@@ -48,7 +48,7 @@ Faire une donation
 
  <input type="image" src="{{ asset('images/x-click-but04.gif') }}" name="submit" alt="Effectuez vos paiements via PayPal : une solution rapide, gratuite et sécurisée"></input>
     </form>
-   #}
+   
        {{ parent() }}
  {{ knp_menu_render('ApplicationSonataNewsBundle:Builder:mainMenu') }}
 {% endblock %}

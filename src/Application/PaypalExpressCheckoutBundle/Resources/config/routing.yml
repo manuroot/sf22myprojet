@@ -1,0 +1,4 @@
+application_paypal_express_checkout:
+    resource:   "@ApplicationPaypalExpressCheckoutBundle/Controller/"
+    type:       annotation
+    prefix:     /paypal/express-checkout

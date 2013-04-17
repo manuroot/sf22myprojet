@@ -1,0 +1,16 @@
+{% extends "ApplicationPaymentBundle::layout.html.twig" %}
+{% block title "Soutenir le BLOG" %}
+{% block content %}
+Participer au développement du site, des articles, soutenir les développeurs, le temps passé, l'absence de publicité.
+<form method="POST">
+        {#{ form_widget(form) }#}
+                            {{ form_row(form.amount) }}
+                                     {{ form_rest(form) }}
+      <!--  <input type="hidden" name="item_name" value="Participation MROOT Blog"> -->
+        <input type="image" src="{{ asset('images/x-click-but04.gif') }}" name="submit" alt="Effectuez vos paiements via PayPal : une solution rapide, gratuite et sécurisée"/>
+   </form>
+    <!--<input type="submit" value="Pay" />
+        </form>-->
+{% endblock %}
+
+{#% set code = code(_self) %#}

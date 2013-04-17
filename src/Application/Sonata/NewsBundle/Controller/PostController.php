@@ -147,7 +147,7 @@ class PostController extends Controller {
 
     public function renderArchive(array $criteria = array(), array $parameters = array()) {
 
-        // $form_paypal = $this->createPurchaseForm();
+        $form_paypal = $this->createPurchaseForm();
         $pager = $this->getPostManager()->getPager(
                 $criteria, $this->getRequest()->get('page', 1), 5
         );
@@ -166,7 +166,7 @@ $all_years = $this->sidebar_years();
             'blog' => $this->get('sonata.news.blog'),
             'tag' => false,
             'test' => $test,
-            //  'form_paypal' => $form_paypal->createView(),
+            'form_paypal' => $form_paypal->createView(),
             'allcategories' => $allcategories,
             // 'catweight' => $catWeights,
             'alltags' => $alltags,
@@ -198,7 +198,7 @@ $all_years = $this->sidebar_years();
 
     public function mesnewsAction(array $criteria = array(), array $parameters = array()) {
 
-        //  $form_paypal = $this->createPurchaseForm();
+          $form_paypal = $this->createPurchaseForm();
           $form = $this->get('form.factory')->create(new PostFilterType());
           if ($this->get('request')->query->has('submit-filter')) {
             // bind values from the request
@@ -241,7 +241,7 @@ $all_years = $this->sidebar_years();
         return $this->render('ApplicationSonataNewsBundle:Post:mesnews.html.twig', array(
                     // 'pager' => $mypager,
                     'pagination' => $pagination,
-                    //   'form_paypal' => $form_paypal->createView(),
+                       'form_paypal' => $form_paypal->createView(),
                     'allcategories' => $allcategories,
                     'lastcomments' => $lastcomments,
                     'alltags' => $alltags,

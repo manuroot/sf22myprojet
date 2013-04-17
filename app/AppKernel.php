@@ -67,9 +67,9 @@ class AppKernel extends Kernel {
             //====================================================
             // PAYPAL: PAYUM
             //====================================================
-            /* new Payum\Bundle\PayumBundle\PayumBundle(),
+             new Payum\Bundle\PayumBundle\PayumBundle(),
               new Application\PaymentBundle\ApplicationPaymentBundle(),
-              new Application\PaypalExpressCheckoutBundle\ApplicationPaypalExpressCheckoutBundle(), */
+              new Application\PaypalExpressCheckoutBundle\ApplicationPaypalExpressCheckoutBundle(), 
 
             //====================================================
             // FORM FILTER
