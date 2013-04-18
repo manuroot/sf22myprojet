@@ -1,8 +1,9 @@
 {% extends "ApplicationPaymentBundle::layout.html.twig" %}
 
-{% block title "Payment demo - Simple purchase - Finished" %}
+{% block title "Paypal: Bilan De La Transation - Finished" %}
 
-{% block content %}    
+{% block content %}   
+<br><br>
     <div class="block">
         Payment status:
         {% if status.success %}
@@ -18,13 +19,24 @@
         {% endif %}
     </div>
 
-    <div class="block">
-        <ul>
-            {% for key, value in status.model %}
-                <li>{{ key }}: {{ value }}</li>
-            {% endfor %}
-        </ul>
-    </div>
+ <br><br>  
+
+<table class="table table-striped table-bordered table-hover">
+    <tbody>
+         {% for key, value in status.model %}
+        <tr>
+            <th>{{ key }}</th>
+            <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+       
+    </tbody>
+</table>
+
+<br><br>
+<a href="{{ path('sonata_news_home') }}" class="btn btn-small btn-success">Retour</a>
+<br><br>
+
 {% endblock %}
 
 {#% set code = code(_self) %#}
