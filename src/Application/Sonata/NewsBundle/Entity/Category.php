@@ -45,6 +45,8 @@ class Category extends BaseCategory
         return (string) $this->getName();
      } 
      
+     
+     
       /**
      * {@inheritDoc}
      */
