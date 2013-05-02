@@ -42,4 +42,19 @@ class CommentRepository extends EntityRepository
  */
         //->getResult();
     }
+    
+     public function FindGroupLastComments($limit=20,$group=null) {
+        return $this->createQueryBuilder('p')
+                
+                //  ->add('orderBy', 'p.id DESC')
+                 ->where('p.status = 1')
+                  ->leftJoin('p.post', 'b')
+                     ->leftJoin('b.author', 'c')
+                 ->andWhere('c.idgroup = :groupid')
+                 ->setParameter('groupid', $group)
+                 ->orderby('p.updatedAt', 'DESC')
+                  ->setMaxResults($limit)
+                        ->getQuery()
+                 ->getResult();
+     }
 }

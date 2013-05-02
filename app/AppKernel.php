@@ -80,7 +80,8 @@ class AppKernel extends Kernel {
                 /* new Payum\Bundle\PayumBundle\PayumBundle(),
                   //  new Application\PaymentBundle\ApplicationPaymentBundle(),
                   new Application\PaypalExpressCheckoutBundle\ApplicationPaypalExpressCheckoutBundle(),
-                  new Application\PaymentBundle\ApplicationPaymentBundle(), */
+                  new Application\PaymentBundle\ApplicationPaymentBundle(), */,
+            new Application\RelationsBundle\ApplicationRelationsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -64,32 +64,15 @@ $( "#form_bis" ).datepicker( "option", "minDate", selectedDate );
    
  
 {% block content %}
- 
-{% for type, flashMessages in app.session.flashbag.all() %}
-    {% for flashMessage in flashMessages %}
-        <div class="alert alert-{{ type }}">
-            {{ flashMessage|trans }}
-        </div>
-    {% endfor %}
-{% endfor %}
 <br>
 
 <div class="connection">
-  
 <form class="form-horizontal" action="{{ url('list_mesnews') }}" method="GET" >
  
     {{ form_rest(form) }}
     <input type="submit" name="submit-filter" class="btn btn-medium btn-primary" value="Filter" />
 </form>
-  
-     {#   <form class="form-horizontal" action="{{ url('list_mesnews') }}" method="GET" >
- 
-    {{ form_rest(forma) }}
-    <input type="submit" name="submit-filter" class="btn btn-medium btn-primary" value="Filter" />
-</form>
-#}
-</div>         
-
+</div>           
  <table class="table small table-striped table-condensed table-bordered table-hover">
      <thead>
                       
@@ -141,11 +124,6 @@ $( "#form_bis" ).datepicker( "option", "minDate", selectedDate );
                {#  <td>
              {      <img width="40px" src="{{  post.image }}" alt="fds" /></td>#}
                <td>
-                    <a href="{{ path('epost_edit', { 'id': post.id }) }}">
-                        <img src="{{ asset('bundles/applicationsonatanews/images/edit.png') }}" alt="edit" width="15" height="15" />
-                    </a>
-                </td>
-                 <td>
 {#<img src="/sf1/{% path post.image, 'small' %}" width="50" /> #}
 <img src="{% path post.image, 'small' %}" width="50" /> 
 {#

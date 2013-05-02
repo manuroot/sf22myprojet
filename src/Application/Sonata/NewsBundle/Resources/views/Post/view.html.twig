@@ -106,7 +106,7 @@ collapsible: true
      
     <div class="sonata-blog-post-date-container">
       
-        {{ post.publicationDateStart | format_datetime }}
+  
     </div>
 
     <h1 class="sonata-blog-post-title">
@@ -138,6 +138,7 @@ collapsible: true
 
    <br>   <br> 
        
+    {% if pager is defined %}
         {% if pager.getResults()|length > 0 %}
          {#{% if pager.haveToPaginate() %} #}
          <table class="table table-striped table-bordered table-hover" style="width:100%">
@@ -169,10 +170,13 @@ collapsible: true
     </tbody>
 </table>
     {%endif %}  
+   {% include 'ApplicationSonataNewsBundle:pagination:pagercommentsa.html.twig' with {'mything': 'COMMENTAIRES', 'myurl': 'sonata_news_view'} %}
+      {%endif %}  
       </div>
-           
-{% include 'ApplicationSonataNewsBundle:pagination:pagercommentsa.html.twig' with {'mything': 'COMMENTAIRES', 'myurl': 'sonata_news_view'} %}
-                      
+ 
+
+
+ <br><br>
 
 {#         {{ render(controller('SonataNewsBundle:Post:comments', { 'postId': post.id  })) }}
  {{ render(controller('SonataNewsBundle:Post:mcomments', { 'mpost': post, 'postId': post.id  })) }}

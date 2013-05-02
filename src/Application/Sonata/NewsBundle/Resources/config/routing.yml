@@ -1,3 +1,16 @@
 list_mesnews:
     pattern:  /mesnews
     defaults: { _controller: "ApplicationSonataNewsBundle:Post:mesnews" }
+    
+list_mongroupnews:
+    pattern:  /mongroup
+    defaults: { _controller: "ApplicationSonataNewsBundle:Post:mongroupnews" }
+    
+epost_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "ApplicationSonataNewsBundle:Post:epostedit" }
+
+epost_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "ApplicationSonataNewsBundle:Post:epostupdate" }
+    requirements: { _method: post|put }

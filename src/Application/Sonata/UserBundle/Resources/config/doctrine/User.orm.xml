@@ -9,7 +9,16 @@
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO" />
         </id>
+  
         <field name="city" column="city" type="text"/>
+        <many-to-one
+    field="idgroup"
+    target-entity="Application\RelationsBundle\Entity\EpostGroup"
+    >
+    <cascade>
+        <cascade-all/>
+    </cascade>
+</many-to-one>
     </entity>
 
 </doctrine-mapping>

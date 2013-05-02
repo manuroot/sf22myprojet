@@ -21,7 +21,7 @@
         {{ form_errors(form.name) }}
     </div>
 
-    <div class="clearfix">
+    {#<div class="clearfix">
         {{ form_label(form.email) }}
         {{ form_widget(form.email) }}
         {{ form_errors(form.email) }}
@@ -32,7 +32,7 @@
         {{ form_widget(form.url) }}
         {{ form_errors(form.url) }}
     </div>
-
+#}
     <div class="clearfix">
         {{ form_label(form.message) }}
         {{ form_widget(form.message) }}
@@ -40,7 +40,7 @@
     </div>
 
     {{ form_rest(form) }}
-
+<br><br>
     <input type="submit" class="btn btn-large btn-primary" value="{{'btn_add_comment'|trans({}, 'SonataNewsBundle') }}" />
 </form>
 

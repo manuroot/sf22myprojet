@@ -474,6 +474,14 @@
                 <source>label_profile_city</source>
                 <target>Ville</target>
             </trans-unit>
+              <trans-unit id="form.label_idgroup">
+                <source>form.label_idgroup</source>
+                <target>Groupe de Post</target>
+            </trans-unit>
+            
+
+
+
         </body>
     </file>
 </xliff>

@@ -33,6 +33,54 @@ class PostRepository extends BasePostRepository
         //->getResult();
     }
     
+      public function myFindOtherAll($user_id,$group_id) {
+
+        $query = $this->createQueryBuilder('p')
+                ->where('p.author <> :proprietaire')
+             ->setParameter('proprietaire', $user_id)
+                //  ->where('a.proprietaire.getId = :idproprietaire')
+                 //       ->setParameter('idproprietaire', '2')
+                   ->leftJoin('p.author', 'e')
+                 ->andWhere('e.idgroup = :groupid')
+                 ->setParameter('groupid', $group_id)
+            /*    
+                  ->leftJoin('a.notes', 'e')
+                 ->andWhere('e.user  <> :proprietaire')
+                  ->setParameter('proprietaire', $user_id)
+           */ 
+                
+                ->leftJoin('p.category', 'd')
+              //  ->leftJoin('a.idStatus', 'd')
+             
+                ->add('orderBy', 'p.id DESC')
+                ->getQuery();
+        return $query;
+    }
+    
+    public function myFindaAll($user_id) {
+
+        $query = $this->createQueryBuilder('p')
+                ->add('orderBy', 'p.id DESC')
+                ->where('p.author = :proprietaire')
+                ->leftJoin('p.author', 'e')
+                ->leftJoin('p.category', 'd')
+              //  ->leftJoin('a.idStatus', 'd')
+                 ->setParameter('proprietaire', $user_id)
+                ->getQuery();
+
+    
+        /* $query = $this->createQueryBuilder('a')
+          ->add('orderBy', 'a.id DESC');
+
+          if (isset($user_id)){
+          $query=$query->where('a.proprietaire = :proprietaire')
+          ->setParameter('proprietaire', $user_id);
+
+
+          }
+          ->getQuery(); */
+        return $query;
+    }
     
     /**
 * Count published elements from date

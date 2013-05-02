@@ -107,7 +107,7 @@
 
             <trans-unit id="title_leave_comment">
                 <source>title_leave_comment</source>
-                <target>Rajouter un commentaire</target>
+                <target>Laisser un commentaire</target>
             </trans-unit>
             <trans-unit id="mail_title_comment_notification">
                 <source>mail_title_comment_notification</source>

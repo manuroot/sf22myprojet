@@ -17,8 +17,10 @@
                             <ul class="dropdown-menu">
                                 
                                    <li><a href="{{ path('sonata_news_home') }}"><i class="icon-book"></i>{{ 'Blog'|trans }}</a></li>
-                                <li><a href="{{ path('list_mesnews') }}"><i class="icon-book"></i>{{ 'Blog DataGRID'|trans }}</a></li>
-                          
+                              {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                                   <li><a href="{{ path('list_mesnews') }}"><i class="icon-book"></i>{{ 'Mes News (datagrid)'|trans }}</a></li>
+                             <li><a href="{{ path('list_mongroupnews') }}"><i class="icon-book"></i>{{ 'Mon Groupe-news (datagrid)'|trans }}</a></li>
+                                {% endif %}
 
                             </ul>
                                   

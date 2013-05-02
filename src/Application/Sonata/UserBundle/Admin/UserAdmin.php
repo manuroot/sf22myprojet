@@ -16,6 +16,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Application\RelationsBundle\Entity\EpostGroup;
 use Sonata\UserBundle\Admin\Model\UserAdmin as SonataUserAdmin;
 use FOS\UserBundle\Model\UserManagerInterface;
 
@@ -32,7 +33,8 @@ class UserAdmin extends SonataUserAdmin
     {
             parent::configureListFields($listMapper);
         $listMapper
-        ->add('city');
+        ->add('city')
+        ->add('idgroup');
         
     }
 
@@ -43,7 +45,8 @@ class UserAdmin extends SonataUserAdmin
     {
          parent::configureDatagridFilters($filterMapper);
         $filterMapper
-         ->add('city');
+         ->add('city')
+                 ->add('idgroup');
                 }
 
     /**
@@ -56,6 +59,7 @@ class UserAdmin extends SonataUserAdmin
          $showMapper
                 ->with('Extra-MROOT')
                  ->add('city')
+                  ->add('idgroup')
                 
             ->end();
     
@@ -71,6 +75,7 @@ class UserAdmin extends SonataUserAdmin
         $formMapper
               ->with('Extra-MROOT')
                    ->add('city', 'text', array('required' => false))
+                 ->add('idgroup')
             ->end();
    
     }

@@ -33,9 +33,9 @@ class CommentType extends AbstractType
     //          $name="Nom";
         $builder
             ->add('name',null,array('label'=>'Nom'))
-               
-            ->add('email', null, array('required' => false))
-            ->add('url', null, array('required' => false))
+             //    ->add('name',null,array( 'disabled' => true,'label'=>'Utilisateur'))
+            //->add('email', null, array('required' => false))
+          // ->add('url', null, array('required' => false))
             ->add('message','textarea')
              //   ->add('message', null, array('required' => false, 'attr' => array('class' => 'ckeditor')))
         ;
