@@ -50,7 +50,7 @@ class User extends BaseUser
     */
     private $idgroup;
     
-  
+    
     /**
      * Set idgroup
      *
@@ -86,6 +86,6 @@ class User extends BaseUser
     
         return $this;
     }
-    
+  
     
 }

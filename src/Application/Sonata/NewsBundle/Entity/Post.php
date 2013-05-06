@@ -36,7 +36,7 @@ class Post extends BasePost
      * @var integer $id
      */
     protected $id;
-
+protected $galleryHasMedias;
     /**
      * Get id
      *
@@ -111,4 +111,62 @@ class Post extends BasePost
     }
 
    
+    /**
+     * @var \Application\Sonata\MediaBundle\Entity\Media
+     */
+    protected $image;
+
+  
+  
+
+  
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->galleryHasMedias = new \Doctrine\Common\Collections\ArrayCollection();
+   
+    
+    }
+    
+    /**
+     * Add galleryHasMedias
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\GalleryHasMedia $galleryHasMedias
+     * @return Post
+     */
+    public function addGalleryHasMedia(\Application\Sonata\MediaBundle\Entity\GalleryHasMedia $galleryHasMedias)
+    {
+        $this->galleryHasMedias[] = $galleryHasMedias;
+    
+        return $this;
+    }
+
+    /**
+     * Remove galleryHasMedias
+     *
+     * @param \Application\Sonata\MediaBundle\Entity\GalleryHasMedia $galleryHasMedias
+     */
+    public function removeGalleryHasMedia(\Application\Sonata\MediaBundle\Entity\GalleryHasMedia $galleryHasMedias)
+    {
+        $this->galleryHasMedias->removeElement($galleryHasMedias);
+    }
+
+    /**
+     * Get galleryHasMedias
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGalleryHasMedias()
+    {
+        return $this->galleryHasMedias;
+    }
+
+   
+
+    
+
+  
 }

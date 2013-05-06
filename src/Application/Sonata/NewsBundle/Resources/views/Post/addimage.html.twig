@@ -1,0 +1,51 @@
+{% extends "ApplicationSonataNewsBundle::layoutsimple.html.twig" %}
+
+         
+{% block javascripts %}
+{{ parent() }}
+{{ tinymce_init() }}
+<script type="text/javascript">
+          
+$(document).ready(function() {
+ $( "#application_sonata_eposttype_commentsCloseAt" ).datepicker({
+maxDate: "+3M +10D",
+changeMonth: true,
+changeYeat: true,
+numberOfMonths: 1,
+dateFormat: "yy-mm-dd 18:00",
+onClose: function( selectedDate ) {
+$( "#form_bis" ).datepicker( "option", "minDate", selectedDate );
+}
+});
+  
+});
+</script>
+{% endblock %}
+
+
+
+
+
+{% block content_header '' %}
+{% block title %}
+
+{% endblock %}
+{% block content %}
+
+<br><br>
+
+Image Actuelle:
+<img src="{% path entity.image, 'small' %}" width="50" /> 
+
+<form action="{{ path('epost_addmyimage', { 'id': entity.id }) }}" method="post" {{ form_enctype(form) }}>
+               
+                            
+{{ form_rest(form) }} 
+         
+                            <button type="submit" class="btn btn-small btn-warning">Modifier</button>
+   </form>       
+
+
+
+{% endblock %}
+

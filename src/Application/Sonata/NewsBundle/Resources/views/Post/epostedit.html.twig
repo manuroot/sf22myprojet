@@ -1,10 +1,29 @@
-{% extends "ApplicationSonataNewsBundle::layout.html.twig" %}
+{% extends "ApplicationSonataNewsBundle::layoutsimple.html.twig" %}
 
-          
+         
 {% block javascripts %}
 {{ parent() }}
 {{ tinymce_init() }}
+<script type="text/javascript">
+          
+$(document).ready(function() {
+ $( "#application_sonata_eposttype_commentsCloseAt" ).datepicker({
+maxDate: "+3M +10D",
+changeMonth: true,
+changeYeat: true,
+numberOfMonths: 1,
+dateFormat: "yy-mm-dd 18:00",
+onClose: function( selectedDate ) {
+$( "#form_bis" ).datepicker( "option", "minDate", selectedDate );
+}
+});
+  
+});
+</script>
 {% endblock %}
+
+
+
 
 
 {% block content_header '' %}
@@ -15,20 +34,21 @@ POST: {{ entity.title }}
 
 <br><br>
 
- <form action="{{ path('epost_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-     <table class="table table-bordered">
-    <tbody>      
-        <tr><td>
-                 <div>
+<form action="{{ path('epost_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    <table class="table table-bordered">
+        <tbody>      
+            <tr><td>
+                    <div>
                   {{ form_row(edit_form.title) }}
-                           
-         {{ form_row(edit_form.tags) }}
-                         {{ form_row(edit_form.category) }}
-                         
-                 {#    {{ form_row(edit_form.services) }}#}
-              </div>
-                              <div>
+                  {{ form_row(edit_form.author) }}
+                  {{ form_row(edit_form.tags) }}
+                  {{ form_row(edit_form.category) }}
+                  {{ form_row(edit_form.author) }}
 
+
+                 {#    {{ form_row(edit_form.services) }}#}
+                        </div>
+                      
           {#   {% if entity.image is not null %}               
                                       <p>Image Actuelle</p>
          <img width="150px" src="{{ vich_uploader_asset(entity, 'image') }}" alt="{{ entity.imageName }}" />
@@ -37,26 +57,38 @@ POST: {{ entity.title }}
          {% endif %}
            </div>
             #}  
-                   </td>
- <td>
-{# {{ form_row(edit_form.description) }}#}
-{{ form_rest(edit_form) }} </td>
-                                 </tr>
-                                     
-<tr><td colspan="2">
-                                   
-  <button type="submit" class="btn btn-small btn-warning">Modifier</button>
-  
-    <a href="{{ path(btnretour)  }}" class="btn btn-small btn-success">Retour</a>
-   </form>       
-                                    
-                                       
-                                </td></tr>
-                        </tbody>
-                    </table>
- 
+                    </td>
+                    <td>
+                        {{ form_row(edit_form.content) }}
+{{ form_row(edit_form.abstract) }}
 
-      
+                        
+                        </td>
+                        <td>
+                
+             <img src="{% path entity.image, 'big' %}" width="100" />                
+{{ form_rest(edit_form) }} 
+                        
+                        </td>
+                    </tr>
 
-       
+                    <tr><td colspan="2">
+
+
+
+                            <button type="submit" class="btn btn-small btn-warning">Modifier</button>
+
+                            <a href="{{ path(btnretour)  }}" class="btn btn-small btn-success">Retour</a>
+                            </form>       
+
+
+                        </td></tr>
+                </tbody>
+            </table>
+
+
+
+
+
 {% endblock %}
+

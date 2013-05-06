@@ -145,6 +145,15 @@ $( "#form_bis" ).datepicker( "option", "minDate", selectedDate );
                         <img src="{{ asset('bundles/applicationsonatanews/images/edit.png') }}" alt="edit" width="15" height="15" />
                     </a>
                 </td>
+                  <td>
+                    <a href="{{ path('epost_addmyimage', { 'id': post.id }) }}">
+                        <img src="{{ asset('bundles/applicationsonatanews/images/edit.png') }}" alt="edit" width="15" height="15" />
+                    </a>
+                </td>
+                
+                
+                
+                
                  <td>
 {#<img src="/sf1/{% path post.image, 'small' %}" width="50" /> #}
 <img src="{% path post.image, 'small' %}" width="50" /> 

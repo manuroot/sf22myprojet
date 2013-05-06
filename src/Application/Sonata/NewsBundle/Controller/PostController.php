@@ -71,15 +71,15 @@ class PostController extends Controller {
 
     private function sidebar_comments() {
         $em = $this->container->get('doctrine')->getManager();
-          list($user_id, $group_id) = $this->getuserid();
+        list($user_id, $group_id) = $this->getuserid();
         //myFindAll
         //  $allcategories = $em->getRepository('ApplicationSonataNewsBundle:Category')->myFindAll();
         //$lastcomments = $em->getRepository('ApplicationSonataNewsBundle:Comment')->FindLastComments();
-          if ($user_id !=0 && $group_id !=0){
-           $lastcomments = $em->getRepository('ApplicationSonataNewsBundle:Comment')->FindGroupLastComments(10,$group_id); 
-          }else {
-              $lastcomments = $em->getRepository('ApplicationSonataNewsBundle:Comment')->FindLastComments();
-          }
+        if ($user_id != 0 && $group_id != 0) {
+            $lastcomments = $em->getRepository('ApplicationSonataNewsBundle:Comment')->FindGroupLastComments(10, $group_id);
+        } else {
+            $lastcomments = $em->getRepository('ApplicationSonataNewsBundle:Comment')->FindLastComments();
+        }
 //FindGroupLastComments($limit=20,$group=null) 
         //    ->findAll();
         return ($lastcomments);
@@ -224,23 +224,23 @@ class PostController extends Controller {
 
 //myFindOtherAll($user_id,$group_id) 
     public function mesnewsAction(array $criteria = array(), array $parameters = array()) {
-    list($user_id, $group_id) = $this->getuserid();
+        list($user_id, $group_id) = $this->getuserid();
         $form_paypal = $this->createPurchaseForm();
-        
-         $entity = new post();
+
+        $entity = new post();
         /*
           $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
           $path = $helper->asset($entity, 'image'); */
         $forma = $this->createForm(new EpostType(), $entity);
-        
-        
-              $session = $this->getRequest()->getSession();
+
+
+        $session = $this->getRequest()->getSession();
         $session->set('buttonretour', 'list_mesnews');
-  
-        
+
+
         $form = $this->get('form.factory')->create(new PostFilterType());
-     //   $forma = $this->get('form.factory')->create(new EpostType());
-         
+        //   $forma = $this->get('form.factory')->create(new EpostType());
+
         if ($this->get('request')->query->has('submit-filter')) {
             // bind values from the request
             $form->bindRequest($this->get('request'));
@@ -279,16 +279,16 @@ class PostController extends Controller {
                     'tagweight' => $tagWeights,
                     'all_years' => $all_years,
                     'form' => $form->createView(),
-             'forma' => $forma->createView(),
+                    'forma' => $forma->createView(),
                 ));
     }
 
     public function mongroupnewsAction(array $criteria = array(), array $parameters = array()) {
 
         list($user_id, $group_id) = $this->getuserid();
-      $session = $this->getRequest()->getSession();
+        $session = $this->getRequest()->getSession();
         $session->set('buttonretour', 'list_mongroupnews');
-  
+
         $form_paypal = $this->createPurchaseForm();
         $form = $this->get('form.factory')->create(new PostFilterType());
         if ($this->get('request')->query->has('submit-filter')) {
@@ -297,12 +297,11 @@ class PostController extends Controller {
             $filterBuilder = $this->get('doctrine.orm.entity_manager')
                     ->getRepository('ApplicationSonataNewsBundle:Post')
                     ->createQueryBuilder('e');
-     $query = $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($form, $filterBuilder);
-
+            $query = $this->get('lexik_form_filter.query_builder_updater')->addFilterConditions($form, $filterBuilder);
         } else {
             $em = $this->getDoctrine()->getManager();
             // $query = $em->getRepository('ApplicationEpostBundle:Epost')->myFindAll($user_id);
-              $query = $em->getRepository('ApplicationSonataNewsBundle:Post')->myFindOtherAll($user_id, $group_id);
+            $query = $em->getRepository('ApplicationSonataNewsBundle:Post')->myFindOtherAll($user_id, $group_id);
         }
         //   $alltags = $this->sidebar_tags();
         list($alltags, $tagWeights) = $this->sidebar_tags();
@@ -422,20 +421,20 @@ class PostController extends Controller {
      *
      * @return Response
      */
- /*   public function mycommentsAction($mpost, $postId) {
-        $pager = $this->getCommentManager()
-                ->getPager(array(
-            'postId' => $postId,
-            'status' => CommentInterface::STATUS_VALID
-                ), 1, 5); //no limit
+    /*   public function mycommentsAction($mpost, $postId) {
+      $pager = $this->getCommentManager()
+      ->getPager(array(
+      'postId' => $postId,
+      'status' => CommentInterface::STATUS_VALID
+      ), 1, 5); //no limit
 
-        return $this->render('SonataNewsBundle:Post:comments.html.twig', array(
-                    'pager' => $pager,
-                    'mpost' => $mpost,
-                ));
-    }*/
+      return $this->render('SonataNewsBundle:Post:comments.html.twig', array(
+      'pager' => $pager,
+      'mpost' => $mpost,
+      ));
+      } */
 
- public function commentsAction($postId) {
+    public function commentsAction($postId) {
         $pager = $this->getCommentManager()
                 ->getPager(array(
             'postId' => $postId,
@@ -473,18 +472,17 @@ class PostController extends Controller {
         return $this->get('form.factory')->createNamed('comment', 'sonata_post_comment', $comment);
     }
 
-      /**
+    /**
      * @throws NotFoundHttpException
      *
      * @param string $id
      *
      * @return Response
      */
-    public function addCommentAction($id)
-    {
+    public function addCommentAction($id) {
         $post = $this->getPostManager()->findOneBy(array(
             'id' => $id
-        ));
+                ));
 
         if (!$post) {
             throw new NotFoundHttpException(sprintf('Post (%d) not found', $id));
@@ -493,8 +491,8 @@ class PostController extends Controller {
         if (!$post->isCommentable()) {
             // todo add notice
             return new RedirectResponse($this->generateUrl('sonata_news_view', array(
-                'permalink'  => $this->getBlog()->getPermalinkGenerator()->generate($post)
-            )));
+                                'permalink' => $this->getBlog()->getPermalinkGenerator()->generate($post)
+                            )));
         }
 
         $form = $this->getCommentForm($post);
@@ -508,16 +506,15 @@ class PostController extends Controller {
 
             // todo : add notice
             return new RedirectResponse($this->generateUrl('sonata_news_view', array(
-                'permalink'  => $this->getBlog()->getPermalinkGenerator()->generate($post)
-            )));
+                                'permalink' => $this->getBlog()->getPermalinkGenerator()->generate($post)
+                            )));
+        } else {
+            return new RedirectResponse($this->generateUrl('sonata_news_view', array(
+                                'permalink' => $this->getBlog()->getPermalinkGenerator()->generate($post)
+                            )));
         }
-else {
-   return new RedirectResponse($this->generateUrl('sonata_news_view', array(
-                'permalink'  => $this->getBlog()->getPermalinkGenerator()->generate($post)
-            )));
-   
-}
     }
+
     public function addCommentFormAction($postId, $form = false) {
         //    parent::addCommentFormAction($postId, $form=false);
         if (!$form) {
@@ -609,10 +606,9 @@ else {
                 ));
     }
 
-    
-      public function eposteditAction($id) {
+    public function eposteditAction($id) {
         $em = $this->getDoctrine()->getManager();
-  $form_paypal = $this->createPurchaseForm();
+        $form_paypal = $this->createPurchaseForm();
         //$query = $em->getRepository('ApplicationSonataNewsBundle:Post')->myFindaAll($user_id);
         $entity = $em->getRepository('ApplicationSonataNewsBundle:Post')->find($id);
 
@@ -622,7 +618,7 @@ else {
         $session = $this->getRequest()->getSession();
         $myretour = $session->get('buttonretour');
 
-        list($user_id,$group_id) = $this->getuserid();
+        list($user_id, $group_id) = $this->getuserid();
         $proprietaire = $entity->getAuthor()->getId();
         //echo "u=$user_id  p=$proprietaire<br>";
         //    exit(1);
@@ -631,21 +627,21 @@ else {
                     ));
         }
 
-         //    $entity = new post();
+        //    $entity = new post();
         /*
           $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
           $path = $helper->asset($entity, 'image'); */
         $editForm = $this->createForm(new EpostType(), $entity);
-    
-      //  $editForm = $this->createForm(new EpostType(), $entity);
-      // $deleteForm = $this->createDeleteForm($id);
+
+        //  $editForm = $this->createForm(new EpostType(), $entity);
+        // $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('ApplicationSonataNewsBundle:Post:epostedit.html.twig', array(
                     'entity' => $entity,
                     'btnretour' => $myretour,
                     'edit_form' => $editForm->createView(),
-            'form_paypal' => $form_paypal->createView(),
-                   // 'delete_form' => $deleteForm->createView(),
+                    'form_paypal' => $form_paypal->createView(),
+                        // 'delete_form' => $deleteForm->createView(),
                 ));
     }
 
@@ -655,7 +651,7 @@ else {
      */
     public function epostupdateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
-   $entity = $em->getRepository('ApplicationSonataNewsBundle:Post')->find($id);
+        $entity = $em->getRepository('ApplicationSonataNewsBundle:Post')->find($id);
 
 //        $entity = $em->getRepository('ApplicationEpostBundle:Epost')->find($id);
 
@@ -663,7 +659,7 @@ else {
             throw $this->createNotFoundException('Unable to find Epost entity.');
         }
 
-       // $deleteForm = $this->createDeleteForm($id);
+        // $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new EpostType(), $entity);
         $editForm->bind($request);
         $session = $this->getRequest()->getSession();
@@ -671,6 +667,11 @@ else {
         if (!isset($myretour))
             $myretour = 'list_mesnews';
         if ($editForm->isValid()) {
+            
+            $postData = $request->request->get('application_sonata_eposttype');
+      //   print_r($postData);
+     //   exit(1);
+         
             //$entity->setUpdatedAt(new \DateTime());
             $em->persist($entity);
             $em->flush();
@@ -687,8 +688,103 @@ else {
                     'entity' => $entity,
                     'btnretour' => $myretour,
                     'edit_form' => $editForm->createView(),
-                   // 'delete_form' => $deleteForm->createView(),
+                        // 'delete_form' => $deleteForm->createView(),
                 ));
     }
 
+    /*Hi I have an application where users can add videos and pictures. I am
+using SonataMediaBundle but since those users don't have access to the
+admin dashboard I have to create the form they are using to upload photos
+and videos. */
+    
+    public function addvideoAction(Request $request, $id)
+    {
+        $defaultData = array('uri' => 'paste the video url', );
+        $form = $this->createFormBuilder($defaultData)
+            ->add('uri','url')
+            ->getForm();
+       if ($request->isMethod('POST')) {
+            $form->bind($request);
+
+            if ($form->isValid()) {
+                $data = $form->getData();
+                $uri = $data['uri'];
+                $videoprovider = $this->FindVideoProvider($uri);
+//FindVideoProvider is just a method that determines if the video comes
+//from youtube vimeo or dailymotion
+                if (! $videoprovider === false ){
+                    $em = $this->getDoctrine()->getManager();
+                    $mediaManager = $this->get('sonata.media.manager.media');
+                    $media = $mediaManager->create();
+                    $media->setBinaryContent($uri);
+                    $media->setContext('default');
+                    $media->setProviderName($videoprovider);
+                    $mediaManager->save($media);
+                    $foo->addVideo($media);
+                    $em->flush();
+                }
+            }
+        }
+
+        return array(
+            'form' => $form->createView(),
+            'run' => $run
+            );
+    }
+
+
+   
+public function addmyimageAction(Request $request,$id)
+    {
+        $form = $this->createFormBuilder()
+        ->add('binarycontent','file')
+        ->getForm();
+
+          $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('ApplicationSonataNewsBundle:Post')->find($id);
+ if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Epost entity.');
+        }
+  
+      if ($request->isMethod('POST')) {
+            $form->bind($request);
+
+            if ($form->isValid()) {
+                $data = $form->getData();
+                $binarycontent = $data['binarycontent'];
+
+                $em = $this->getDoctrine()->getManager();
+                $mediaManager = $this->get('sonata.media.manager.media');
+
+                $photo = $mediaManager->create();
+                $photo->setBinaryContent($binarycontent);
+                $photo->setContext('default');
+                $photo->setProviderName('sonata.media.provider.image');
+                $mediaManager->save($photo);
+                
+                $entity->setImage($photo);
+                
+                //   public function setImage(\Application\Sonata\MediaBundle\Entity\Media $image = null)
+  
+                $em->flush();
+                 return $this->render('ApplicationSonataNewsBundle:Post:addimage.html.twig', array(
+                    'form' => $form->createView(),
+              'entity' => $entity,
+                        // 'delete_form' => $deleteForm->createView(),
+                ));
+              //  list_mesnews
+            }
+        }
+
+         return $this->render('ApplicationSonataNewsBundle:Post:addimage.html.twig', array(
+                    'form' => $form->createView(),
+              'entity' => $entity,
+                        // 'delete_form' => $deleteForm->createView(),
+                ));
+    
+       /* return array(
+            'form' => $form->createView(),
+            'run' => $run
+            );*/
+    } 
 }
