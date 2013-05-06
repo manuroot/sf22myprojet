@@ -13,10 +13,16 @@
         {#<link rel="stylesheet" href="{{ asset('css/jquery-ui-1.9.2.custom.css') }}" type="text/css" media="all"/>
 #}
  
-
+  {#   <link rel="stylesheet" href="{{ asset('applicationsonatanews/css/news.css') }}" type="text/css" />
+    #}
 
 {% stylesheets '@ApplicationSonataNewsBundle/Resources/public/css/*' output='css/compiled/main.css' filter='yui_css' %}
 <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" />
+   <style>
+    .navbar {
+  padding-top: 60px;
+}
+   </style>
 {% endstylesheets %}
 
 
@@ -28,10 +34,10 @@
     </head>
     <body>
         <div class="container">
-           <div class="page-header">
+          {# <div class="page-header">#}
                       {{ block('NAVIGATION_BAR') }}
                    
-           </div>
+        {#   </div>#}
            <div id="content">
                  <center><h1>   {% block title %}PROJET{% endblock %}</h1></center>
                 {% block content %}
