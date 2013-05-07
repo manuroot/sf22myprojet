@@ -110,7 +110,8 @@ collapsible: true
     </div>
 
     <h1 class="sonata-blog-post-title">
-       {% thumbnail post.image, 'big' %}
+        <img src="{% path post.image, 'small' %}" width="100" /> 
+       {#{% thumbnail post.image, 'big' %}#}
   <a href="{{ url('sonata_news_view', { 'permalink': sonata_news_permalink(post) }) }}">{{ post.title }}</a>
         <span class="sonata-blog-post-author">{{ 'archive_author'|trans({'%author%': post.author }, 'SonataNewsBundle') }}</span>
     </h1>

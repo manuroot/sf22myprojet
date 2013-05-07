@@ -60,13 +60,13 @@ class EpostType extends AbstractType {
                 ->add('abstract', 'textarea', array(
                     'label' => 'Résumé',
                     'attr' => array(
-                        'cols' => "40",
+                      //  'cols' => "200",
                         'class' => "tinymce",
                         )))
                 ->add('content', 'textarea', array(
                     'label' => 'Description',
                     'attr' => array(
-                        'cols' => "40",
+                       // 'cols' => "200",
                         //   'rows' => "15",
                         'class' => 'tinymce',
                         )))

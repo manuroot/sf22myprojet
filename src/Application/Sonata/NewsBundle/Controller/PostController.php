@@ -500,7 +500,7 @@ class PostController extends Controller {
 
         if ($form->isValid()) {
             $comment = $form->getData();
-
+            // envoi de mail par ajout de commentaire
             $this->getCommentManager()->save($comment);
             $this->get('sonata.news.mailer')->sendCommentNotification($comment);
 

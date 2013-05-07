@@ -35,7 +35,7 @@ $( "#form_bis" ).datepicker( "option", "minDate", selectedDate );
 <br><br>
 
 Image Actuelle:
-<img src="{% path entity.image, 'small' %}" width="50" /> 
+<img src="{% path entity.image, 'big' %}" width="150" /> 
 
 <form action="{{ path('epost_addmyimage', { 'id': entity.id }) }}" method="post" {{ form_enctype(form) }}>
                
